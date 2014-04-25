@@ -1,0 +1,45 @@
+Cmp-Mod V01 Created by CvPcb (2013-11-29 BZR 4512)-product date = Sat 26 Apr 2014 02:45:13 EST
+
+BeginCmp
+TimeStamp = /535A8F0C;
+Reference = C1;
+ValeurCmp = C;
+IdModule  = 0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /535A9108;
+Reference = C2;
+ValeurCmp = C;
+IdModule  = 0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /535A90B5;
+Reference = D1;
+ValeurCmp = DIODE;
+IdModule  = DO-214AA;
+EndCmp
+
+BeginCmp
+TimeStamp = /535A8FC9;
+Reference = L1;
+ValeurCmp = 6.8uH;
+IdModule  = c-smd-6.3mmx8mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /535A911C;
+Reference = R1;
+ValeurCmp = R;
+IdModule  = 0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /535A8C7B;
+Reference = TPS1;
+ValeurCmp = TPS61040;
+IdModule  = SOT-235;
+EndCmp
+
+EndListe
