@@ -1,0 +1,97 @@
+/* MACHINE-GENERATED ! */
+
+frame switch {
+	table
+	    { name, x, y, px, py }
+	    { "SW1", 10.9mm-0.8mm-px/2, 9.15mm, 1mm, 10.7mm-y }
+	    { "SW2", -1.85mm, 8.35mm-py/2, 1.85mm-0.4mm, 1mm }
+
+	__0: vec @(x, y)
+	__1: vec .(px, py)
+	pad "$name" __0 .
+}
+
+frame shield {
+	table
+	    { name, x, y, px, py }
+	    { "S1", 9.4mm, -py, 10.9mm-9.4mm, 1.5mm }
+	    { "S2", -1.85mm, -py, 1.85mm-0.55mm, 1.5mm }
+	    { "S3", 10.9mm-px, 7.5mm-py/2, 0.8mm, 1.4mm }
+	    { "S4", -1.85mm, 6.85mm-py/2, 0.8mm, 1.5mm }
+
+	__0: vec @(x, y)
+	__1: vec .(px, py)
+	pad "$name" __0 .
+}
+
+frame pins {
+	set n = 8-i
+
+	loop i = 0, 7
+
+	__0: vec @(i*e-px/2, 0mm)
+	__1: vec .(px, -py)
+	pad "$n" __0 .
+}
+
+frame keepout {
+	table
+	    { x, y, rx, ry }
+	    { -0.4mm, 4mm, 8.1mm+0.4mm, 2mm }
+	    { 2.55mm, y1-ry, 5.05mm-2.55mm, 2mm }
+
+	__0: vec @(x, y)
+	__1: vec .(rx, ry)
+	rect __0 . w
+}
+
+frame outline {
+	table
+	    { x0, y0, x1 }
+	    { -1.85mm+0.8mm/2, y1-11.45mm, x0+11.95mm }
+
+	set clear = 0.3mm+w/2
+
+	table
+	    { x, y, dx, dy }
+	    { x0, clear, 0mm, 6.85mm-1.5mm/2-2*clear }
+	    { x0, y1, 0mm, 8.35mm+1mm/2+clear-y1 }
+	    { x0, y1, x1-x0-1mm-clear, 0mm }
+	    { x1, clear, 0mm, 7.5mm-1.4mm/2-2*clear }
+
+	table
+	    { ey, sy }
+	    { y1-15.6mm, 15.6mm-11.45mm-clear }
+
+	__0: vec @(x, y)
+	__1: vec .(dx, dy)
+	line __0 . w
+	__2: vec @(x0, ey)
+	__3: vec .(x1-x0, 0mm)
+	line __2 . w
+	__4: vec .(0mm, sy)
+	line __3 . w
+	__5: vec __2(0mm, sy)
+	line __2 . w
+	__6: vec @(x0, y0)
+}
+
+package "8:10-SOCKET-RA-PUSH-PULL"
+unit mm
+
+table
+    { px, py, e }
+    { 0.7mm, 1.75mm, 1.1mm }
+
+set y1 = 10.95mm-1.5mm/2
+
+set w = 5mil
+
+frame pins @
+frame shield @
+frame switch @
+frame keepout @
+frame outline @
+measx outline.__2 >> outline.__3 -1mm
+measy outline.__6 >> outline.__0 1mm
+measy outline.__2 >> outline.__0 2mm

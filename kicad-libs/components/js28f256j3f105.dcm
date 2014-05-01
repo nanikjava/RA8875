@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0  Date: Wed 11 Apr 2012 06:42:42 PM CST
+#
+$CMP JS28F256J3F105
+D JS28F256J3F105, FLASH 256Mbit, 105ns, 3V, 56-Lead TSOP
+K FLASH
+F http://www.micron.com/parts/nor-flash/parallel-nor-flash/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/6062319942_J3_65_256M_MLC_DS.ashx
+$ENDCMP
+#
+#End Doc Library

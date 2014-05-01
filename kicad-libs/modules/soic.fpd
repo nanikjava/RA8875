@@ -1,0 +1,79 @@
+/* MACHINE-GENERATED ! */
+
+frame pin {
+	__0: vec @(D/2, C/2)
+	__1: vec @(-D/2, -C/2)
+	pad "$n" . __0
+}
+
+frame pins_top {
+	set n = N-i
+
+	__0: vec @(x, 0mm)
+	frame pin .
+}
+
+frame pins_bottom {
+	set n = i+1
+
+	__0: vec @(x, 0mm)
+	frame pin .
+}
+
+frame pins {
+	set y = (A+B)/4
+
+	set x = (i-(N/2-1)/2)*Pitch
+
+	loop i = 0, N/2-1
+
+	__0: vec @(0mm, y)
+	frame pins_top .
+	__1: vec @(0mm, -y)
+	frame pins_bottom .
+}
+
+frame marker {
+	set r = ((N/2-1)*Pitch-x)/2-w
+
+	__0: vec @(-x/2-D+w, -(A-C)/2)
+	__1: vec .(-r/3, 0mm)
+	circ __0 . w
+}
+
+frame outline {
+	set w = 5mil
+
+	set x = H
+
+	set y = A+2*w
+
+	__0: vec @(x/2, y/2)
+	__1: vec @(-x/2, -y/2)
+	rect . __0 w
+	frame marker @
+}
+
+package "$name-$N"
+unit mm
+
+set Pitch = 1.27mm
+
+set D = 0.6mm
+
+table
+    { name, N, A, B, C, H }
+    { "SOIC", 8, 6.8mm, 2.8mm, 2mm, 4.9mm }
+    { "SOIC", 14, 6.8mm, 2.8mm, 2mm, 8.65mm }
+    { "SOIC", 16, 6.8mm, 2.8mm, 2mm, 9.9mm }
+
+frame outline @
+frame pins @
+measy pin.__1 -> pin.__0 1.5mm
+measy pin.__1 >> pin.__0 -H-2mm
+measy pin.__0 >> pin.__1 -H
+measx pin.__1 -> pin.__0 -1mm
+measx pins_top.__0 -> pins_top.__0 -2mm
+measy pins.__0 << pins_bottom.__0 -2mm
+measy outline.__0 >> outline.__1 -H-C
+measx outline.__1 >> outline.__0 8mm

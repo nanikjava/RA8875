@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0  Date: Thu 05 Apr 2012 10:01:39 CST
+#
+$CMP PPTC
+D MINISMDC200F, Polyswitch Trip Current 4A Hold Current 2A SMD, PTC Resettable Fuses 2A 8V 100A Imax, 1812
+K PPTC
+F http://www.tycoelectronics.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Specification+Or+Standard%7FSCD25274%7FI%7Fpdf%7FEnglish%7FENG_SS_SCD25274_I.pdf%7FRF1410-000
+$ENDCMP
+#
+#End Doc Library

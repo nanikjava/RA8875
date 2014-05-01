@@ -1,0 +1,96 @@
+/* MACHINE-GENERATED ! */
+
+frame pin {
+	__0: vec @(px/2, py/2)
+	__1: vec @(-px/2, -py/2)
+	pad "$n" . __0
+}
+
+frame pins_top {
+	set n = i*2+2
+
+	__0: vec @(x, 0mm)
+	frame pin .
+}
+
+frame pins_bottom {
+	set n = i*2+1
+
+	__0: vec @(x, 0mm)
+	frame pin .
+}
+
+frame npth {
+	set r = 1mm
+
+	__0: vec @(r/2, r/2)
+	__1: vec @(-r/2, -r/2)
+	hole . __0
+}
+
+frame pins {
+	set y = (gap+py)/2
+
+	set x = (i-(N/2-1)/2)*pitch
+
+	loop i = 0, N/2-1
+
+	__0: vec @(0mm, y)
+	frame pins_top .
+	__1: vec @(0mm, -y)
+	frame pins_bottom .
+	__2: vec @(-(N/2-1)/2*pitch+0.5*pitch, 0mm)
+	frame npth .
+	__3: vec @((N/2-1)/2*pitch-0.5*pitch, 0mm)
+	frame npth .
+}
+
+frame outline {
+	set r = 0.3mm
+
+	__0: vec @(W/2, py+gap/2+w)
+	__1: vec @(-W/2, -(gap/2+py+w))
+	rect . __0 w
+	__2: vec @(-(W/2+2*r), -H/2)
+	__3: vec .(r, 0mm)
+	circ __2 . w
+}
+
+package "he-shrouded-${n}x2pins-${pitch}"
+unit auto
+
+table
+    { N, n }
+    { 4, N/2 }
+    { 6, N/2 }
+    { 14, N/2 }
+
+set w = 5mil
+
+set px = 1mm
+
+set py = 2.75mm
+
+set pitch = 2mm
+
+set gap = 1.5mm
+
+set H = 6.3mm
+
+set base = 6.65mm
+
+set W = base+(N-4)*1mm
+
+frame outline @
+frame pins @
+measy outline.__1 >> outline.__0 -(W+px)
+measx outline.__1 >> outline.__0 H+py/2+6*w
+measy pin.__1 -> pin.__0 px/2
+measy pin.__1 >> pin.__0 -(W/2+pitch)
+measy pin.__0 >> pin.__1 -(pitch+px/2)
+measx pins_top.__0 -> pins_top.__0 px/2
+measy pins.__0 << pins_bottom.__0 -3*px/2
+measx pin.__1 -> pin.__0 -4*w
+meas pins_top.__0 >> pins_top.__0 py/2+7*w
+measy npth.__1 -> npth.__0 0.5mm
+meas pins.__2 >> pins.__3 gap/2+py+4*w

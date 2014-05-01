@@ -1,0 +1,125 @@
+/* MACHINE-GENERATED ! */
+
+frame Spad {
+	__0: vec @(sr/2, sr/2)
+	__1: vec @(-sr/2, -sr/2)
+	hole . __0
+	__2: vec @(-factor*sr/2, factor*sr/2)
+	__3: vec @(factor*sr/2, -factor*sr/2)
+	rpad "S$n" __2 . bare
+}
+
+frame Spads {
+	table
+	    { n, dx, dy }
+	    { 1, -1, 1 }
+	    { 2, 1, 1 }
+	    { 3, -1, -1 }
+	    { 4, 1, -1 }
+
+	__0: vec @(dx*spadx/2, dy*spady/2)
+	frame Spad .
+}
+
+frame pin2 {
+	set m = n+1
+
+	__0: vec @(pr/2, pr/2)
+	__1: vec @(-pr/2, -pr/2)
+	hole . __0
+	__2: vec @(-factor*pr/2, factor*pr/2)
+	__3: vec @(factor*pr/2, -factor*pr/2)
+	rpad "$m" __2 . bare
+}
+
+frame pin1 {
+	__0: vec @(pr/2, pr/2)
+	__1: vec @(-pr/2, -pr/2)
+	hole . __0
+	__2: vec @(factor*pr/2, -factor*pr/2)
+	__3: vec @(-factor*pr/2, factor*pr/2)
+	rpad "$n" . __2 bare
+}
+
+frame pins {
+	table
+	    { n, ctl, ctr, dx, dy }
+	    { 1, 1, 0, -1, 1 }
+	    { 3, 0, 1, 1, 1 }
+	    { 5, 1, 0, -1, -1 }
+	    { 7, 0, 1, 1, -1 }
+
+	__0: vec @(0mm, (padsrow1y-padsrow2y)/2)
+	__1: vec .(ctl*dx*(outterpitch+innerpitch/2)+ctr*dx*innerpitch/2, dy*(padsrow1y-padsrow2y)/2)
+	frame pin1 .
+	__2: vec .(outterpitch, 0mm)
+	frame pin2 .
+}
+
+frame outline {
+	__0: vec @(0mm, -(spady/2+fronty))
+	__1: vec @(0mm, L-fronty-spady/2)
+	__2: vec __0(W/2, 0mm)
+	__6: vec .(0mm, fronty-factor*sr/2-0.5mm)
+	line . __2 w
+	__3: vec __0(-W/2, 0mm)
+	line __2 . w
+	__7: vec .(0mm, fronty-factor*sr/2-0.5mm)
+	line . __3 w
+	__4: vec __1(W/2-factor*sr/2, 0mm)
+	__5: vec __1(-(W/2-factor*sr/2), 0mm)
+	line __4 . w
+	__8: vec @(W/2, 0mm)
+	__9: vec @(-W/2, 0mm)
+	__10: vec __8(0mm, factor*pr/2)
+	__11: vec __8(0mm, -factor*pr/2)
+	line __10 . w
+	__12: vec __9(0mm, factor*pr/2)
+	__13: vec __9(0mm, -factor*pr/2)
+	line __12 . w
+}
+
+package "USB-A-DUAL-RECEPT-RA"
+unit mm
+
+set spadx = 13.14mm
+
+set spady = 5.68mm
+
+set factor = 1.6
+
+set sr = 2.3mm
+
+set padsrow1y = 5.33mm
+
+set padsrow2y = 2.71mm
+
+set innerpitch = 2mm
+
+set outterpitch = 2.5mm
+
+set pr = 0.92mm
+
+set fronty = 10.28mm
+
+set W = 13.9mm
+
+set L = 17.3mm
+
+set w = 5mil
+
+__0: vec @(0mm, -(spady/2-padsrow2y))
+frame pins .
+frame Spads @
+frame outline @
+measy Spads.__0 -> Spads.__0 factor*sr/2+1.5mm
+meas Spads.__0 -> Spads.__0 -(factor*sr/2+0.5mm)
+measx pins.__1 -> pins.__2 -(factor*pr/2+0.5mm)
+measx pins.__2 -> pins.__1 -(factor*pr/2+0.5mm)
+measy Spads.__0 -> pins.__1 -(factor*sr/2+0.25mm)
+measy Spads.__0 >> pins.__1 -(spadx/2+factor*pr+0.75mm)
+measy pin1.__1 -> pin1.__0 factor*pr/2
+measy outline.__3 >> outline.__5 3.5mm
+meas outline.__3 >> outline.__2 -0.8mm
+measx pins.__1 >> pins.__2 spady/2+2mm
+measy Spad.__1 -> Spad.__0 1mm

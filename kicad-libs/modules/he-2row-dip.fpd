@@ -1,0 +1,76 @@
+/* MACHINE-GENERATED ! */
+
+frame pin {
+	__0: vec @(d/2, d/2)
+	__1: vec @(d/2*aspect, d/2*aspect)
+	__2: vec @(-d/2, -d/2)
+	hole . __0
+	__3: vec @(-d/2*aspect, -d/2*aspect)
+	rpad "$n" . __1 bare
+}
+
+frame pins {
+	table
+	    { n, y }
+	    { 2*nx+1, -py/2 }
+	    { 2*nx+2, py/2 }
+
+	set x = (nx-(N-2)/4)*px
+
+	loop nx = 0, N/2-1
+
+	__0: vec @(x, y)
+	frame pin .
+}
+
+frame marker {
+	__0: vec @(-(x+px/2), -py/2)
+	__1: vec .(0mm, 1.6*d/2)
+	circ __0 . 2*w
+}
+
+frame outline {
+	set x = (N/2*px-0.08mm)/2
+
+	set y = py
+
+	__0: vec @(-x, y)
+	__1: vec @(x, -y)
+	rect __0 . w
+	frame marker @
+}
+
+package "HE-${n}x2-${px}"
+unit auto
+
+table
+    { N }
+    { 2 }
+    { 4 }
+    { 6 }
+    { 8 }
+    { 10 }
+    { 12 }
+    { 14 }
+    { 16 }
+    { 18 }
+    { 20 }
+    { 40 }
+
+table
+    { px, py }
+    { 100mil, 100mil }
+
+set d = 0.8mm
+
+set aspect = 2.5
+
+set w = 5mil
+
+set n = N/2
+
+frame pins @
+frame outline @
+measy outline.__1 >> outline.__0 -2mm
+measx outline.__0 >> outline.__1 1mm
+measy pins.__0 -> pins.__0 -N/2*px

@@ -1,0 +1,45 @@
+/* MACHINE-GENERATED ! */
+
+frame outline {
+	__0: vec @(-Dia/2, Height/2)
+	__2: vec .(Dia, py+factor*hole/2+2*w)
+	rect . __0 w
+	__1: vec @(Dia/2, -Height/2)
+	rect __0 . w
+}
+
+frame pins {
+	table
+	    { n, dx }
+	    { 1, -1 }
+	    { 2, 1 }
+
+	__0: vec @(0mm, Height/2+py)
+	__1: vec .(dx*Pitch/2, 0mm)
+	__2: vec .(hole/2, hole/2)
+	__3: vec __1(-hole/2, -hole/2)
+	hole . __2
+	__4: vec __1(factor*hole/2, -factor*hole/2)
+	__5: vec __1(-factor*hole/2, factor*hole/2)
+	rpad "$n" . __4 bare
+}
+
+package "MIC-RA-DIP-${Dia}x${Height}"
+unit auto
+
+table
+    { Dia, Height, Pitch, py }
+    { 9.7mm, 6.7mm, 2.54mm, 1.5mm }
+
+set w = 5mil
+
+set hole = 0.9mm
+
+set factor = 1.7
+
+frame outline @
+frame pins @
+measy outline.__1 >> outline.__0 -1mm
+measx outline.__0 >> outline.__1 -(Height+1mm)
+meas pins.__1 >> pins.__1 2mm
+measx pins.__3 -> pins.__2 -factor*hole/2

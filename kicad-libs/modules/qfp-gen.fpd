@@ -1,0 +1,99 @@
+/* MACHINE-GENERATED ! */
+
+frame meas_aux {
+	set ?dy = -1
+
+	__0: vec @(-wx/2, -wy/2)
+	__1: vec @(wx/2, wy/2)
+}
+
+frame land {
+	table
+	    { dx, dy, n }
+	    { 0, -1, i }
+	    { 1, 0, i+N/4 }
+	    { 0, 1, i+N/2 }
+	    { -1, 0, i+3*N/4 }
+
+	set side = e*(i-N/8-0.5)
+
+	table
+	    { sx, sy }
+	    { side*-dy, side*dx }
+
+	table
+	    { ix, iy, ox, oy, wx, wy }
+	    { Gmin/2*dx, Gmin/2*dy, Zmax/2*dx, Zmax/2*dy, Xmax*-dy, Xmax*dx }
+
+	loop i = 1, N/4
+
+	__0: vec @(ix, iy)
+	__1: vec .(sx, sy)
+	__2: vec .(ox-ix, oy-iy)
+	frame meas_aux .
+	__4: vec .(wx/2, wy/2)
+	__3: vec __1(-wx/2, -wy/2)
+	pad "$n" . __4
+	__5: vec @((ix+ox)/2, (iy+oy)/2)
+}
+
+package "QFP$N-$pkg-$dens"
+unit mm
+
+table
+    { pkg, N, Dmin, Dmax, D1max, Lmin, Lmax, e, narrow, bmin, bmax, b1min, b1max }
+    { "MS026BBA", 32, 8.9mm, 9.1mm, 7.1mm, 0.45mm, 0.75mm, 0.8mm, 0, 0.3mm, 0.45mm, 0.3mm, 0.4mm }
+    { "MS026BBC", 48, 8.9mm, 9.1mm, 7.1mm, 0.45mm, 0.75mm, 0.5mm, 1, 0.17mm, 0.27mm, 0.17mm, 0.23mm }
+
+table
+    { Dtol, Ltol }
+    { Dmax-Dmin, Lmax-Lmin }
+
+table
+    { Smin, Cs, Smax }
+    { Dmin-2*Lmax, sqrt(Dtol*Dtol+Ltol*Ltol), Smin+Cs }
+
+set Cl = Dmax-Dmin
+
+set Cw = b1max-b1min
+
+table
+    { dens, ?narrow, Jt, Jh, Js, Court }
+    { "A", 0, 0.55mm, 0.45mm, 0.05mm, 0.5mm }
+    { "B", 0, 0.35mm, 0.35mm, 0.03mm, 0.25mm }
+    { "C", 0, 0.15mm, 0.25mm, 0.01mm, 0.1mm }
+    { "A", 1, 0.55mm, 0.45mm, 0.01mm, 0.5mm }
+    { "B", 1, 0.35mm, 0.35mm, -0.02mm, 0.25mm }
+    { "C", 1, 0.15mm, 0.25mm, -0.04mm, 0.1mm }
+
+table
+    { ?narrow, Jt_round, Jh_round, Js_round }
+    { 0, 0.02mm, 0.02mm, 0.01mm }
+    { 1, 0.02mm, 0.1mm, 0.01mm }
+
+set pcb_tolerance = 0.1mm
+
+set placement_tolerance = 0.1mm
+
+table
+    { F, P }
+    { pcb_tolerance, placement_tolerance }
+
+set Zmax_raw = Dmin+2*Jt+sqrt(Cl*Cl+F*F+P*P)
+
+set Gmin_raw = Smax-2*Jh-sqrt(Cs*Cs+F*F+P*P)
+
+set Xmax_raw = b1min+2*Js+sqrt(Cw*Cw+F*F+P*P)
+
+set Zmax = floor(Zmax_raw/Jt_round+0.5)*Jt_round
+
+set Gmin = floor(Gmin_raw/Jh_round+0.5)*Jh_round
+
+set Xmax = floor(Xmax_raw/Js_round+0.5)*Js_round
+
+frame land @
+measy land.__2 -> land.__1 -7mm
+measy land.__0 >> land.__0 6mm
+measy land.__2 >> land.__4 5mm
+measy land.__5 >> land.__5 7mm
+measx meas_aux.__0 -> land.__4 -1mm

@@ -1,0 +1,20 @@
+When adding a new schematics symbol, please do the following:
+
+1) Choose a unique name for the symbol. If the component is available
+   in packages with different pin numbering schemes, you may want to 
+   add number of pins or the package name to the symbol's base name,
+   to make the name unique.
+
+   If the package and the number of pins are not relevant for the
+   schematics symbol, they should not be part of the name.
+
+   Example: 74x1g08_5.lib
+
+2) Create a .lib file containing just that symbol
+
+3) Add a LibName# entry for it at the end of components.pro
+   The LibName entry must have the form
+   LibName#=./name.lib
+   where # is the number of the highest-numbered entry, minus one
+
+4) Record your authorship in ../AUTHORS

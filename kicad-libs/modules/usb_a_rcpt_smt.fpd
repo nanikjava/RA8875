@@ -1,0 +1,89 @@
+/* MACHINE-GENERATED ! */
+
+frame pad {
+	table
+	    { h, w }
+	    { 2.82mm, 0.8mm }
+
+	__0: vec @(w/2, h/2)
+	__1: vec @(-w/2, -h/2)
+	pad "$name" . __0
+}
+
+frame pads {
+	table
+	    { name, x }
+	    { 1, -3.5mm }
+	    { 2, -1mm }
+	    { 3, 1mm }
+	    { 4, 3.5mm }
+
+	__0: vec @(0mm, A)
+	__1: vec .(x, 0mm)
+	frame pad .
+}
+
+frame shield {
+	table
+	    { name, x }
+	    { 5, -B/2 }
+	    { 6, B/2 }
+
+	set d = 2.3mm
+
+	set ratio = 2
+
+	__0: vec @(x, 0mm)
+	__1: vec .(d/2, d/2)
+	__2: vec __0(d/2*ratio, d/2*ratio)
+	__3: vec __0(-d/2, -d/2)
+	hole . __1
+	__4: vec __0(-d/2*ratio, -d/2*ratio)
+	rpad "$name" . __2
+}
+
+frame corner {
+	table
+	    { dx }
+	    { -1 }
+	    { 1 }
+
+	__0: vec @(dx*13.9mm/2, 14.15mm-10.3mm)
+	__1: vec .(-dx*1mm, 0mm)
+	line __0 . w
+	__2: vec __0(0mm, -1mm)
+	line __0 . w
+}
+
+frame edge {
+	__0: vec @(0mm, -10.3mm)
+	__1: vec .(mouth/2, 0mm)
+	__2: vec __0(-mouth/2, 0mm)
+	line . __1 w
+}
+
+package "USB-A-RCPT-SMT"
+unit auto
+
+table
+    { A, B }
+    { 3.71mm, 13.14mm }
+
+set mouth = 14.5mm
+
+set w = 5mil
+
+frame edge @
+frame pads @
+frame shield @
+frame corner @
+measx pads.__1 >> pads.__1 3mm
+measx pads.__1 -> pads.__1 2.5mm
+measx pad.__1 -> pad.__0 3mm
+measy pad.__1 -> pad.__0 0.5mm
+measx shield.__0 >> shield.__0 0mm
+measy edge.__1 >> shield.__0 -2.32mm
+measy pads.__0 << shield.__0 -3mm
+measx edge.__2 >> edge.__1 1mm
+measx corner.__0 >> corner.__0 4mm
+measy edge.__2 -> corner.__0 2mm

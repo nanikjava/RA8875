@@ -1,0 +1,102 @@
+/* MACHINE-GENERATED ! */
+
+frame pin {
+	set Rh = Cdiam/2
+
+	set Rr = Cdiam/2*ratio
+
+	__0: vec @(Rr, Rr)
+	__1: vec @(-Rr, -Rr)
+	rpad "$name" . __0 bare
+	__2: vec @(Rh, -Rh)
+	__3: vec @(-Rh, Rh)
+	hole . __2
+}
+
+frame outer {
+	set name = 2*grp+2
+
+	frame pin @
+}
+
+frame inner {
+	set name = 2*grp+1
+
+	frame pin @
+}
+
+frame clip {
+	__0: vec @(0mm, -Cpitch*d)
+	frame outer .
+	frame inner @
+}
+
+frame side {
+	__0: vec @(0mm, Blen/2)
+	__1: vec @(0mm, -Blen/2)
+	line __0 . w
+}
+
+frame outline {
+	set ?pair = 1
+
+	__0: vec @(0mm, Cgap/2)
+	__1: vec .(Bdia/2, 0mm)
+	frame side .
+	__2: vec __0(-Bdia/2, 0mm)
+	frame side .
+}
+
+frame marker {
+	table
+	    { Mx, My, Marm }
+	    { -5mm, -9mm, 1.2mm }
+
+	set ?pair = 1
+
+	__0: vec @(Mx, My)
+	__1: vec .(0mm, Marm)
+	__2: vec __0(Marm, 0mm)
+	__3: vec __0(-Marm, 0mm)
+	line . __2 w
+	__4: vec __0(0mm, -Marm)
+	line __1 . w
+}
+
+package "BAT-CLIP-AA-TH$cfg"
+unit mm
+
+table
+    { cfg, pair }
+    { "", 0 }
+    { "-PAIR", 1 }
+
+table
+    { Blen, Bdia }
+    { 50mm, 14mm }
+
+table
+    { Cpitch, Cgap, Cdiam }
+    { 7.62mm, 33.53mm, 1.7mm }
+
+set ratio = 3
+
+table
+    { ?pair, n, grp, d }
+    { 0, 1, 0, 1 }
+    { 1, 1, 0, 1 }
+    { 1, 2, 1, -1 }
+
+set w = 0.2mm
+
+__0: vec @(0mm, Cgap*(n-1))
+frame clip .
+frame outline @
+frame marker @
+measx pin.__3 -> pin.__2 -5mm
+measx pin.__1 -> pin.__0 -3mm
+measy clip.__0 -> __0
+measy __0 >> __0
+measy clip.__0 >> clip.__0 4mm
+measx side.__0 >> side.__0 5mm
+measy side.__1 -> side.__0 2mm

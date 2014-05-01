@@ -1,0 +1,97 @@
+/* MACHINE-GENERATED ! */
+
+frame outline {
+	__0: vec @(-buttonDia/2, -B)
+	__1: vec .(buttonDia, A)
+	rect __0 . w
+	__2: vec @(0mm, -(B-A))
+	__3: vec .(-bx/2, 0mm)
+	__4: vec .(bx, by)
+	rect __3 . w
+	__5: vec @(bx/2+factor*shieldsDia/2+w, reary)
+	__6: vec @(-(bx/2+factor*shieldsDia/2+w), -(B-A))
+	__7: vec @(bx/2+factor*shieldsDia/2+w, -(B-A))
+	line __5 . w
+	__8: vec @(-(bx/2+factor*shieldsDia/2+w), reary)
+	line __5 . w
+	line . __6 w
+}
+
+frame pins {
+	table
+	    { n, dx }
+	    { 1, -1 }
+	    { 2, 1 }
+
+	set m = n+2
+
+	__0: vec @(dx*pinsdiffx/2, 0mm)
+	__1: vec .(pinsDia/2, pinsDia/2)
+	__2: vec __0(-pinsDia/2, -pinsDia/2)
+	hole . __1
+	__3: vec __0(factor*pinsDia/2, -factor*pinsDia/2)
+	__4: vec __0(-factor*pinsDia/2, factor*pinsDia/2)
+	rpad "$n" . __3 bare
+	__5: vec @(0mm, pins2shieldsy)
+	__6: vec .(dx*shieldsdiffx/2, 0mm)
+	__7: vec .(shieldsDia/2, shieldsDia/2)
+	__8: vec __6(-shieldsDia/2, -shieldsDia/2)
+	hole . __7
+	__9: vec __6(factor*shieldsDia/2, -factor*shieldsDia/2)
+	__10: vec __6(-factor*shieldsDia/2, factor*shieldsDia/2)
+	rpad "$m" . __9 bare
+}
+
+package "TACTIL-SW-${TYPE}-RA-${A}-${B}"
+unit mm
+
+table
+    { A, B }
+    { 0.55mm, 3.15mm }
+    { 1.25mm, 3.86mm }
+    { 3.25mm, 5.84mm }
+    { 3.55mm, 6.15mm }
+    { 4.25mm, 6.85mm }
+    { 5.74mm, 8.36mm }
+    { 9.25mm, 11.86mm }
+    { 13.26mm, 15.85mm }
+
+set bx = 7.11mm
+
+set TYPE = "SPST"
+
+set by = 3.99mm
+
+set sy = 4.01mm
+
+set pinsdiffx = 4.49mm
+
+set shieldsdiffx = 7.01mm
+
+set pins2shieldsy = 2.5mm
+
+set pinsDia = 0.99mm
+
+set buttonDia = 3.5mm
+
+set shieldsDia = 1.3mm
+
+set reary = 4.01mm
+
+set w = 5mil
+
+set factor = 1.6
+
+frame pins @
+frame outline @
+measy pins.__2 -> pins.__1 -1.8mm
+measy pins.__8 -> pins.__7 1.5mm
+meas pins.__0 >> pins.__0 5mm
+meas pins.__6 >> pins.__6 4mm
+measx outline.__0 >> outline.__1 -1mm
+measx outline.__3 >> outline.__4 -(A+2mm)
+meas outline.__6 >> outline.__7 -(A+3mm)
+measy outline.__0 >> outline.__1 4.3mm
+measy outline.__3 >> outline.__4 2.5mm
+measy outline.__0 -> pins.__0 3.5mm
+meas outline.__7 >> outline.__5 -1mm

@@ -1,0 +1,107 @@
+/* MACHINE-GENERATED ! */
+
+frame signals {
+	table
+	    { sx, sy }
+	    { 0.4mm, 1.35mm }
+
+	set e = 0.65mm
+
+	table
+	    { ?rev, signal }
+	    { 0, n }
+	    { 1, 6-n }
+
+	loop n = 1, 5
+
+	__0: vec @(0mm, by)
+	__1: vec .((n-3)*e, 0mm)
+	__2: vec .(-sx/2, 0mm)
+	__3: vec __1(sx/2, -sy)
+	pad "$signal" __2 .
+}
+
+frame rpads {
+	table
+	    { rox, rix }
+	    { 8.3mm, 4.1mm }
+
+	set ry = 1.6mm
+
+	table
+	    { dx }
+	    { -1 }
+	    { 1 }
+
+	set pad = 6.5+dx/2
+
+	__0: vec @(0mm, by)
+	__1: vec .(rox/2*dx, 0mm)
+	__2: vec .(0mm, -ry)
+	__3: vec __0(rix/2*dx, 0mm)
+	pad "$pad" __2 .
+}
+
+frame mpads {
+	table
+	    { n, mox, mix }
+	    { 0, 9.8mm, mix0 }
+	    { 1, mox1, 0.5mm }
+
+	set my = 1.9mm
+
+	table
+	    { dx }
+	    { -1 }
+	    { 1 }
+
+	set pad = 9.5+1.5*dx-n*dx
+
+	__0: vec @(mox/2*dx, 0mm)
+	__1: vec .(0mm, -my/2)
+	__2: vec @(mix/2*dx, 0mm)
+	__3: vec .(0mm, my/2)
+	pad "$pad" __1 .
+}
+
+frame edge {
+	table
+	    { ex, ey }
+	    { 7.9mm, 1.45mm }
+
+	__0: vec @(0mm, -ey)
+	__1: vec .(-ex/2, 0mm)
+	__2: vec __0(ex/2, 0mm)
+	line __1 . w
+}
+
+package "ZX62$var"
+unit mm
+
+set w = 0.2mm
+
+set sx = 7.9mm
+
+set by = 3.35mm
+
+table
+    { var, rev, mix0, mox1 }
+    { "-B-5PA", 0, 6.2mm, 4.3mm }
+    { "R-B-5P", 1, 6.6mm, 3.9mm }
+
+frame edge @
+frame mpads @
+frame rpads @
+frame signals @
+measx mpads.__1 >> mpads.__1 -2.5mm
+measx mpads.__2 >> mpads.__2 -2.5mm
+measx edge.__1 >> edge.__2 -1.5mm
+measy mpads.__1 -> mpads.__3 1mm
+measy rpads.__2 -> rpads.__1 1mm
+measy rpads.__0 << mpads.__0 -1mm
+measy edge.__2 >> mpads.__0 -2mm
+measy signals.__1 << signals.__1
+measx signals.__1 >> signals.__1 1mm
+measx rpads.__3 >> rpads.__3 1.5mm
+measx rpads.__1 >> rpads.__1 2mm
+measy signals.__3 -> signals.__1 0.5mm

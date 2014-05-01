@@ -1,0 +1,82 @@
+/* MACHINE-GENERATED ! */
+
+frame pad {
+	set n = pins+1
+
+	__0: vec @(cx/2, cy/2)
+	__1: vec @(-cx/2, -cy/2)
+	pad "$n" . __0
+}
+
+frame pin {
+	__0: vec @(px/2, py/2)
+	__1: vec @(-px/2, -py/2)
+	pad "$n" . __0
+}
+
+frame pins {
+	set x = e*(i-(pins/2-1)/2)
+
+	set y = (iy+oy)/4*dy
+
+	set n = a+f*i
+
+	table
+	    { dy, f, a }
+	    { 1, -1, 8 }
+	    { -1, 1, 1 }
+
+	loop i = 0, pins/2-1
+
+	__0: vec @(x, y)
+	frame pin .
+}
+
+frame outline {
+	set x = (X+gap)/2
+
+	set y = (Y+gap)/2
+
+	__0: vec @(X/2, Y/2)
+	__6: vec .(gap, gap)
+	__1: vec @(X/2, -Y/2)
+	__2: vec .(gap, -gap)
+	line __6 . w
+	__3: vec @(-X/2, Y/2)
+	__7: vec .(-gap, gap)
+	__8: vec @(-X/2, -Y/2)
+	__9: vec .(-gap, -gap)
+	line __7 . w
+	__4: vec .(-(w+r+0.1mm), r)
+	__5: vec .(0mm, r)
+	circ __4 . w
+}
+
+package "DFN-$pins$variant"
+unit mm
+
+table
+    { pins, variant, X, Y, e, iy, oy, px, cx, cy }
+    { 8, "", 2mm, 2mm, 0.5mm, 1.4mm, 2.4mm, 0.28mm, 1.3mm, 0.7mm }
+
+set py = (oy-iy)/2
+
+set w = 5mil
+
+set gap = 0.2mm+w/2
+
+set r = 0.25mm
+
+frame pins @
+frame pad @
+frame outline @
+measy pin.__1 >> pin.__0 2mm
+measy pin.__0 >> pin.__1 2mm
+measy pad.__1 >> pad.__0 1.5mm
+measx pin.__1 >> pin.__0 -1mm
+measx pin.__1 -> pin.__0 -0.5mm
+measy pin.__1 -> pin.__0 2mm-px
+measx pins.__0 -> pins.__0 oy+0.5mm
+measy outline.__1 >> outline.__0 -1mm
+measx outline.__3 >> outline.__0 1.5mm
+measx pad.__1 >> pad.__0 cy/2

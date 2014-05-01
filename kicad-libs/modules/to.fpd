@@ -1,0 +1,77 @@
+/* MACHINE-GENERATED ! */
+
+frame outline {
+	__0: vec @(D/2, E/2+offset)
+	__1: vec @(D/2, -(E/2-offset))
+	line __0 . w
+	__2: vec @(-D/2, E/2+offset)
+	__3: vec @(-D/2, -(E/2-offset))
+	line . __2 w
+	__4: vec @(gx/2, 0mm)
+	__5: vec @(-gx/2, 0mm)
+}
+
+frame pad {
+	set x = dx*e
+
+	set y = dy*cy/2
+
+	__2: vec @(x, y)
+	__0: vec .(index*px/2+ground*gx/2, index*py/2+ground*gy/2)
+	__1: vec __2(-(index*px/2+ground*gx/2), -(index*py/2+ground*gy/2))
+	pad "$n" . __0
+	__3: vec __2(-(index*px/2+ground*gx/2), index*py/2+ground*gy/2)
+	__4: vec __2(index*px/2+ground*gx/2, -(index*py/2+ground*gy/2))
+}
+
+frame pads263 {
+	table
+	    { n, index, ground, dx, dy }
+	    { 1, 1, 0, -2, -1 }
+	    { 2, 1, 0, -1, -1 }
+	    { 3, 1, 0, 0, -1 }
+	    { 4, 1, 0, 1, -1 }
+	    { 5, 1, 0, 2, -1 }
+	    { 6, 0, 1, 0, 1 }
+
+	loop if = sqrt((N-6)*(N-6)), 0
+
+	frame outline @
+	frame pad @
+}
+
+frame pads252 {
+	table
+	    { n, index, ground, dx, dy }
+	    { 1, 1, 0, -1, -1 }
+	    { 3, 1, 0, 1, -1 }
+	    { 4, 0, 1, 0, 1 }
+
+	loop if = sqrt((N-3)*(N-3)), 0
+
+	frame outline @
+	frame pad @
+}
+
+package "TO-$Name"
+unit mm
+
+table
+    { Name, N, D, E, e, cy, px, py, offset, gx, gy }
+    { "252", 3, 6.58mm, 9.91mm, 2.285mm, 6.44mm, 1.3mm, 1.7mm, 1mm, 5.5mm, 5.7mm }
+    { "263", 6, 10.16mm, 14.01mm, 1.7mm, 9.225mm, 1.07mm, 2.41mm, 1mm, 5.59mm, 6.35mm }
+
+set w = 5mil
+
+frame pads252 @
+frame pads263 @
+measy outline.__3 >> outline.__2 3.5mm
+measx pad.__1 -> pad.__0 -1mm
+measx pad.__2 -> pad.__2 1.5mm
+measy pad.__2 >> pad.__2 3mm
+measy pad.__2 -> pad.__3 2mm
+measy pad.__4 -> pad.__2 2.5mm
+meas outline.__3 >> outline.__1 -2.5mm
+measx outline.__5 >> outline.__4 8mm
+measy pad.__2 >> pad.__3 4mm
+measx pad.__2 >> pad.__2 -2.5mm

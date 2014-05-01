@@ -1,0 +1,35 @@
+/* MACHINE-GENERATED ! */
+
+frame pad {
+	__0: vec @(x/2, y/2)
+	__1: vec @(-x/2, -y/2)
+	rpad "$n" . __0 bare
+}
+
+package "PAD_${name}_${N}x$e"
+unit auto
+
+table
+    { name, x, y }
+    { "2mm", 2mm, 0.5mm }
+    { "60x60", 60mil, 60mil }
+    { "80x80", 80mil, 80mil }
+    { "120x60", 120mil, 60mil }
+
+table
+    { ?name, e, Nmax }
+    { "2mm", 50mil, 20 }
+    { "60x60", 100mil, 10 }
+    { "80x80", 100mil, 10 }
+    { "120x60", 100mil, 10 }
+
+loop N = 2, Nmax
+
+loop n = 1, N
+
+__0: vec @(0mm, e*(n-1))
+frame pad .
+measx pad.__1 -> pad.__0 -1mm
+measy pad.__1 -> pad.__0 1mm
+measy __0 >> __0 -x/2-2mm
+measy __0 -> __0 -x/2-1mm

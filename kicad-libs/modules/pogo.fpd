@@ -1,0 +1,43 @@
+/* MACHINE-GENERATED ! */
+
+frame hole {
+	set r = (ph+slack)/2
+
+	loop loop = 1, pin
+
+	__0: vec @(r, r)
+	__1: vec @(-r, -r)
+	hole . __0
+}
+
+frame pad {
+	set r = cd*aspect/2
+
+	__0: vec @(r, r)
+	__1: vec @(-r, -r)
+	rpad "1" . __0
+}
+
+package "POGO-$name"
+unit mm
+
+table
+    { name, cd, pin, ph }
+    { "0906", 1.83mm, 1, 0.51mm }
+    { "0930", 1.83mm, 1, 0.51mm }
+    { "0914", 1.4mm, 1, 0.74mm }
+    { "0908", 1.83mm, 1, 0.51mm }
+    { "0932", 1.4mm, 1, 0.74mm }
+    { "0901", 1.4mm, 1, 0.74mm }
+    { "0929", 1.5mm, 1, 0.74mm }
+    { "0922", 1.52mm, 1, 0.74mm }
+    { "0956", 1.83mm, 1, 0.89mm }
+
+set aspect = 1.4
+
+set slack = 0.05mm
+
+frame pad @
+frame hole @
+measx pad.__1 >> pad.__0 -1mm
+measx hole.__1 >> hole.__0 -(cd*aspect-ph-slack)/2-0.5mm

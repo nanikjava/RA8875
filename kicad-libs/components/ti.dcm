@@ -1,0 +1,39 @@
+EESchema-DOCLIB  Version 2.0  Date: 2012年04月27日 (週五) 17時10分10秒
+#
+$CMP LP38511TJ-ADJ
+D LP38511TJ-ADJ, 800mA Fast-Transient Response Adjustable Low-Dropout Linear Voltage Regulator, TO-263
+K Linear Regulator
+F http://www.ti.com/lit/ds/symlink/lp38511-adj.pdf
+$ENDCMP
+#
+$CMP LP38690DT-XX
+D LP38690DT, 1A Low Dropout CMOS Linear Regulators Stable with Ceramic Output Capacitors, TO-252
+K Linear Regulator
+F http://www.ti.com/lit/ds/symlink/lp38690.pdf
+$ENDCMP
+#
+$CMP PTH04000WAH
+D PTH04000WAH, 3-A, 3.3/5-V Input Adjustable Switching Regulator with Auto-Track Sequencing
+K Switching Regulator
+F http://www.ti.com/lit/ds/symlink/pth04000w.pdf
+$ENDCMP
+#
+$CMP SN74LVC1G17DBV
+D SN74LVC1G17DBVR, SINGLE SCHMITT-TRIGGER BUFFER, SOT-235
+K SCHMITT-TRIGGER BUFFER
+F http://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf
+$ENDCMP
+#
+$CMP SN75HVD12D
+D SN75HVD12D, 3.3V RS-485 TRANSCEIVERS, 1Mbps, SOIC-8
+K RS-485 TRANSCEIVERS
+F http://www.ti.com/lit/ds/symlink/sn75hvd12.pdf
+$ENDCMP
+#
+$CMP TPS763XX
+D TPS763xx, LOW POWER 150mA LOW DROPOUT LINEAR REGULATORS SOT-23, VARIABLE
+K LINEAR REGULATOR
+F http://www.ti.com/lit/ds/symlink/tps76301.pdf
+$ENDCMP
+#
+#End Doc Library

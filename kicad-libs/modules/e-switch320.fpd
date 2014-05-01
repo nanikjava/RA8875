@@ -1,0 +1,73 @@
+/* MACHINE-GENERATED ! */
+
+frame pos {
+	table
+	    { x, y }
+	    { -1.5, -1.5 }
+	    { 1.5, 0.5 }
+
+	set d = 1mm+0.05mm
+
+	__0: vec @(x*pitch, y*pitch)
+	__1: vec .(d/2, d/2)
+	__2: vec __0(-d/2, -d/2)
+	hole . __1
+}
+
+frame pin {
+	set d = 1.22mm+0.07mm
+
+	set ratio = 2.5
+
+	__0: vec @(d/2, d/2)
+	__1: vec @(-d/2, -d/2)
+	hole . __0
+	__2: vec @(d/2*ratio, -d/2*ratio)
+	__3: vec @(-d/2*ratio, d/2*ratio)
+	rpad "$pin" . __2 bare
+}
+
+frame pins {
+	table
+	    { pin, x, y }
+	    { 1, -1.5, 1.5 }
+	    { 2, 0.5, -0.5 }
+
+	__0: vec @(x*pitch, y*pitch)
+	frame pin .
+}
+
+frame silk {
+	table
+	    { case, cap }
+	    { 12.4mm, 10.2mm }
+
+	__0: vec @(case/2, case/2)
+	__1: vec @(-case/2, -case/2)
+	rect . __0 w
+	__2: vec @(cap/2, -cap/2)
+	__3: vec @(-cap/2, cap/2)
+}
+
+package "E-SWITCH_320"
+unit mm
+
+set w = 5mil
+
+set pitch = 2.54mm
+
+__0: vec @(0mm, 0mm)
+frame silk @
+frame pins @
+frame pos @
+measy silk.__1 >> silk.__0 2mm
+measx silk.__1 >> silk.__0 -2mm
+measx pins.__0 >> __0 -150mil
+measy pos.__0 >> __0
+measy __0 >> pins.__0
+measx __0 >> pins.__0 -4mm
+measy pins.__0 >> __0 50mil+1mm
+measy pin.__1 -> pin.__0 -3mm
+measx __0 >> pos.__0 50mil
+measx pos.__2 -> pos.__1 -1mm
+measx pin.__3 -> pin.__2 2mm

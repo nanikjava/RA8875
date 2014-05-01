@@ -1,0 +1,78 @@
+/* MACHINE-GENERATED ! */
+
+frame pad {
+	__0: vec @(b/2, a/2)
+	__1: vec @(-b/2, -a/2)
+	pad "$pin" . __0
+}
+
+frame pads {
+	table
+	    { pin, dx, dy }
+	    { 1, -1, -1 }
+	    { 2, 1, -1 }
+
+	__0: vec @(dx*Gx/2, 0mm)
+	frame pad .
+}
+
+frame outline_B {
+	__0: vec @(-(B1/2-0.17*B1+w), A1/2+w)
+	__1: vec @(-(B1/2-0.17*B1+w), -(A1/2+w))
+	__2: vec @(B1/2+w, A1/2+w)
+	line __0 . w
+	__4: vec .(0mm, -(A1-a)/2)
+	line __2 . w
+	__3: vec @(B1/2+w, -(A1/2+w))
+	line __1 . w
+	__5: vec .(0mm, (A1-a)/2)
+	line __3 . w
+}
+
+frame outline_slope {
+	table
+	    { px, py, x, y }
+	    { -(B1/2+w-0.085*B1), A1/2-0.085*A1, 0.17*B1, 0.17*A1+2*w }
+	    { -(B1/2+w-0.085*B1), -(A1/2-0.085*A1), 0.17*B1, -(0.17*A1+2*w) }
+
+	__0: vec @(px, py)
+	__1: vec .(-x/2, -y/2)
+	__2: vec __0(x/2, y/2)
+	line . __1 w
+}
+
+frame outline {
+	table
+	    { px, py, x, y }
+	    { -(B1+2*w)/2, 0.17*A1+3*w, 0mm, 0.15*A1 }
+	    { -(B1+2*w)/2, -0.17*A1-3*w, 0mm, 0.15*A1 }
+
+	__0: vec @(px, py)
+	__1: vec .(x/2, y/2)
+	__2: vec __0(-x/2, -y/2)
+	line . __1 w
+}
+
+package "c-smd-${D}x${L}"
+unit mm
+
+table
+    { D, L, Gx, A1, B1, a, b, c, d }
+    { 5mm, 6.1mm, b+c, 5.3mm, 5.3mm, 1.6mm, 3mm, 1.4mm, 2*b+c }
+    { 6.3mm, 8mm, b+c, 6.6mm, 6.6mm, 1.6mm, 3.5mm, 2.1mm, 2*b+c }
+    { 8mm, 10.5mm, b+c, 8.3mm, 8.3mm, 2.2mm, 4.1mm, 3mm, 2*b+c }
+    { 10mm, 10.5mm, b+c, 10.3mm, 10.3mm, 2.2mm, 4.3mm, 4.5mm, 2*b+c }
+
+set w = 5mil
+
+frame pads @
+frame outline @
+frame outline_slope @
+frame outline_B @
+measy pad.__1 -> pad.__0 0.5mm
+measx pad.__1 -> pad.__0 -1mm
+measx pad.__0 >> pad.__1 1mm
+measx outline.__2 >> outline.__1 -1mm
+meas pads.__0 >> pads.__0 2.5mm
+measx outline_B.__2 << outline.__1 A1/2-1.5mm
+meas outline_B.__3 >> outline_B.__2 -b/2

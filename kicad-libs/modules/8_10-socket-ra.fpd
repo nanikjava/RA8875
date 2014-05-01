@@ -1,0 +1,65 @@
+/* MACHINE-GENERATED ! */
+
+frame outline {
+	__0: vec @(-(L/2+sx/2+w), 0mm)
+	__1: vec .(L+sx+2*w, H)
+	rect __0 . w
+	__2: vec .(-(L+sx+2*w), slidestroke+0.5mm)
+	rect __1 . w
+}
+
+frame pins {
+	set n = i+1
+
+	loop i = 0, 7
+
+	__0: vec @(-p1diffx, pY+py/2)
+	__1: vec .(i*pitch, 0mm)
+	__2: vec .(px/2, py/2)
+	__3: vec __1(-px/2, -py/2)
+	pad "$n" . __2
+}
+
+frame shields {
+	table
+	    { n, dx, dy }
+	    { 1, -1, 1 }
+	    { 2, 1, 1 }
+	    { 3, -1, 0 }
+	    { 4, 1, 0 }
+
+	__0: vec @(0mm, 2.65mm+sy/2)
+	__1: vec .(dx*L/2, dy*(5.95mm+p2sy))
+	__2: vec .(sx/2, sy/2)
+	__3: vec __1(-sx/2, -sy/2)
+	pad "S$n" . __2
+}
+
+package "8:10-SOCKET-RA"
+unit mm
+
+table
+    { L, H, px, py, pY, sx, sy, sY, p2sy, pitch, p1diffx, slidestroke }
+    { 13.6mm, 13.3mm, 0.8mm, 1.5mm, 5.95mm+sY, 1.45mm, 2mm, 2.65mm, 4.35mm-sy, 1.1mm, 3.2mm, 1.2mm }
+
+set w = 5mil
+
+frame pins @
+frame shields @
+frame outline @
+measx outline.__0 >> shields.__0 -1mm
+measx shields.__0 >> outline.__1 -(2.65mm+sy/2+1mm)
+measy outline.__0 -> shields.__3 2mm
+measy outline.__0 >> outline.__1 4mm
+measy pins.__3 -> pins.__2 1mm
+measx pins.__3 -> pins.__2 -1mm
+meas pins.__0 >> pins.__1 2mm
+measy outline.__0 >> shields.__1 3mm
+measy outline.__0 -> shields.__1 1mm
+measy outline.__0 >> outline.__2 5mm
+measy pins.__3 -> shields.__2 6mm
+measy shields.__3 -> pins.__3 2.1mm
+measy shields.__3 -> shields.__2 -2mm
+measx shields.__3 -> shields.__2 3mm
+measx outline.__2 >> outline.__1 2mm
+measx shields.__1 >> shields.__1 5.95mm+4.35mm+2mm

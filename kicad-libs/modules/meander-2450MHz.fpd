@@ -1,0 +1,138 @@
+/* MACHINE-GENERATED ! */
+
+frame via {
+	set d = 0.2mm
+
+	__0: vec @(d/2, d/2)
+	__1: vec @(-d/2, -d/2)
+	hole . __0
+}
+
+frame tail {
+	loop if = 1, have_tail
+
+	__0: vec @(d*tail, W2)
+	pad "X" @ . trace
+}
+
+frame antenna {
+	set w = 5mil
+
+	__0: vec @(d*W1/2, -D4/2)
+	__1: vec .(0mm, L6)
+	__2: vec .(d*D5, 0mm)
+	__3: vec .(d*W2, 0mm)
+	__4: vec @(-d*W1/2, D4/2)
+	pad "1" __0 . trace
+	pad "X" . __1 trace
+	__5: vec .(-d*D1, 0mm)
+	__6: vec __1(-d*W1, 0mm)
+	__33: vec .(0mm, W2)
+	__34: vec .(-d*D1, D2)
+	line __5 . w
+	__7: vec __3(d*D6, 0mm)
+	__8: vec .(d*W2, 0mm)
+	__9: vec .(0mm, W2)
+	pad "X" __6 . trace
+	__10: vec __3(0mm, -L6)
+	__11: vec .(-W2, D4)
+	pad "2" . __10 trace
+	pad "X" . __3 trace
+	__12: vec __7(0mm, -L4)
+	__13: vec .(d*W2, 0mm)
+	pad "X" __7 . trace
+	__14: vec .(d*L5, 0mm)
+	__15: vec .(0mm, W2)
+	pad "X" __13 . trace
+	__18: vec .(0mm, L4)
+	__19: vec .(d*L2, 0mm)
+	__20: vec .(0mm, -W2)
+	pad "X" __18 . trace
+	__25: vec .(-d*W2, 0mm)
+	__21: vec .(0mm, -L4)
+	__22: vec .(d*W2, 0mm)
+	pad "X" __25 . trace
+	__23: vec .(d*L5, 0mm)
+	__16: vec __14(d*W2, 0mm)
+	__17: vec .(0mm, L4)
+	pad "X" __14 . trace
+	__24: vec __23(d*W2, 0mm)
+	__26: vec .(0mm, L4)
+	pad "X" __23 . trace
+	__27: vec __23(0mm, W2)
+	pad "X" __22 . trace
+	__28: vec .(0mm, L4)
+	__29: vec .(d*L2, 0mm)
+	__30: vec .(0mm, -W2)
+	pad "X" __28 . trace
+	__31: vec .(-d*W2, 0mm)
+	__32: vec __30(0mm, -L1seg)
+	pad "X" __31 . trace
+	frame tail .
+	__35: vec __29(d*(D3+tail), D2)
+	line . __34 w
+	__36: vec .(0mm, -(D2+W2+L6-D4))
+	line __35 . w
+	__37: vec .(-d*(W2+L5+L2+L5+L2+D3+tail), 0mm)
+	line __36 . w
+	frame via @
+}
+
+package "MEANDER-2450MHz-$orient-$pcb"
+unit mm
+allow touch
+
+table
+    { L1, L2, L3, L4, L5, L6 }
+    { 3.94mm, 2.7mm, 5mm, 2.64mm, 2mm, 4.9mm }
+
+table
+    { W1, W2 }
+    { 0.9mm, 0.5mm }
+
+table
+    { D1, D2, D3, D4, D5, D6 }
+    { 0.5mm, 0.3mm, 0.3mm, 0.5mm, 1.4mm, 1.7mm }
+
+table
+    { pcb, L1seg, have_tail, tail }
+    { "0.8mm", L1, 1, 3*W2 }
+    { "1.0mm", L1, 0, 0mm }
+    { "1.6mm", L4, 1, 0.9mm }
+
+table
+    { orient, d }
+    { "right", 1 }
+    { "left", -1 }
+
+__0: vec @(0mm, 0.1mm)
+frame antenna .
+measx antenna.__33 >> antenna.__9 1mm
+measx antenna.__18 >> antenna.__19 1mm
+measx antenna.__28 >> antenna.__29 1mm
+measx antenna.__29 >> antenna.__35 1mm
+measx antenna.__21 >> antenna.__22 -1mm
+measx antenna.__22 >> antenna.__23 -1mm
+measx antenna.__23 >> antenna.__24 -1mm
+measx antenna.__12 >> antenna.__13 -1mm
+measx antenna.__13 >> antenna.__14 -1mm
+measx antenna.__14 >> antenna.__16 -1mm
+measx antenna.__1 >> antenna.__2 -0.5mm
+measx antenna.__3 >> antenna.__7 -0.5mm
+measx antenna.__5 >> antenna.__4
+measy antenna.__33 >> antenna.__34 1mm
+measy antenna.__0 >> antenna.__4 W1
+measy antenna.__10 >> antenna.__11 W2
+measx antenna.__4 >> antenna.__0 -D4-1mm
+measx antenna.__11 >> antenna.__10 -D4-1mm
+measy antenna.__6 >> antenna.__33 1mm
+measx antenna.__31 >> antenna.__32 -L1-1mm
+measy antenna.__8 >> antenna.__9 -1mm
+measy antenna.__20 >> antenna.__19 -1mm
+measy antenna.__30 >> antenna.__29 -1mm-tail
+measy antenna.__21 >> antenna.__25 0.5mm
+measy antenna.__12 >> antenna.__7 0.5mm
+measy antenna.__32 >> antenna.__30 -1mm-tail
+measx antenna.__34 >> antenna.__35 1.5mm-D2
+measy antenna.__5 >> antenna.__34 1.5mm-D1
+measx antenna.__32 >> tail.__0 -1mm

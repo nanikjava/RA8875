@@ -1,0 +1,79 @@
+/* MACHINE-GENERATED ! */
+
+frame pin {
+	__0: vec @(hole/2, hole/2)
+	__1: vec @(-hole/2, -hole/2)
+	hole . __0
+	__2: vec @(-ratio*hole/2, ratio*hole/2)
+	__3: vec @(ratio*hole/2, -ratio*hole/2)
+	rpad "$n" __2 . bare
+}
+
+frame pin_top {
+	set n = N-i
+
+	frame pin @
+}
+
+frame pin_bottom {
+	set n = i+1
+
+	frame pin @
+}
+
+frame pins {
+	loop i = 0, side-1
+
+	__0: vec @(pitch*(i-(side-1)/2), 0mm)
+	__1: vec .(0mm, width/2)
+	frame pin_top .
+	__2: vec __0(0mm, -width/2)
+	frame pin_bottom .
+}
+
+frame marker {
+	set r = (side*pitch-x)/2-w
+
+	set clear = 0.3mm
+
+	__0: vec @(-x/2-r-clear, -y/2+r)
+	__1: vec .(0mm, r)
+	circ __0 . w
+}
+
+frame outline {
+	set x = (side-1)*pitch+ratio*hole
+
+	set y = width-pitch
+
+	set w = 5mil
+
+	__0: vec @(x/2, y/2)
+	__1: vec @(-x/2, -y/2)
+	rect . __0 w
+	frame marker @
+}
+
+package "DIP-$N-${width}"
+unit mm
+
+set N = 2*side
+
+set width = 300mil
+
+set hole = 0.8mm
+
+set ratio = 2
+
+set pitch = 100mil
+
+loop side = 2, 20
+
+frame outline @
+frame pins @
+measx pin.__1 -> pin.__0 -1mm
+measx pin.__2 -> pin.__3 -3mm
+measy pins.__2 -> pins.__1 3mm
+measy outline.__1 >> outline.__0 -(side-1)*pitch-3mm
+measx outline.__1 >> outline.__0 -4.5mm
+measx pins.__2 -> pins.__2 2mm

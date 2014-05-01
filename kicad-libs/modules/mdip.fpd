@@ -1,0 +1,79 @@
+/* MACHINE-GENERATED ! */
+
+frame pin {
+	__0: vec @(-Px/2, Py/2)
+	__1: vec @(Px/2, -Py/2)
+	pad "$n" __0 .
+	__2: vec @(Px/2, Py/2)
+	__3: vec @(-Px/2, -Py/2)
+}
+
+frame pin_top {
+	set n = N-i
+
+	frame pin @
+}
+
+frame pin_bottom {
+	set n = i+1
+
+	frame pin @
+}
+
+frame pins {
+	loop i = 0, side-1
+
+	__0: vec @(pitch*(i-(side-1)/2), 0mm)
+	__1: vec .(0mm, width/2)
+	frame pin_top .
+	__2: vec __0(0mm, -width/2)
+	frame pin_bottom .
+}
+
+frame marker {
+	set r = (side*pitch-x)/2-w
+
+	set clear = 0.3mm
+
+	__0: vec @(-x/2-r-clear, -y/2+r)
+	__1: vec .(0mm, r)
+	circ __0 . 5mil
+}
+
+frame outline {
+	set x = (side-1)*pitch+Px
+
+	set y = width-pitch
+
+	set w = 5mil
+
+	__0: vec @(x/2, y/2)
+	__1: vec @(-x/2, -y/2)
+	rect . __0 w
+	frame marker @
+}
+
+package "MDIP-$N-${width}"
+unit mil
+
+set N = 2*side
+
+set width = 355mil
+
+set pitch = 100mil
+
+set Px = 70mil
+
+set Py = 60mil
+
+loop side = 2, 6
+
+frame outline @
+frame pins @
+measy pins.__2 -> pins.__1 4mm
+measy pin.__1 >> pin.__0 6mm
+measy pin.__0 -> pin.__1 2mm
+measy pin.__1 -> pin.__0 7mm
+measx pin.__3 -> pin.__1 -1mm
+measx pin.__1 -> pin.__3 -1mm
+measx pins.__1 >> pins.__1 2mm

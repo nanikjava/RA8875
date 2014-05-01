@@ -1,0 +1,70 @@
+/* MACHINE-GENERATED ! */
+
+frame pin {
+	set n = col*R+row+1
+
+	__0: vec @(hole/2, hole/2)
+	__1: vec @(hole*ratio/2, -hole*ratio/2)
+	__2: vec @(-hole/2, -hole/2)
+	hole . __0
+	__3: vec @(-hole*ratio/2, hole*ratio/2)
+	rpad "$n" . __1 bare
+}
+
+frame pins {
+	loop row = 0, R-1
+
+	loop col = 0, C-1
+
+	__1: vec @(-P*(C-1)/2, -P*(R-1)/2)
+	__0: vec .(col*P, row*P)
+	frame pin .
+}
+
+frame marker {
+	set r = 0.3mm
+
+	set clear = 0.2mm
+
+	set width = 0.2mm
+
+	__0: vec @(-x/2-r-clear-width/2, -P*(R-1)/2)
+	__1: vec .(0mm, r)
+	circ __0 . width
+}
+
+frame outline {
+	set x = C*P
+
+	set y = R*P
+
+	__0: vec @(x/2, y/2)
+	__1: vec @(-x/2, -y/2)
+	rect . __0 width
+	frame marker @
+}
+
+package "HDR-${C}x${R}-$P"
+unit mm
+
+table
+    { R }
+    { 1 }
+    { 2 }
+
+table
+    { P, hole, ratio }
+    { 100mil, 0.65mm, 2.5 }
+    { 200mil, 1.1mm, 2.5 }
+
+set width = 5mil
+
+loop C = 1, 20
+
+frame pins @
+frame outline @
+measy outline.__1 >> outline.__0 1mm
+measx pin.__2 -> pin.__0 -(P-hole)/2-1mm
+measx pin.__3 -> pin.__1 -(P+ratio*hole)/2-1.5mm
+measx outline.__1 >> outline.__0 -2mm
+measx pins.__1 -> pins.__0 P/2+1mm

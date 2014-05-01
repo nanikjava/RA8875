@@ -1,0 +1,14 @@
+USB-A-PCB: Figure 6-9 (page 99) of the
+  Universal Serial Bus Specification;
+  Revision 2.0; April 27, 2000
+USB-A-PCB: http://www.poweredusb.org/pdf/usb20.pdf
+# unofficial copy of the specification. We reference it here because the
+# original is in a ZIP, making access less convenient:
+# http://www.usb.org/developers/docs/usb_20_071012.zip
+USB-A-MID-48258: Molex 48258-0002 and -0001
+USB-A-MID-1746311: TE 1746311
+BAT-BLP2032SM: MPD Surface Mount Battery Holder for CR2032
+  Note: data sheet has contradictory information - check against real part.
+BAT-LP2032SM: MPD Surface Mount Battery Holder for CR2032
+  Note: data sheet has contradictory information - check against real part.
+SW-CUS12B: Copal CUS-12B or C&K PCM12SMTR

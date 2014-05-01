@@ -1,0 +1,17 @@
+SHELL = /bin/bash
+
+COMMIT_DATE := $(shell date -u +'%F %T UTC' \
+    -d "`git show --pretty=format:'%ci' | sed q`")
+GIT_HASH := $(shell git rev-parse HEAD)
+GIT_STATUS := $(shell [ -z "`git status -s -uno`" ] || echo +)
+
+.PHONY:		title.ps
+
+title.ps:	../common/title.fig
+		fig2dev -L ps $< | \
+		    sed -e "s|<TITLE-NAME>|$(TITLE_NAME)|" \
+			-e "s/<DATE>/`date -u +'%F %T UTC'`/" \
+		        -e "s/<HEAD-HASH>/$(GIT_HASH)$(GIT_STATUS)/" \
+		        -e "s/<HEAD-DATE>/$(COMMIT_DATE)/" \
+			-e "s|<TITLE-FILE>|$(TITLE_FILE)|" >$@; \
+		[ "$${PIPESTATUS[*]}" = "0 0" ] || { rm -f $@ exit 1; }

@@ -1,0 +1,34 @@
+# PCB board connector in the shape of an 8:10 card
+S: 8_10-card
+
+# VGA DE15 connector
+S: vga
+
+# C8051F320 MCU
+S: c8051f320
+
+# C8051F326 MCU
+S: c8051f326
+
+# ATmega8U2/16U2/32U2 MCU
+S: atmega8u2
+
+# ATmega48 MCU in 28MLF package
+S: atmega48-mmu
+
+# ATtiny87/167 MCU in SIOC-20/TSSOP-20 package
+S: attiny87-dual
+#
+# Data sheet:
+# http://www.atmel.com/Images/doc8265.pdf
+#
+
+# mini_usb_b (generic)
+S: mini_usb_b
+
+# USB A plug
+S: usb_a_plug
+N: usb_a_plug_smt
+
+# PIC18F46J50 MCU in 28QFN package
+S: pic18f46j50-ml

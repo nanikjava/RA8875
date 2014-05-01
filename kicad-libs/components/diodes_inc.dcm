@@ -1,0 +1,15 @@
+EESchema-DOCLIB  Version 2.0  Date: Fri 06 Apr 2012 15:26:06 CST
+#
+$CMP AP21X2A
+D AP21X2A, IC PWR SW USB 2CH 0.5A 8-SOIC Rds (On)=110 mOhm Current Limit=700mA
+K POWER SWITCH
+F http://www.diodes.com/datasheets/AP2142A_52A.pdf
+$ENDCMP
+#
+$CMP APX803-40SAG-7
+D APX803-40SAG-7, IC MPU RESET CIRC 4.00V SOT23-3
+K RESET IC
+F http://www.diodes.com/datasheets/APX803.pdf
+$ENDCMP
+#
+#End Doc Library

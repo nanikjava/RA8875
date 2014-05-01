@@ -1,0 +1,53 @@
+EESchema-LIBRARY Version 2.3  Date: 2012年04月27日 (週五) 17時24分31秒
+#encoding utf-8
+#
+# XLR-3-F-R
+#
+DEF XLR-3-F-R J 0 30 Y N 1 F N
+F0 "J" 150 250 60 H V C CNN
+F1 "XLR-3-F-R" 350 -350 60 H V C CNN
+DRAW
+C 0 0 200 0 0 0 N
+T 0 367 -185 50 0 0 0 Female  Normal 0 C C
+T 0 438 -258 50 0 0 0 Receptacle  Normal 0 C C
+A -137 142 22 -1405 468 0 1 0 F -154 128 -122 158
+C -130 0 40 0 1 0 N
+C 0 -130 40 0 1 0 N
+C 0 2 238 0 1 0 N
+C 129 0 40 0 1 0 N
+T 0 148 72 50 0 0 1 1  Normal 1 C C
+T 0 -144 74 50 0 0 1 2  Normal 1 C C
+T 0 -2 -62 50 0 0 1 3  Normal 1 C C
+P 4 0 1 0  -16 200  -16 186  16 186  16 198 N
+X ~ 1 350 0 110 L 50 50 0 1 P
+X ~ 2 -350 0 110 R 50 50 0 1 P
+X ~ 3 0 -350 110 U 50 50 0 1 P
+ENDDRAW
+ENDDEF
+#
+# XLR-3-M-R
+#
+DEF XLR-3-M-R J 0 30 Y N 1 F N
+F0 "J" 150 250 60 H V C CNN
+F1 "XLR-3-M-R" 350 -350 60 H V C CNN
+DRAW
+T 0 302 -191 50 0 0 0 Male  Normal 0 C C
+T 0 423 -263 50 0 0 0 Receptacle  Normal 0 C C
+T 0 -224 -210 30 0 0 0 SHELL  Normal 0 C C
+A 133 143 27 1289 -360 0 1 0 F 116 164 155 127
+C -130 0 40 0 1 0 N
+C 0 -130 40 0 1 0 N
+C 0 2 238 0 1 0 N
+C 1 0 202 0 1 0 N
+C 129 0 40 0 1 0 N
+T 0 -144 74 50 0 0 1 1  Normal 1 C C
+T 0 148 72 50 0 0 1 2  Normal 1 C C
+T 0 -2 -62 50 0 0 1 3  Normal 1 C C
+X ~ 1 -350 0 110 R 50 50 0 1 P
+X ~ 2 350 0 110 L 50 50 0 1 P
+X ~ 3 0 -350 110 U 50 50 0 1 P
+X ~ 4 -150 -350 165 U 50 50 0 1 P
+ENDDRAW
+ENDDEF
+#
+#End Library

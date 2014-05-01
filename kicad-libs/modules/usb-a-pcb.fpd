@@ -1,0 +1,58 @@
+/* MACHINE-GENERATED ! */
+
+frame contacts {
+	table
+	    { n, x, y, h }
+	    { 1, c1, yl, hl }
+	    { 2, c2, ys, hs }
+	    { 3, -c2, ys, hs }
+	    { 4, -c1, yl, hl }
+
+	table
+	    { ys, yl }
+	    { (b+bs)/2, (b+bl)/2 }
+
+	table
+	    { hs, hl }
+	    { b-bs, b-bl }
+
+	__0: vec @(x, y)
+	__1: vec .(s/2, h/2)
+	__2: vec __0(-s/2, -h/2)
+	pad "$n" . __1 bare
+}
+
+frame outline {
+	set width = 5mil
+
+	__0: vec @(w/2, d/2)
+	__1: vec @(-w/2, -d/2)
+	__2: vec @(w/2, -d/2)
+	line __1 . width
+	line . __0 width
+	__3: vec @(-w/2, d/2)
+	line __1 . width
+}
+
+package "USB-A-PCB"
+unit mm
+
+table
+    { w, d }
+    { 12mm, 11.75mm }
+
+table
+    { s, c1, c2, b, bl, bs }
+    { 1mm, 3.5mm, 1mm, 8.65mm, b-7.41mm, b-6.41mm }
+
+__0: vec @(0mm, -d/2)
+frame contacts .
+frame outline @
+measy outline.__1 >> outline.__3 1mm
+measx outline.__3 >> outline.__0 1mm
+measx __0 -> contacts.__0 -1mm
+measx __0 >> contacts.__0 -2mm
+measy outline.__2 -> contacts.__2 -1mm
+measy outline.__2 >> contacts.__2 -2mm
+measx contacts.__2 -> contacts.__1 -1mm
+measy outline.__2 >> contacts.__1 -3mm

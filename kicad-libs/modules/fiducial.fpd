@@ -1,0 +1,17 @@
+/* MACHINE-GENERATED ! */
+
+package "FIDUCIAL"
+unit mm
+
+set ri = 0.5mm
+
+set ro = 1mm
+
+__0: vec @(ri, ri)
+__1: vec @(-ri, -ri)
+rpad "?" . __0 bare
+__2: vec @(ro, -ro)
+__3: vec @(-ro, ro)
+rpad "" . __2 mask
+measx __1 >> __0 2mm
+measx __3 >> __2 -2.5mm

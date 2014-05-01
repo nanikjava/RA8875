@@ -1,0 +1,70 @@
+/* MACHINE-GENERATED ! */
+
+frame pad {
+	__0: vec @(w/2, h/2)
+	__1: vec @(-w/2, -h/2)
+	pad "$n" . __0
+}
+
+frame pads {
+	table
+	    { n, x, y }
+	    { 1, -e*ccw, -f/2 }
+	    { 2, e*ccw, -f/2 }
+	    { 3, 0mm, f/2 }
+
+	__0: vec @(x, y)
+	frame pad .
+}
+
+frame outline {
+	set lw = 5mil
+
+	set clear = lw/2+0.1mm
+
+	set s = (A-w)/2-clear
+
+	set m2 = e-w/2-clear
+
+	__0: vec @(A/2, B/2)
+	__2: vec @(-A/2, B/2)
+	__3: vec .(0mm, -B)
+	line __2 . lw
+	__1: vec __0(0mm, -B)
+	line . __0 lw
+	__4: vec __2(s, 0mm)
+	line __2 . lw
+	__5: vec __0(-s, 0mm)
+	line . __0 lw
+	__6: vec @(0mm, -B/2)
+	__7: vec .(m2, 0mm)
+	__8: vec __6(-m2, 0mm)
+	line . __7 lw
+}
+
+package "SOT-323$suffix"
+unit mm
+
+table
+    { A, B }
+    { 2.2mm, 1.35mm }
+
+set e = 0.65mm
+
+table
+    { f, h, w }
+    { 1.9mm, 0.9mm, 0.7mm }
+
+table
+    { suffix, ccw }
+    { "", 1 }
+    { "-CW", -1 }
+
+frame outline @
+frame pads @
+measx outline.__2 >> outline.__0 1.5mm
+measy outline.__3 >> outline.__2 0.5mm
+measx pads.__0 -> pads.__0 1.7mm+f/2
+measy pads.__0 >> pads.__0 1.5mm
+measy pad.__1 -> pad.__0 0.5mm
+measx pad.__1 -> pad.__0 -0.5mm

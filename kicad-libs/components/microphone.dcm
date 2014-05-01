@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0  Date: Fri 20 Apr 2012 11:50:33 CST
+#
+$CMP MCE-100
+D MCE-100, Electret microphone, DC:10V 5.6mV/Pa, 9.7 x 6.7mm (Diameter x Height)
+K microphone
+F http://www.farnell.com/datasheets/359234.pdf
+$ENDCMP
+#
+#End Doc Library

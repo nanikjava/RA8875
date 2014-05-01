@@ -1,0 +1,191 @@
+/* MACHINE-GENERATED ! */
+
+frame pad_via {
+	__0: vec @(hole/2, hole/2)
+	__1: vec @(-hole/2, -hole/2)
+	hole . __0
+}
+
+frame pad_vias {
+	table
+	    { ?variant, EV, Vias, hole }
+	    { "HVQFN", 1.05mm, 20, 0.3mm }
+
+	table
+	    { dx, dy }
+	    { 1, 0 }
+	    { 0, 1 }
+	    { -1, 0 }
+	    { 0, -1 }
+
+	set CV = (Vias/4-1)/2*EV
+
+	loop i = 0, Vias/4-1
+
+	__0: vec @((-dy-dx)*CV, (dx-dy)*CV)
+	__1: vec .(dx*i*EV, dy*i*EV)
+	frame pad_via .
+}
+
+frame paste_pad {
+	__0: vec @(SX/2, SY/2)
+	__1: vec @(-SX/2, -SY/2)
+	pad " " . __0 paste
+}
+
+frame paste {
+	set x = SE*(xi-SNX/2-0.5)
+
+	set y = SE*(yi-SNY/2-0.5)
+
+	loop xi = 1, SNX
+
+	loop yi = 1, SNY
+
+	__0: vec @(x, y)
+	frame paste_pad .
+}
+
+frame center_hole {
+	table
+	    { ?variant, r }
+	    { "CC2543", 0.8mm }
+
+	__0: vec @(r, r)
+	__1: vec @(-r, -r)
+	hole . __0
+}
+
+frame center {
+	set pin = pins+1
+
+	__0: vec @(X2/2, Y2/2)
+	__1: vec @(-X2/2, -Y2/2)
+	pad "$pin" . __0 bare
+	frame paste @
+	frame center_hole @
+}
+
+frame pad_round {
+	set ?round = 1
+
+	__0: vec @(px, py)
+	__1: vec @(-px, -py)
+	rpad "$pin" __0 .
+}
+
+frame pad_rect {
+	set ?round = 0
+
+	__0: vec @(px, py)
+	__1: vec @(-px, -py)
+	pad "$pin" __0 .
+}
+
+frame pad {
+	set px = (dx*X1+dy*Y1)/2
+
+	set py = (dy*X1+dx*Y1)/2
+
+	set pin = side*pins/4+i+1
+
+	__0: vec @(px, py)
+	__1: vec @(-px, -py)
+	__2: vec @(px, -py)
+	frame pad_rect @
+	frame pad_round @
+}
+
+frame side {
+	set pos = i-(pins/4-1)/2
+
+	loop i = 0, pins/4-1
+
+	__0: vec @(E*pos*dx, E*pos*dy)
+	frame pad .
+}
+
+frame pads {
+	table
+	    { side, dx, dy }
+	    { 0, 0, -1 }
+	    { 1, 1, 0 }
+	    { 2, 0, 1 }
+	    { 3, -1, 0 }
+
+	__0: vec @(dy*C1/2, -dx*C2/2)
+	frame side .
+}
+
+frame index {
+}
+
+frame outline {
+	table
+	    { index, dx, _, dy }
+	    { 1, -1, 0, 0 }
+	    { 0, 0, 0, -1 }
+	    { 0, 1, 0, 0 }
+	    { 0, 0, 0, 1 }
+
+	set mx = dx*C1/2
+
+	set my = dy*C2/2
+
+	set cx = mx+my
+
+	set cy = my-mx
+
+	set ax = -Y1/2*dx
+
+	set ay = -Y1/2*dy
+
+	set bx = -Y1/2*dy
+
+	set by = Y1/2*dx
+
+	__0: vec @(cx, cy)
+	w: vec .(ax, ay)
+	line __0 . w
+	__2: vec __0(bx, by)
+	line __0 . w
+	__1: vec .(index*(ax-bx), index*(ay-by))
+	line __2 . w
+}
+
+package "QFN$pins-$variant"
+unit mm
+allow holes
+
+table
+    { pins, variant, X1, Y1, X2, Y2, E, C1, C2, SE, SNX, SNY, SX, SY, round }
+    { 16, "LFCSP_LQ", 0.35mm, 1.2mm, 2.43mm, 2.43mm, 0.65mm, 4.1mm, 4.1mm, 1mm, 2, 2, 0.7mm, 0.7mm, 0 }
+    { 28, "Atmel", 0.24mm, 0.7mm, 2.4mm, 2.4mm, 0.45mm, 4.1mm, 4.1mm, 1mm, 2, 2, 0.8mm, 0.8mm, 0 }
+    { 28, "MCHP-ML", 0.37mm, 1mm, 4.25mm, 4.25mm, 0.65mm, 5.7mm, 5.7mm, 1mm, 3, 3, 0.65mm, 0.65mm, 0 }
+    { 28, "SiLabs", 0.25mm, 0.9mm, 3.3mm, 3.3mm, 0.5mm, 4.8mm, 4.8mm, 1.1mm, 3, 3, 0.9mm, 0.9mm, 0 }
+    { 32, "VHHD-2", 0.26mm, 0.69mm, 3.7mm, 3.7mm, 0.5mm, 5.1mm, 5.1mm, 0.8mm, 3, 3, 0.55mm, 0.55mm, 0 }
+    { 32, "VHHD-6", 0.26mm, 0.69mm, 3.4mm, 3.4mm, 0.5mm, 5.1mm, 5.1mm, 1.2mm, 2, 2, 0.75mm, 0.75mm, 0 }
+    { 32, "CC2543", 0.26mm, 0.69mm, 3.4mm, 3.4mm, 0.5mm, 5.1mm, 5.1mm, 1.2mm, 0, 0, 0.75mm, 0.75mm, 0 }
+    { 32, "HVQFN", 0.3mm, 1.08mm, 4.85mm, 4.85mm, 0.65mm, 6.9mm, 6.9mm, 1.7mm, 2, 2, 1mm, 1mm, 0 }
+    { 32, "Freescale", 0.25mm, 0.9mm, 3.6mm, 3.6mm, 0.5mm, 5mm, 5mm, 1.2mm, 2, 2, 0.9mm, 0.9mm, 1 }
+    { 48, "Freescale", 0.25mm, 0.9mm, 5.1mm, 5.1mm, 0.5mm, 7mm, 7mm, 1.1mm, 3, 3, 0.8mm, 0.8mm, 0 }
+
+set w = 5mil
+
+set zone_ratio_35 = ((SNX-1)*SE+SX)*((SNY-1)*SE+SY)/(X2*Y2)
+
+set paste_ratio_20 = SX*SY*SNX*SNY/(X2*Y2)
+
+frame pads @
+frame center @
+frame outline @
+frame pad_vias @
+measy side.__0 >> side.__0 3mm
+meas side.__0 -> side.__0 -1mm
+measy center.__1 >> center.__0 2.3mm
+measy pad.__1 >> pad.__1 3.5mm
+measy pad.__1 -> pad.__0 1mm
+meas pad.__1 -> pad.__2 -1mm
+measy paste_pad.__1 -> paste_pad.__0 1.8mm
+measy paste.__0 -> paste.__0 -C1
+measy paste_pad.__1 >> paste_pad.__0 -C1-1mm

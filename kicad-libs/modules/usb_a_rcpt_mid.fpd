@@ -1,0 +1,118 @@
+/* MACHINE-GENERATED ! */
+
+frame lateral {
+	table
+	    { dx, pin }
+	    { -1, 7 }
+	    { 1, 8 }
+
+	__0: vec @(dx*Bx/2, Ly/2)
+	__1: vec @(dx*Lxo/2, -Ly/2)
+	pad "$pin" . __0
+}
+
+frame rear {
+	table
+	    { dx, pin }
+	    { -1, 5 }
+	    { 1, 6 }
+
+	__0: vec @(dx*Rx/2, Ry)
+	__1: vec .(Rw/2, Rh/2)
+	__2: vec __0(-Rw/2, -Rh/2)
+	hole __1 .
+	__3: vec __0(aspect*Rw/2, aspect*Rh/2)
+	__4: vec __0(-aspect*Rw/2, -aspect*Rh/2)
+	rpad "$pin" . __3 bare
+}
+
+frame pins {
+	table
+	    { ?ascend, pin }
+	    { 0, p }
+	    { 1, 5-p }
+
+	table
+	    { ?p, px }
+	    { 1, -3.5mm }
+	    { 2, -1mm }
+	    { 3, 1mm }
+	    { 4, 3.5mm }
+
+	set aspectx = 1.85
+
+	set aspecty = 2
+
+	loop p = 1, 4
+
+	__0: vec @(px, Py)
+	__1: vec .(Pd/2, Pd/2)
+	__2: vec __0(-Pd/2, -Pd/2)
+	hole . __1
+	__3: vec __0(-Pd/2*aspectx, Pd/2*aspecty)
+	__4: vec __0(Pd/2*aspectx, -Pd/2*aspecty)
+	rpad "$pin" __3 . bare
+}
+
+frame front {
+	set width = 10mm
+
+	__0: vec @(0mm, -Fy)
+	__1: vec .(-width/2, 0mm)
+	__2: vec __0(width/2, 0mm)
+	line __1 . w
+}
+
+frame board {
+	set wing = 1mm
+
+	__0: vec @(0mm, -Cy)
+	__1: vec @(0mm, By)
+	__2: vec __0(Bx/2, 0mm)
+	__3: vec .(wing, 0mm)
+	line . __2 w
+	__4: vec __0(-Bx/2, 0mm)
+	__5: vec .(-wing, 0mm)
+	line . __4 w
+	__6: vec __1(Bx/2, 0mm)
+	line . __2 w
+	__7: vec __1(-Bx/2, 0mm)
+	line __4 . w
+	line . __6 w
+}
+
+package "USB-A-MID-$name"
+unit mm
+
+table
+    { name, Cy, Bx, By, Fy, Py, Pd, ascend, Rx, Ry, Rw, Rh, Lxo, Ly }
+    { "48258", 2mm, 13.6mm, 7.5mm, 9.9mm-6.85mm, 9.95mm, 0.92mm, 1, 15.7mm, 9.1mm, 0.9mm, 2.3mm, 18.3mm, 2.6mm }
+    { "1746311", 4mm, 14.2mm, 5.55mm, 14.55mm-9.05mm, 10.25mm, 0.92mm, 0, 12.8mm, 9.05mm, 0.9mm, 2mm, 18mm, 2.5mm }
+
+set aspect = 2
+
+set w = 5mil
+
+__0: vec @(Lxo/2, 0mm)
+frame board @
+frame lateral @
+frame rear @
+frame pins @
+frame front @
+measx board.__4 >> board.__2 Cy-Fy-1mm
+measx lateral.__1 >> lateral.__1 -Fy+Ly/2-1.5mm
+measy lateral.__1 -> lateral.__0 1mm
+measy rear.__4 -> rear.__3 1.5mm
+measy board.__4 >> board.__7 (Lxo-Bx)/2+1.5mm
+measy __0 >> board.__6 -1mm
+measy __0 >> rear.__0 -1.5mm
+measy __0 >> pins.__0 -2mm
+measx pins.__0 -> pins.__0 2mm
+measx pins.__0 >> pins.__0 2.5mm
+measx rear.__4 -> rear.__3 -1.5mm
+measx pins.__3 -> pins.__4 -3mm
+measy rear.__2 -> rear.__1 1mm
+measx rear.__2 -> rear.__1 -2mm
+measx pins.__2 -> pins.__1 -1mm
+measx rear.__0 >> rear.__0 4.5mm
+measy front.__2 >> board.__2

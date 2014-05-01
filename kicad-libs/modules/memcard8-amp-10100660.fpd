@@ -1,0 +1,105 @@
+/* MACHINE-GENERATED ! */
+
+frame contacts {
+	table
+	    { pin, dy }
+	    { 1, y1 }
+	    { 2, 0mm }
+	    { 3, y1 }
+	    { 4, y2 }
+	    { 5, 0mm }
+	    { 6, y2 }
+	    { 7, 0mm }
+	    { 8, 0mm }
+
+	table
+	    { px, py }
+	    { 0.8mm, 1.5mm }
+
+	set e = 1.1mm
+
+	table
+	    { y1, y2 }
+	    { 0.4mm, 0.6mm }
+
+	__0: vec @(e*(pin-1), dy)
+	__1: vec .(px, py)
+	pad "$pin" __0 .
+}
+
+package "MEMCARD8-AMP-10100660"
+unit mm
+
+set w = 5mil
+
+set clear = 0.2mm+w
+
+table
+    { XT, YL, YR }
+    { 14.55mm, 15.5mm, 14.5mm }
+
+table
+    { gtx, gty, gbx, gby }
+    { 1.4mm, 1.9mm, 1.8mm, 1.4mm }
+
+table
+    { CX, CYin, CYpush, CYout }
+    { 11mm, 1.7mm, 0.7mm, 5.6mm }
+
+__6: vec @(0.3mm, 0mm)
+__7: vec .(0mm, -gty-clear)
+__5: vec __6(0mm, -15.5mm)
+line __7 . w
+__19: vec .(4mm, 0mm)
+line __5 . w
+__3: vec @(gtx, -gty)
+pad "S1" @ .
+__27: vec .(3.56mm, 9.55mm-YL+gty)
+frame contacts .
+__0: vec @(XT, 0mm)
+__1: vec .(0mm, YR-YL)
+__2: vec .(-gtx, -gty)
+pad "S2" __1 .
+__9: vec @(gtx+clear, -0.3mm)
+__10: vec __1(-0.25mm, 0mm)
+__4: vec .(0mm, -YR)
+__8: vec .(0mm, YR-gty-clear)
+line . __4 w
+__11: vec __6(4.45mm, -0.3mm)
+line __9 . w
+__12: vec __6((14mm-CX)/2+1.25mm, -0.3mm)
+__13: vec .(0mm, CYpush)
+__14: vec .(CX, 0mm)
+line __13 . w
+__15: vec __12(0mm, CYout)
+__16: vec .(CX, 0mm)
+line __15 . w
+__17: vec __12(0mm, CYin)
+__18: vec .(CX, 0mm)
+line __17 . w
+__20: vec __4(0mm, -0.3mm)
+__21: vec .(-1.4mm, 0mm)
+__22: vec .(-gbx, 0mm)
+__23: vec .(-3.9mm, 0mm)
+__24: vec .(-gbx, gby)
+pad "S3" . __23
+__25: vec __22(0mm, gby)
+pad "SW" . __21
+__26: vec __4(-1.4mm+clear, 0mm)
+line . __4 w
+measy __12 >> __13 0.5mm
+measy __13 >> __17 0.5mm
+measy __17 >> __15 0.5mm
+measy __5 >> __6 2mm
+measy __3 >> __6 1mm+gtx
+measx __23 >> __22 gby+1mm
+measx __5 >> __4 -1mm
+measx contacts.__0 >> contacts.__0 -1.5mm
+measx contacts.__0 -> contacts.__0 -1mm
+measx __24 >> __23 1mm
+measx __25 >> __21 1mm
+measx __21 >> __4 1mm+gby
+measy __19 >> __27
+measx __3 -> contacts.__0
+measx __6 >> __3 1mm
+measy __4 >> __10 -1mm

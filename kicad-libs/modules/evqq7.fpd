@@ -1,0 +1,97 @@
+/* MACHINE-GENERATED ! */
+
+frame outline {
+	table
+	    { r, len, w }
+	    { 8.7mm/2, 1mm, 5mil }
+
+	__0: vec @(r/sqrt(2), r/sqrt(2))
+	__1: vec .(-len/2/sqrt(2), len/2/sqrt(2))
+	__2: vec __0(len/2/sqrt(2), -len/2/sqrt(2))
+	line __1 . w
+}
+
+frame pad {
+	__0: vec @(px/2, py/2)
+	__1: vec @(-px/2, -py/2)
+	pad "$name" . __0
+}
+
+frame gnd {
+	table
+	    { name, dx, dy }
+	    { 9, -1, 1 }
+	    { 10, 1, -1 }
+
+	table
+	    { xi, xo, yi, yo }
+	    { 1.8mm, 3.4mm, 7.4mm, 8.6mm }
+
+	set x = (xi+xo)/4*dx
+
+	set y = (yi+yo)/4*dy
+
+	set px = (xo-xi)/2
+
+	set py = (yo-yi)/2
+
+	__0: vec @(x, y)
+	frame pad .
+}
+
+frame head {
+	table
+	    { name, dy }
+	    { 1, 1 }
+	    { 5, -1 }
+
+	set x = 0mm
+
+	table
+	    { px, yi, yo }
+	    { 0.8mm, 6.2mm, 8mm }
+
+	set y = (yi+yo)/4*dy
+
+	set py = (yo-yi)/2
+
+	__0: vec @(x, y)
+	frame pad .
+}
+
+frame side {
+	table
+	    { name, dx, dy }
+	    { 2, -1, 1 }
+	    { 3, -1, 0 }
+	    { 4, -1, -1 }
+	    { 6, 1, -1 }
+	    { 7, 1, 0 }
+	    { 8, 1, 1 }
+
+	set x = (xi+xo)/4*dx
+
+	set y = (yi+yo)/4*dy
+
+	table
+	    { xi, xo, yi, yo }
+	    { 6.2mm, 8mm, 3.2mm, 4.8mm }
+
+	set px = (xo-xi)/2
+
+	set py = (yo-yi)/2
+
+	__0: vec @(x, y)
+	frame pad .
+}
+
+package "EVQQ7"
+unit mm
+
+frame side @
+frame head @
+frame gnd @
+frame outline @
+measx pad.__1 -> pad.__0 1.2mm
+measx pad.__0 >> pad.__1 0.5mm
+measx pad.__1 >> pad.__0 -0.4mm

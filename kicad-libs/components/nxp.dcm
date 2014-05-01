@@ -1,0 +1,15 @@
+EESchema-DOCLIB  Version 2.0  Date: Wed 04 Apr 2012 15:19:12 CST
+#
+$CMP 74AUP1G08GW,125
+D 74AUP1G08GW,125; IC 2-IN AND GATE LP 5-TSSOP
+K AND
+F http://www.nxp.com/documents/data_sheet/74AUP1G08.pdf
+$ENDCMP
+#
+$CMP BZX84
+D BZX84-C4V3, Voltage Regulator Diode, 4.3V, SOT-233, 250mW
+K Voltage Regulator
+F http://www.nxp.com/acrobat_download/datasheets/BZX84_SERIES.pdf
+$ENDCMP
+#
+#End Doc Library

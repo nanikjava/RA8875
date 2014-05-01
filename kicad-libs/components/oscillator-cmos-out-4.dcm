@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0  Date: Wed 04 Apr 2012 20:23:45 CST
+#
+$CMP OSCILLATOR-VDD-4
+D SO5032-050000-O3A-BBE-QA, OSC, 3.2X5MM, CER, 50.000MHZ, SMD
+K OSCILLATOR
+F http://downloads.qi-hardware.com/hardware/milkymist_one/datasheet/FPGA/Qi%20Hardware%20SO5032-050000-O3A-BBE-QA.pdf
+$ENDCMP
+#
+#End Doc Library

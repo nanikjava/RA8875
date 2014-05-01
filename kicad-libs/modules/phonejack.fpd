@@ -1,0 +1,68 @@
+/* MACHINE-GENERATED ! */
+
+frame pad {
+	__0: vec @(roundx/2, roundy/2)
+	__1: vec @(-roundx/2, -roundy/2)
+	hole . __0
+	__2: vec @(ratio*roundx/2, -ratio*roundy/2)
+	__3: vec @(-ratio*roundx/2, ratio*roundy/2)
+	rpad "$n" . __2 bare
+}
+
+frame pads {
+	table
+	    { n, px, py }
+	    { 1, -1.2mm, 0.85mm }
+	    { 2, -9.3mm, -1.15mm }
+	    { 3, -7.4mm, 0.85mm }
+	    { 4, -12.9mm, 0.85mm }
+	    { 5, -3.65mm, -1.15mm }
+
+	__0: vec @(px, py)
+	frame pad .
+}
+
+frame outline {
+	__0: vec @(0mm, rty)
+	__1: vec @(-rx, -rby)
+	rect . __0 w
+	__2: vec @(fx, 0mm)
+	__3: vec .(0mm, -fy/2)
+	__4: vec .(-fx, 0mm)
+	line __3 . w
+	__5: vec __2(0mm, fy/2)
+	line . __3 w
+	__6: vec .(-fx, 0mm)
+	line . __5 w
+	__7: vec @(-3.65mm, -1.15mm)
+	__8: vec @(-7.4mm, 0.85mm)
+	__9: vec @(-9.3mm, -1.15mm)
+}
+
+package "phonejack-${size}-${N}"
+unit mm
+
+table
+    { size, N, roundx, roundy, ratio, rty, rby, fx, fy, rx, diff }
+    { 3.5, 5, 0.6mm, 2mm, 1.8, 4.9mm, 8.2mm-rty, 4mm, 6mm, 14mm, 0.85mm }
+
+set w = 5mil
+
+frame pads @
+frame outline @
+measx pad.__1 -> pad.__0 -roundy/2
+measx pad.__3 -> pad.__2 0.5mm
+measy pad.__1 -> pad.__0 roundx
+measy pad.__2 -> pad.__3 ratio*roundx+1mm
+measy outline.__1 >> outline.__0 0.5mm
+measx outline.__1 >> outline.__0 rby+rty+3mm
+meas outline.__6 >> outline.__5 0.5mm
+meas outline.__3 >> outline.__5 -0.5mm
+measy outline.__2 >> outline.__0 fx+0.3mm
+measy outline.__2 >> pads.__0 fx+1.2mm+1mm
+measy outline.__7 >> outline.__2 1mm
+measx outline.__0 << pads.__0 rty
+measx pads.__0 >> outline.__0 rty+1.8mm
+measx outline.__7 >> outline.__0 rty+2.5mm
+measx outline.__8 >> outline.__0 rty+1mm
+measx outline.__0 >> outline.__9 -2.2mm

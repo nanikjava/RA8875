@@ -1,0 +1,81 @@
+/* MACHINE-GENERATED ! */
+
+frame pad_r {
+	ll: vec @(-Y/2, -X/2)
+	__0: vec @(Y/2, X/2)
+	pad "2" ll .
+}
+
+frame pad_l {
+	ll: vec @(-Y/2, -X/2)
+	__0: vec @(Y/2, X/2)
+	pad "1" ll .
+}
+
+frame pads {
+	left: vec @(-C, 0mm)
+	frame pad_l .
+	right: vec @(C, 0mm)
+	frame pad_r .
+}
+
+frame polarized {
+	loop if = anode, 0
+
+	__0: vec @(-(V1/2+5*silk), 0mm)
+	__1: vec .(0mm, 3*silk)
+	__2: vec __0(0mm, -3*silk)
+	line . __1 silk
+	__3: vec __0(-3*silk, 0mm)
+	line __0 . silk
+	__4: vec __0(3*silk, 0mm)
+	line __0 . silk
+}
+
+frame outline {
+	ll: vec @(-V1/2, -V2/2)
+	ur: vec @(V1/2, V2/2)
+	rect ll . silk
+	frame polarized @
+}
+
+package "TC-$Case-$EIA-$Density"
+unit mm
+
+table
+    { Case, EIA, Density, anode, X, Y, C, V1, V2 }
+    { "A", "3216-18", "A", 0, 1.35mm, 2.15mm, 1.45mm, 6.1mm, 2.8mm }
+    { "A", "3216-18", "B", 0, 1.25mm, 1.75mm, 1.35mm, 5mm, 2.3mm }
+    { "A", "3216-18", "C", 0, 1.15mm, 1.35mm, 1.25mm, 4.1mm, 2mm }
+    { "B", "3528-21", "A", 0, 2.35mm, 2.12mm, 1.45mm, 6.1mm, 4mm }
+    { "B", "3528-21", "B", 0, 2.25mm, 1.75mm, 1.35mm, 5mm, 3.5mm }
+    { "B", "3528-21", "C", 0, 2.15mm, 1.35mm, 1.25mm, 4.1mm, 3.2mm }
+    { "C", "6032-28", "A", 0, 2.35mm, 2.65mm, 2.6mm, 8.9mm, 4.4mm }
+    { "C", "6032-28", "B", 0, 2.25mm, 2.25mm, 2.5mm, 7.8mm, 3.9mm }
+    { "C", "6032-28", "C", 0, 2.15mm, 1.85mm, 2.4mm, 6.9mm, 3.6mm }
+    { "D", "7343-31", "A", 0, 2.55mm, 3.75mm, 2.7mm, 10.2mm, 5.5mm }
+    { "D", "7343-31", "B", 0, 2.45mm, 3.35mm, 2.6mm, 9.1mm, 5mm }
+    { "D", "7343-31", "C", 0, 2.35mm, 2.95mm, 2.5mm, 8.2mm, 4.7mm }
+    { "L", "6032-20", "A", 0, 2.35mm, 2.65mm, 2.6mm, 8.9mm, 4.4mm }
+    { "L", "6032-20", "B", 0, 2.25mm, 2.25mm, 2.5mm, 7.8mm, 3.9mm }
+    { "L", "6032-20", "C", 0, 2.15mm, 1.85mm, 2.4mm, 6.9mm, 3.6mm }
+    { "M", "3258-15", "A", 0, 2.35mm, 2.15mm, 1.45mm, 6.1mm, 4mm }
+    { "M", "3258-15", "B", 0, 2.25mm, 1.75mm, 1.35mm, 5mm, 3.5mm }
+    { "M", "3258-15", "C", 0, 2.15mm, 1.35mm, 1.25mm, 4.1mm, 3.2mm }
+    { "T", "3528-12", "A", 0, 2.35mm, 2.15mm, 1.45mm, 6.1mm, 4mm }
+    { "T", "3528-12", "B", 0, 2.25mm, 1.75mm, 1.35mm, 5mm, 3.5mm }
+    { "T", "3528-12", "C", 0, 2.15mm, 1.35mm, 1.25mm, 4.1mm, 3.2mm }
+    { "U", "6032-15", "A", 0, 2.55mm, 3.75mm, 2.7mm, 10.2mm, 5.5mm }
+    { "U", "6032-15", "B", 0, 2.45mm, 3.35mm, 2.6mm, 9.1mm, 5mm }
+    { "U", "6032-15", "C", 0, 2.35mm, 2.95mm, 2.5mm, 8.2mm, 4.7mm }
+
+set silk = 5mil
+
+frame pads @
+frame outline @
+measx outline.ll >> outline.ur -2*silk
+meas pads.left >> pads.right X/2+2*silk
+measx pad_l.ll >> pad_l.__0 -silk
+measy pad_r.ll >> pad_r.__0 silk
+measy outline.ll >> outline.ur -V1-2*silk
+measx pad_l.ll >> pad_r.__0 -2*silk

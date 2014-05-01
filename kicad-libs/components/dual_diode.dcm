@@ -1,0 +1,35 @@
+EESchema-DOCLIB  Version 2.0  Date: Tue Aug 16 16:15:51 2011
+#
+$CMP DDCA
+D Dual diode in SOT package, common anode
+$ENDCMP
+#
+$CMP DDCC
+D Dual diode in SOT package, common cathode
+$ENDCMP
+#
+$CMP DDSCHCA
+D Dual Schottky diode in SOT package, common anode
+$ENDCMP
+#
+$CMP DDSCHCC
+D Dual Schottky diode in SOT package, common cathode
+$ENDCMP
+#
+$CMP DDSCHSER
+D Dual Schottky diode in SOT package, anode follows cathode
+$ENDCMP
+#
+$CMP DDSER
+D Dual diode in SOT package, anode follows cathode
+$ENDCMP
+#
+$CMP DS
+D Single diode in SOT package
+$ENDCMP
+#
+$CMP DSSCH
+D Single Schottky diode in SOT package
+$ENDCMP
+#
+#End Doc Library

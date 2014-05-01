@@ -1,0 +1,53 @@
+/* MACHINE-GENERATED ! */
+
+frame copper {
+	loop if = 1, copper
+
+	__2: vec @(disc/2, -disc/2)
+	__3: vec @(-disc/2, disc/2)
+	rpad "1" . __2 bare
+}
+
+package "SPACER-$nominal-$disc-$keepout$type"
+unit auto
+
+table
+    { nominal }
+    { 3mm }
+    { 4mm }
+
+table
+    { type, copper }
+    { "", 1 }
+    { "-BARE", 0 }
+
+set hole = nominal+0.2mm
+
+table
+    { disc }
+    { 7mm }
+    { 8mm }
+    { 9mm }
+
+set area = 10mm
+
+table
+    { keepout }
+    { 7.5mm }
+    { 9.5mm }
+    { 10mm }
+
+set w = 5mil
+
+loop if = 0.01, (keepout-disc)/10mm
+
+__0: vec @(hole/2, hole/2)
+__1: vec @(-hole/2, -hole/2)
+hole . __0
+__4: vec @(0mm, -keepout/2)
+__3: vec @(0mm, keepout/2)
+circ @ . w
+frame copper @
+measy __1 >> __0 keepout/2+1mm
+measy copper.__2 >> copper.__3 disc+keepout/2+0.5mm
+meas __4 >> __3 keepout+1mm

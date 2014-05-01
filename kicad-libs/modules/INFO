@@ -1,0 +1,579 @@
+#
+# Tags:
+#
+# F     Footprint name (must be first)
+# N     Data sheet identifier (N tag of BOOKSHELF; can be omitted if equal to F)
+#
+
+# Printed 8:10 card contacs
+F: 8_10-card
+
+# Open clip for AA batteries, through-hole
+# http://www.memoryprotectiondevices.com/datasheets/BK-92-datasheet.pdf
+# Note: should generalize this for AAA and maybe also larger sizes
+F: bat-clip-aa-th
+
+# 8:10 Card Socket Connectors RIGHT ANGLE SMT Hinge Type 
+F: 8_10-socket-ra
+#
+# - 8:10-SOCKET-RA, package drawing, land pattern
+#   for example MOLEX 500901-0801
+#   http://www.molex.com/pdm_docs/sd/5009010801_sd.pdf
+#
+
+# BGA
+F: bga
+# - 484-Pin FineLine BGA(FBGA), from Altera
+#   http://www.altera.com/devicepackaging/04R00416-02.pdf
+#
+# - FG(G)484 Fine-Pitch BGA, from Xilinx
+#   http://www.xilinx.com/support/documentation/user_guides/ug385.pdf
+#
+
+# Chip SMD Aluminum Electrolytic Capacitors
+F: c-smd
+#
+#   for example 10TZV220M6.3X8 from RUBYCON
+#
+# - c-smd-5mmx6.1mm, c-smd-6.3mmx8mm, c-smd-8mmx10.5mm, c-smd-10mmx10.5mm
+#
+#   package drawing 
+#   http://www.rubycon.co.jp/en/catalog/e_pdfs/aluminum/e_TZV.pdf
+#
+#   land pattern
+#   http://www.rubycon.co.jp/en/catalog/e_pdfs/aluminum/Chip_Alumi_Eng.pdf
+#
+
+# Chip SMD Tantalum Capacitors
+F: c-t-smd
+#
+#   for example T520B157M006ATE070 from KEMET
+#   
+# - TC-$Case-$EIA-$Density
+#   the density is based on the conditions outlined in IPC standard 7351 (IPC-7351).
+#
+#   package drawing ( page 62 ), land pattern ( page 73 ) 
+#   http://www.kemet.com/kemet/web/homepage/kechome.nsf/vapubfiles/KEM_TC102_LOWESR.pdf/$file/KEM_TC102_LOWESR.pdf
+#
+
+# SOCKET, PCB, DC POWER JACK
+F: dcjack
+#
+# - DCJACK-${L}x${W}, package drawing, land pattern
+#   for example SCPRE SCD441CPS011B00G
+#   http://downloads.qi-hardware.com/hardware/milkymist_one/datasheet/Supply/SCD441CPS011B00G.pdf
+#
+
+# SOCKET, DIN, PCB, 180, 5PIN, 5WAYS, 45 DEGREE
+F: din-5
+#
+# - DIN-SOCKET-PCB-5-45, package drawing, land pattern
+#   for example DELTRON 671-0500
+#   http://www.farnell.com/datasheets/65433.pdf
+#
+
+# DO-214
+F: do-214
+#
+# - DO-214AA(SMB), from Fairchild, for example its 2N7002MTF uses it
+#   http://www.fairchildsemi.com/dwg/DO/DO214AA.pdf
+#
+# - DO-214AB(SMC), from Fairchild
+#   http://www.fairchildsemi.com/dwg/DO/DO214AB.pdf
+#
+# - DO-214AC(SMA), from Fairchild
+#   http://www.fairchildsemi.com/dwg/DO/DO214AC.pdf
+#
+
+# CONN RECEPT ANALOG DIGITAL DVI RIGHT ANGLE
+F: dvi-recept-ra
+#
+# - DVI-RECEPT-RA, package drawing, land pattern
+#   for example MOLEX 74320-1004
+#   http://www.molex.com/pdm_docs/sd/743201004_sd.pdf
+#
+
+# EUS (R-PDSS-T6)
+F: eus
+#
+# - for example: the PTH04000WAH data sheet, it's EUS
+#   http://www.ti.com/lit/ds/symlink/pth04000w.pdf
+# 
+
+# Fiducial (1 mm copper pad, 2 mm solder mask clearance)
+F: fiducial
+
+# 2 rows of Header with outline for through hole type
+F: he-2row-dip
+#
+# - HE-${n}x2-${px}: for example FCI: the 87606-310LF data sheet, package drawing
+#   http://portal.fciconnect.com/res/en/pdffiles/doc_search/87606.pdf
+#
+
+# generic header through hole type
+F: header
+#
+# - HDR-${C}x${R}-$P
+#   C --> column number
+#   R --> row number
+#   P --> pitch
+#
+
+# Header with outline for shrouded wafer for example, SMD type
+F: he-shrouded
+#
+# - he-shrouded-${n}x2pins-${pitch}: for example Molex: the 87832-1420 data sheet, package drawing
+#   http://www.molex.com/pdm_docs/sd/878321420_sd.pdf
+#
+
+# IR Receiver Module
+F: ir
+#
+# From Vishay:
+#
+# - the TSOP322.., TSOP324.., TSOP348.., TSOP344.. data sheet
+#   http://www.vishay.com/docs/81732/tsop348.pdf
+
+# LED right angle package
+F: ledsmd
+#
+# - LEDSMD-0603R: for example: the APA1606SURCK data sheet, package drawing
+#   http://www.us.kingbright.com/images/catalog/SPEC/APA1606SURCK.pdf
+#   added a letter 'R' stands for right angle land pattern
+#   could expand it as else land pattern for 0603, 0805, 0805R, etc.
+#	
+
+# MDIP
+F: mdip
+#
+# From FAIRCHILD:
+#
+# - the 6N138S data sheet
+#   http://www.fairchildsemi.com/ds/6N/6N138.pdf
+#
+# Package Type:
+#
+# - MDIP 8L
+#   http://www.fairchildsemi.com/package/packageDetails.html?id=PN_192-B08
+#
+# Package Drawing:
+#
+#   http://www.fairchildsemi.com/dwg/N0/N08H.pdf
+
+# Small Size 2.4 GHz PCB Antenna
+# http://focus.ti.com/lit/an/swra117d/swra117d.pdf
+F: meander-2.4GHz
+
+# Microphone, through hole type, bent pins
+F: mic-ra-dip
+#
+# - MIC-RA-DIP-${Dia}x${Height}: for example PRO SIGNAL the MP33125 data sheet, package drawing
+#   http://www.farnell.com/datasheets/359234.pdf
+#   be noted that placements of two pins based on bending pins to suitable right angle purpose.
+#   the py# is the option to change to distance that you want.
+#
+
+# Mini-USB B receptable (SMT; almost generic)
+F: mini_usb_b
+
+# Solder pads and test points
+F: pads
+#
+# - PAD_${type}_$size
+#   type --> C: circle, R: round, S: square
+#   size --> dimension
+#
+
+# "pads" in typical array formations
+F: pads-array
+
+# "Generic" simple QFN
+F: qfn
+#
+# The information for these packages comes from various sources:
+#
+# - the C8051F326 data sheet, for the QFN28 footprint (N: mcu)
+# - the AT86F326 data sheet, for the QFN32 package dimensions (N: txrx)
+# - Atmel's general recommendations for QFN land patterns (N: atmel-qfn)
+# - NXP's SOT617-1 and SOT617-3, for package and land pattern:
+#   http://www.nxp.com/package/SOT617-1.html
+#   http://www.nxp.com/package/SOT617-3.html
+#
+# Solder paste:
+#
+# Footprint    Center pad  Closest NXP (with complete land pattern)
+# QFN28-Atmel  2.4 mm	   for further study
+# QFN28-SiLabs 3.3 mm	   use SiLab's specification
+# QFN32-VHHD-2 3.7 mm	   between SOT818-1 and SOT788-1
+# QFN32-VHHD-6 3.4 mm	   SOT818-1
+#
+# From NXP:
+#
+# Package   Pad  Paste zone  Islands  Isl. size  Isl. gap
+# SiLabs    3.25 3.1	     3 x 3    0.9	 
+# SOT818-1  3.4  1.75	     2 x 2    0.75	 0.25
+# SOT788-1  4.0  2.4	     3 x 3    0.6	 0.3
+#
+# NXP rules (AN10365):
+# - paste zone = 35% of pad area
+# - paste coverge = 20% of pad area
+#
+# Our parameters:
+#
+# Package       Pad  Paste zone  Islands  Isl. size  Isl. gap  Zone  Coverage
+# QFN32-VHHD-2  3.7  2.15	 3 x 3	  0.55	     0.25      34%   20%
+# QFN32-VHHD-6  3.4  1.95	 2 x 2	  0.75	     0.45      33%   19%
+#
+# Known bugs:
+#
+# - really ought to merge all the various QFN definitions (we have more
+#   over at gta02-core) into a single QFN file with a big mean table of
+#   everything
+#
+N: sot617-3-lp
+
+# "Generic" simple QFP (for now, just for Silabs' C8051F320)
+F: qfp
+#
+# - the C8051F320 data sheet
+#   http://www.silabs.com/Support%20Documents/TechnicalDocs/C8051F32x.pdf
+# 
+# according to MAXIM web: http://www.maxim-ic.com/design/packaging/
+# the LQPF48/TQFP48 referred to the same package drawing and land pattern
+#
+# - LQFP48, TQFP48: C48 -> ackage drawping
+#   http://pdfserv.maxim-ic.com/package_dwgs/21-0054.PDF
+#	
+# - LQFP48, TQFP48: C48 -> package land pattern
+#   http://pdfserv.maxim-ic.com/land_patterns/90-0093.PDF
+#  
+# - LQFP64, JEDEC MS-026-BCD for example: the ADV7181CBSTZ data sheet, package drawing
+#   http://www.analog.com/static/imported-files/data_sheets/ADV7181C.pdf 
+#	
+# - LQFP64, C64 -> package drawing
+#   http://pdfserv.maxim-ic.com/package_dwgs/21-0083.PDF
+#	
+# - LQFP64, C64 -> package land pattern
+#   http://pdfserv.maxim-ic.com/land_patterns/90-0141.PDF
+#  
+# comparisons of pads dimension of WM9707, KS8001, ADV7125
+# 	
+#	MIN	NOM	MAX	chip	
+# "b" 	0.17mm	0.22mm	0.27mm	WM9707
+# 	0.19mm	0.22mm	0.25mm	KS8001	
+# 	0.17mm	0.22mm	0.27mm	ADV7125
+# "L"	0.45mm	0.6mm	0.75mm	WM9707
+#	0.5mm	0.6mm	0.7mm	KS8001
+#	0.45mm	0.6mm	0.75mm	ADV7125
+#
+# so a combination of both ackage drawping and land pattern from Maxim
+# the lad pattern for QFP48 is 0.27mm for "b", 1.45mm for "L"
+# it should be safe.
+#
+
+# 3.5mm audio stereo phone jack
+F: phonejack
+# 
+# phonejack-${size}-${N}
+# From SCPRE:
+#
+# - phonejack-3.5-5, the SCJ368R1NUS0B00G data sheet, drawing
+#   http://downloads.qi-hardware.com/hardware/milkymist_one/datasheet/Audio/SCJ368R1NUS0B00G.pdf
+#
+
+# CONN RCA JACK 3-CONs RIGHT ANGLE
+F: rca-3-ra
+#
+# - RCA-3-RA, package drawing, land pattern
+#   for example SCPRE SCP662CNS257U00G
+#   http://downloads.qi-hardware.com/hardware/milkymist_one/datasheet/VideoIn/SCP662CNS257U00G.pdf
+#
+
+# RJ45, 8 pins, two leds
+F: rj45
+# 
+# - RJ45-8-LED, the 48025-0002 data sheet, drawing, from MOLEX
+#   http://www.molex.com/pdm_docs/sd/480250002_sd.pdf
+#
+
+# SOIC
+F: soic
+#
+# From TI:
+#
+# - the SN75HVD12DR data sheet
+#   http://www.ti.com/lit/ds/symlink/sn75hvd12.pdf
+#
+# Package Drawing:
+#
+# - D(JEDEC)
+#   - R-PDSO-G8
+#   http://www-s.ti.com/sc/psheets/msoi002j/msoi002j.pdf
+#   - R-PDSO-G14
+#   http://www-s.ti.com/sc/psheets/mpds177g/mpds177g.pdf
+#   - R-PDSO-G16
+#   http://www-s.ti.com/sc/psheets/mpds178g/mpds178g.pdf
+
+# SOT generic package
+F: sot
+# experimental generic SOT footprint; currently only for
+#
+# - SOT-235, for example, TI SOT-23, DBV(R-PDSO-G5) package
+#   http://www.ti.com/lit/ds/symlink/tps76301.pdf
+# - SOT-323 aka SC-70
+#   http://www.onsemi.com/pub_link/Collateral/BAV99WT1-D.PDF
+# - SOT-363 aka SC-88 aka SC-70-6
+#   http://www.onsemi.com/pub_link/Collateral/MBT3946DW1T1-D.PDF
+# - SOT-523
+#   http://www.diodes.com/datasheets/ds31784.pdf
+# - SOT-563
+#   http://www.onsemi.com/pub_link/Collateral/NTZD3155C-D.PDF
+#
+# some conflicts with the outline exist
+
+# SOT23 generic package with counter-clockweise or clockwise pin assignment
+F: sot23
+#
+# - SOT23: aka JEDEC TO-236 for example, the APX803-40SAG-7 data sheet, package drawing and land pattern
+#   http://www.diodes.com/datasheets/APX803.pdf
+#
+#   for another example from Fairchildsemi 2N7002MTF, package drawing and land pattern
+#   http://www.fairchildsemi.com/dwg/MA/MA03D.pdf
+#
+
+# Standard rectangular passive components
+F: stdpass
+#
+# packages: 0201, 0402, 0603, 0805, 1206, 1210, 1812, 2010, 2512
+# polarized(marked the cathode) packages: starts from 0603P to 2512P
+#
+# be noticed that 1812 land pattern based on a p/n: miniSMDC200F from Tycoelectronics
+# http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Catalog+Section%7FSURFACE-MOUNT%7FA1%7Fpdf%7FEnglish%7FENG_CS_SURFACE-MOUNT_A1.pdf%7FRF1410-000
+# 
+
+# SOT-323 package with counter-clockweise or clockwise pin assignment
+F: sot-323
+N: mmst3904
+
+# http://www.nxp.com/#/page/content=[f=/packages/SOT341-1.xml]
+# http://www.nxp.com/packages/SOT341-1.html
+# http://www.nxp.com/documents/reflow_soldering/SSOP-TSSOP-VSO-REFLOW.pdf
+
+# mechanical mounting holes
+F: spacer
+#
+# - SPACER-$nominal-$disc-$keepout$type
+#   nominal --> hole dia.
+#   disc    --> copper dia.
+#   keepout --> keepout dia.
+#   type    --> "-BARE" : no copper area
+#           --> ""      : with copper area
+#
+
+# "Generic" simple SSOP
+F: ssop
+#
+# - TSSOP14: for example: the MIC2550AYTS data sheet, package drawing
+#   http://www.micrel.com/_PDF/mic2550a.pdf
+#	
+# - TSSOP14: from NXP -> package land pattern
+#   http://www.nxp.com/packages/SOT402-1.html
+#   http://www.nxp.com/documents/reflow_soldering/sot402-1_fr.pdf
+
+# SWITCH, TACTILE, SPST, R/A, THROUGH HOLE
+F: tactile-sw-spst-ra-dip.fpd
+#
+# - TACTIL-SW-${TYPE}-RA-${A}-${B}, package drawing, land pattern
+#   for example TYCO ELECTRONICS FSMRA2JH
+#   http://www.farnell.com/datasheets/51343.pdf
+#
+
+# "Generic" simple TO-252, TO-263
+F: to
+#
+# - TO-252 for example: the LP38690DT-3.3 data sheet, it's TO-252
+#   http://www.ti.com/lit/ds/symlink/lp38690.pdf
+# 
+# - JEDEC Spec: TO-252 AA  -> package drawing and land pattern
+#   http://www.national.com/packaging/mkt/td03b.pdf
+#	
+# - TO-263 for example: the LP38511TJ-ADJ/NOPB data sheet, it's TO-263
+#   http://www.ti.com/lit/ds/symlink/lp38511-adj.pdf
+# 
+# - JEDEC Spec: TO-263 THIN  -> package drawing and land pattern
+#   http://www.national.com/packaging/mkt/tj5a.pdf
+#	
+
+# "Generic" simple TSOP
+F: tsop
+#
+# - TSOP28: Z28 -> package drawing
+#   http://pdfserv.maxim-ic.com/package_dwgs/21-0273.PDF
+#	
+# - TSOP28: Z28 -> package land pattern
+#   http://pdfserv.maxim-ic.com/land_patterns/90-0319.PDF
+#  
+# according to MAXIM web: http://www.maxim-ic.com/design/packaging/
+# the TSOP32 referred to the same package drawing and land pattern
+#
+# - TSOP32: Z32 -> package drawing
+#   http://pdfserv.maxim-ic.com/package_dwgs/21-0274.PDF
+#	
+# - TSOP32: Z32 -> package land pattern
+#   http://pdfserv.maxim-ic.com/land_patterns/90-0320.PDF
+#  
+# - TSOP56: the JS28F256J3F105 data sheet, it's TSOP-56
+#   http://www.micron.com/parts/nor-flash/parallel-nor-flash/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/6062319942_J3_65_256M_MLC_DS.ashx
+#
+# - TSOP66: for example: the MT46V32M16P-5B:F data sheet, it's 400 mil, package drawing
+#   http://download.micron.com/pdf/datasheets/dram/ddr/512MBDDRx4x8x16.pdf 
+#	
+# - TSOP66: currently referred to M1rc3 design files land pattern:
+#   width of pad  -> 0.4 mm, it's rectangle not round one
+#   length of pad -> 1.25 mm
+#   Width of body -> 400 mil
+
+# TSSOP5 for NXP
+F: tssop5
+#
+# - TSSOP5 aka for example package drawing SOT353-1 from NXP 74AUP1G08GW data sheet, 
+#   http://www.nxp.com/documents/data_sheet/74AUP1G08.pdf
+#   http://www.nxp.com/packages/SOT353-1.html
+#   but without real land pattern found, still could refer link below for more in details:
+#   http://www.nxp.com/documents/application_note/AN10365.pdf	
+#
+#   also check OnSemi's MC74VHC1G135-D http://www.onsemi.cn/pub_link/Collateral/MC74VHC1G135-D.PDF for SOT-353
+#   they both TSSOP5(NXP) and SOT-353(OnSemi) are quite similar. OnSemi has land pattern for it.
+#
+#   NXP's Lp is 0.46 mm in max., OnSemi's K is 0.3 mm max. with a land pattern of pad length 0.5 mm.
+#   could use a land pattern of pad length to be 0.7 mm.
+#
+
+# USB DUAL STACKED A RECEPT CON R/A
+# F: usb-a-dual-recept-r
+#
+# - USB-A-DUAL-RECEPT-RA, package drawing, land pattern
+#   for example MOLEX 67298-4090
+#   http://www.molex.com/pdm_docs/sd/672984090_sd.pdf
+#
+
+# USB A plug for SMT
+#
+# Note: the signal pads are enlarged by 0.2 mm and their center is shifted by
+# 0.1 mm with respect to the reference.
+#
+# According to the data sheet, the leads terminate at (2.00+/-0.10 mm)/2+
+# 2.48 mm = 3.48+/-0.10 mm from the center. The reference footprint puts the
+# edge of the pads at (2.00+/-0.10 mm)/2+2.6 mm = 3.6 mm+/-0.10 mm, so the
+# maximum lead end could be at 3.58 mm while the minimum pad edge could be at
+# 3.5 mm.
+#
+# Assuming that the pad is intended to extend a bit beyond the lead, we need
+# to add 0.2 mm to compensate for these tolerances. (The pad tolerance may not
+# be intended to be used this way, however, we still have to consider small
+# errors in registration, which also amount to about 0.1 mm, so the calculation
+# remains valid.)
+#
+F: usb_a_plug_smt
+
+# USB 2.0 from usb_20_040908, page 99
+F: usb-a-pcb
+
+# XLR, SOCKET, PANEL, HORIZ/PCB
+F: xlr-socket
+#
+# - XLR-PANEL-HORIZ/PCB-SOCKET, package drawing, land pattern
+#   for example NEUTRIK NC3FAH1
+#   http://www.neutrik.us/en-us/xlr/a-series/nc3fah1
+#
+
+# XLR, PLUG, PANEL, HORIZ/PCB
+F: xlr-plug
+#
+# - XLR-PANEL-HORIZ/PCB-PLUG, package drawing, land pattern
+#   for example NEUTRIK NC3MAH
+#   http://www.neutrik.us/en-us/xlr/a-series/nc3mah
+#
+
+# 2-pins rectangular smd xtal
+F: xtal-2
+#
+# - xtal2-11.5mmx4.83mm package drawing, land pattern
+#   for example R49SSA-028636-F20-YYY-YQA
+#   http://downloads.qi-hardware.com/hardware/milkymist_one/datasheet/VideoIn/Qi%20R49SSA-028636-F20-YYY-YQA.pdf
+#
+
+# 4-pins rectangular smd xtal
+F: xtal-4
+#
+# - xtal4-3.2mmx2.5mm package drawing, land pattern
+#   for example NX3225SA
+#   http://www.ndk.com/images/products/catalog/c_NX3225SA-STD-CSQ-1_e.pdf
+#
+# - xtal4-5mmx3.2mm package drawing, land pattern
+#   for example SO5032-050000-O3A-BBE-QA
+#   http://downloads.qi-hardware.com/hardware/milkymist_one/datasheet/FPGA/Qi%20Hardware%20SO5032-050000-O3A-BBE-QA.pdf
+#
+# - xtal4-6mmx3.6mm package drawing, land pattern
+#   for example ABMM2-24.576MHZ-E2-T
+#   http://www.abracon.com/Resonators/ABMM2.pdf
+#
+
+# DIP4 component in a DIP6 socket
+F: dip4of6
+#
+# The smallest DIP socket commonly available is DIP6, but there are some
+# components that come in a DIP4 package.
+#
+
+# Micro-USB B receptacle, standard (bottom) mount (all SMT, no posts)
+F: zx62-b-5pa
+#
+# Hirose ZX62-B-5PA(11)
+# http://www.hirose.co.jp/cataloge_hp/e24200011.pdf
+#
+# Compatible (front pads are slightly narrower in recommended footprint):
+# FCI 10118192-0001LF
+# http://portal.fciconnect.com/Comergent//fci/drawing/10118192.pdf
+#
+
+# Micro-USB B receptacle, mid-mount (all SMT, no posts)
+F: zx62m-b-5p
+#
+# Known issue:
+# Rear side pads should have an empty corner. Right now, we even print silk
+# screen on them.
+#
+# Hirose ZX62M-B-5P(01)
+# http://www.hirose.co.jp/cataloge_hp/e24200011.pdf
+#
+
+# E-SWITCH series 320 tact switch
+F: e-switch320
+#
+# http://www.e-switch.com/Portals/0/Series_Pdf/320.pdf
+#
+# Similar:
+#
+# http://www.ck-components.com/index.php?module=media&action=Display&cmpref=13325&lang=en&width=&height=&format=&alt=
+#
+
+# ST LGA patterns (e.g., LGA-3x3-16 for LIS3DH)
+F: LGA
+#
+# http://www.st.com/internet/com/TECHNICAL_RESOURCES/TECHNICAL_LITERATURE/TECHNICAL_NOTE/CD00134799.pdf
+#
+# Instead of using an asymmetric solder mask opening, we make the pads a bit
+# larger on the outside. That way, the solder mask opens as well, plut the
+# pads can be reached with a soldering iron.
+#
+
+F: 8_10-SOCKET-RA-PUSH-PULL
+#
+# http://media.digikey.com/pdf/Data%20Sheets/Amphenol%20PDFs/114-00841-68.pdf
+#
+
+F: INDUCTOR-2P-3mmx3mm
+#
+# http://www.bourns.com/data/global/pdfs/SRN3015.pdf
+#

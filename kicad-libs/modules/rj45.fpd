@@ -1,0 +1,157 @@
+/* MACHINE-GENERATED ! */
+
+frame pShield {
+	set rin = 1.63mm/2
+
+	set rout = ratio*rin
+
+	set n = i+13
+
+	loop i = 0, 1
+
+	__0: vec @(i*Shieldx, 0mm)
+	__1: vec .(rin, rin)
+	__2: vec __0(-rin, -rin)
+	hole . __1
+	__3: vec __0(rout, -rout)
+	__4: vec __0(-rout, rout)
+	rpad "$n" __3 . bare
+}
+
+frame hNPTH {
+	set r = 3.18mm/2
+
+	__0: vec @(r, r)
+	__1: vec @(-r, -r)
+	hole . __0
+}
+
+frame pNPTH {
+	table
+	    { px, dx, n }
+	    { NPTHx/2, 1, 13 }
+	    { NPTHx/2, -1, 14 }
+
+	__0: vec @(dx*px, 0mm)
+	frame hNPTH .
+}
+
+frame pins {
+	set rin = 0.89mm/2
+
+	set rout = ratio*rin
+
+	set n = i*2+1
+
+	set m = i*2+2
+
+	loop i = 0, 3
+
+	__0: vec @(i*pitchP, 0mm)
+	__1: vec .(rin, rin)
+	__2: vec __0(-rin, -rin)
+	hole . __1
+	__3: vec __0(rout, -rout)
+	__4: vec __0(-rout, rout)
+	rpad "$n" . __3 bare
+	__5: vec @(0mm, pitchP)
+	__6: vec .(pitchP/2, 0mm)
+	__7: vec .(i*pitchP, 0mm)
+	__8: vec .(rin, rin)
+	__9: vec __7(-rin, -rin)
+	hole . __8
+	__10: vec __7(rout, -rout)
+	__11: vec __7(-rout, rout)
+	rpad "$m" __10 . bare
+}
+
+frame pLed {
+	set rin = 1.02mm/2
+
+	set n = i+9
+
+	set m = i+11
+
+	set rout = ratio*rin
+
+	loop i = 0, 1
+
+	__0: vec @(i*pitchP, 0mm)
+	__1: vec .(rout, -rout)
+	__2: vec __0(rin, rin)
+	__3: vec __0(-rin, -rin)
+	hole . __2
+	__4: vec __0(-rout, rout)
+	rpad "$n" __1 . bare
+	__5: vec @(pitchP+LEDx, 0mm)
+	__6: vec .(i*pitchP, 0mm)
+	__7: vec .(rin, rin)
+	__8: vec __6(-rin, -rin)
+	hole . __7
+	__9: vec __6(rout, -rout)
+	__10: vec __6(-rout, rout)
+	rpad "$m" __9 . bare
+}
+
+frame outline {
+	__0: vec @(W/2, -NPTHy)
+	__1: vec @(-W/2, L-NPTHy)
+	rect . __0 w
+}
+
+package "RJ45-8-LED"
+unit mm
+
+set NPTHx = 11.43mm
+
+set NPTHy = 10.8mm
+
+set L = 25.4mm
+
+set W = 16.2mm
+
+set ydiffShield = 3.3mm
+
+set Shieldx = 15.74mm
+
+set ratio = 1.6
+
+set yP1dist = 6.35mm
+
+set yShield = yP1dist-ydiffShield
+
+set pitchP = 2.54mm
+
+set ydiffLed = 7.37mm
+
+set LEDx = 5.84mm
+
+set w = 5mil
+
+__0: vec @(0mm, yP1dist)
+__1: vec .(-(2*pitchP-pitchP/4), 0mm)
+frame pins .
+__2: vec __0(0mm, ydiffLed)
+__3: vec .(-(LEDx/2+pitchP), 0mm)
+frame pLed .
+__4: vec @(0mm, yP1dist-ydiffShield)
+__5: vec .(-Shieldx/2, 0mm)
+frame pShield .
+frame pNPTH @
+frame outline @
+measy pNPTH.__0 >> __1 4mm
+measy __1 >> pins.__6 4mm
+measy __1 >> __3 5.3mm
+meas pNPTH.__0 >> pNPTH.__0 -2mm
+meas __5 >> pShield.__0 -6mm
+meas pLed.__5 >> pLed.__6 1.3mm
+meas pLed.__5 << pLed.__0 1.3mm
+meas pins.__6 -> pins.__7 1.3mm
+measx __1 >> pins.__6 4mm
+measy outline.__0 >> outline.__1 -1.5mm
+measx outline.__1 >> outline.__0 1.5mm
+measy hNPTH.__1 -> hNPTH.__0 -3.18mm-0.5mm
+measy pShield.__2 -> pShield.__1 -1.63mm-1mm
+measy pins.__2 -> pins.__1 -0.89mm-0.5mm
+measy pins.__9 -> pins.__8 -0.89mm-0.5mm
+measy pLed.__3 -> pLed.__2 -1.02mm-0.5mm

@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0  Date: Wed 04 Apr 2012 15:09:53 CST
+#
+$CMP IR
+D TSOP34838, Infrared Receivers 2.5V-5.5V 38kHz
+K IR
+F http://www.vishay.com/docs/81732/tsop348.pdf
+$ENDCMP
+#
+#End Doc Library

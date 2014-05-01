@@ -1,0 +1,51 @@
+/* MACHINE-GENERATED ! */
+
+frame pad {
+	__0: vec @(Px/2, Py/2)
+	__1: vec @(-Px/2, -Py/2)
+	pad "$pin" . __0
+}
+
+frame pads {
+	table
+	    { pin, dx, dy }
+	    { 1, -1, -1 }
+	    { 2, 1, -1 }
+
+	__0: vec @(dx*Gx/2, 0mm)
+	frame pad .
+}
+
+frame outline {
+	table
+	    { px, py, x, y }
+	    { 0mm, Dy/2+w, Dx+2*w, 0mm }
+	    { 0mm, -Dy/2-w, Dx+2*w, 0mm }
+	    { -(Dx+2*w)/2, Dy/2+w-Py/2, 0mm, Py }
+	    { -(Dx+2*w)/2, -(Dy/2+w-Py/2), 0mm, Py }
+	    { (Dx+2*w)/2, Dy/2+w-Py/2, 0mm, Py }
+	    { (Dx+2*w)/2, -(Dy/2+w-Py/2), 0mm, Py }
+
+	__0: vec @(px, py)
+	__1: vec .(x/2, y/2)
+	__2: vec __0(-x/2, -y/2)
+	line . __1 w
+}
+
+package "xtal2-${Dx}x${Dy}"
+unit mm
+
+table
+    { Dx, Dy, Gx, Ix, Px, Py }
+    { 11.5mm, 4.83mm, Px+Ix, 3mm, 5.5mm, 1.5mm }
+
+set w = 5mil
+
+frame pads @
+frame outline @
+measy pad.__1 -> pad.__0 1mm
+measx pad.__1 -> pad.__0 -1mm
+measy outline.__0 >> outline.__0 -(Gx/2+Px/2+1mm)
+measx pad.__0 >> pad.__1 1mm
+measx outline.__2 >> outline.__1 -1mm
+meas pads.__0 >> pads.__0 3mm

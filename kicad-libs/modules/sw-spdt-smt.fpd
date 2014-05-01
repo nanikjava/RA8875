@@ -1,0 +1,122 @@
+/* MACHINE-GENERATED ! */
+
+frame knob {
+	table
+	    { x }
+	    { -tx/2 }
+	    { tx/2 }
+
+	__0: vec @(x, -oy/2)
+	__1: vec .(0mm, -ky)
+	__2: vec .(-kx/2, 0mm)
+	__3: vec .(0mm, ky)
+	line . __2 w
+	__4: vec __1(kx/2, 0mm)
+	line __2 . w
+	__5: vec .(0mm, ky)
+	line . __4 w
+}
+
+frame corners {
+	table
+	    { pad, dx, dy }
+	    { 4, -1, 1 }
+	    { 5, 1, 1 }
+	    { 6, 1, -1 }
+	    { 7, -1, -1 }
+
+	set x = dx*(cdx+cpx)/2
+
+	set y = dy*(cdy+cpy)/2
+
+	set ?corners = 4
+
+	__0: vec @(x, y)
+	__1: vec .(cpx/2, cpy/2)
+	__2: vec __0(-cpx/2, -cpy/2)
+	pad "$pad" . __1
+}
+
+frame holes {
+	table
+	    { x }
+	    { -hx/2 }
+	    { hx/2 }
+
+	__0: vec @(x, 0mm)
+	__1: vec .(hr, hr)
+	__2: vec __0(-hr, -hr)
+	hole . __1
+}
+
+frame pads {
+	table
+	    { ?reg, pad, x }
+	    { 1, 1, -e }
+	    { 1, 2, 0mm }
+	    { 1, 3, e }
+	    { 0, 1, -1.5*e }
+	    { 0, 2, 0.5*e }
+	    { 0, 3, 1.5*e }
+
+	__0: vec @(x, hy)
+	__1: vec .(-px/2, 0mm)
+	__2: vec .(px, py)
+	pad "$pad" __1 .
+}
+
+frame outline {
+	table
+	    { ?corners, dx, dy }
+	    { 0, 0mm, 0mm }
+	    { 4, (ox-cdx)/2+0.3mm, (oy-cdy)/2+0.3mm }
+
+	__0: vec @(ox/2, -oy/2)
+	__1: vec .(0mm, oy)
+	__6: vec .(0mm, -dy)
+	__2: vec @(-ox/2, -oy/2)
+	__3: vec .(0mm, oy)
+	__7: vec .(0mm, -dy)
+	__4: vec __2(dx, 0mm)
+	__5: vec __0(-dx, 0mm)
+	line __4 . w
+	__8: vec __2(0mm, dy)
+	line __7 . w
+	__9: vec __0(0mm, dy)
+	line __6 . w
+}
+
+package "SW-${type}"
+unit mm
+
+table
+    { type, px, py, e, reg, hx, hy, hr, ox, oy, kx, ky, tx, corners, cdx, cdy, cpx, cpy }
+    { "JS102011SAQN", 1.2mm, 2.5mm, 2.5mm, 1, 6.8mm, 4mm-py, 0.9mm/2, 9mm, 3.6mm, 1.5mm, 2mm, 2mm, 0, 0mm, 0mm, 0mm, 0mm }
+    { "CUS12B", 0.7mm, 1.5mm, 1.5mm, 0, 3mm, 2.5mm-py, 0.9mm/2, 6.7mm, 2.6mm, 1.3mm, 1.5mm, 1.5mm, 4, 6.3mm, 1.35mm, 1mm, 0.8mm }
+
+set w = 5mil
+
+__0: vec @(0mm, hy)
+frame outline @
+frame pads @
+frame holes @
+frame knob @
+frame corners @
+measx holes.__0 >> holes.__0 -3.5mm-ky
+measy pads.__1 -> pads.__2 0.5mm
+measx pads.__1 -> pads.__2 -0.5mm
+measx pads.__0 -> pads.__0 py+1mm
+measy pads.__0 << holes.__0 -2mm
+measy pads.__2 << holes.__0 -3mm
+measx knob.__1 >> knob.__1 ky+1mm
+measy knob.__2 -> knob.__0 0.5mm
+measx knob.__2 -> knob.__4 -0.7mm
+measy outline.__2 >> outline.__3 2mm
+measx outline.__2 >> outline.__0 -ky-3mm
+measx pads.__0 >> pads.__0 py+1.5mm
+measx __0 -> pads.__0 py+0.5mm
+measy holes.__2 -> holes.__1 0.5mm
+measy corners.__1 -> corners.__2 cpx+0.5mm
+measy corners.__2 -> corners.__1 0.5mm
+measx corners.__2 -> corners.__1 -0.5mm
+measx corners.__1 -> corners.__2 -py-ky-1.8mm

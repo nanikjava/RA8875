@@ -1,0 +1,15 @@
+EESchema-DOCLIB  Version 2.0  Date: Fri 20 Apr 2012 11:42:00 CST
+#
+$CMP XLR-3-F-R
+D NC3FAH1, 3 pole female XLR receptacle, grounding: mating connector shell to pin1 and front panel, horizontal PCB mount
+K XLR
+F http://downloads.qi-hardware.com/hardware/milkymist_one/datasheet/MIDI/nc3fah1-3.pdf
+$ENDCMP
+#
+$CMP XLR-3-M-R
+D NC3MAH, 3 pole male XLR receptacle, grounding: separate ground contact to mating connector shell and front panel, horizontal PCB mount
+K XLR
+F http://downloads.qi-hardware.com/hardware/milkymist_one/datasheet/MIDI/nc3mah-2.pdf
+$ENDCMP
+#
+#End Doc Library

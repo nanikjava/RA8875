@@ -1,0 +1,117 @@
+/* MACHINE-GENERATED ! */
+
+frame outline {
+	__0: vec @(-(frontx-leftx), -(depth-frontedgey))
+	__1: vec @(leftx, frontedgey)
+	rect __0 . w
+}
+
+package "DIN-SOCKET-PCB-5-45"
+unit mm
+
+set frontedgey = 2.5mm
+
+set shieldx = 5mm
+
+set shieldr = 1.5mm
+
+set factor = 1.6
+
+set leftx = 10.5mm
+
+set frontx = 21.2mm
+
+set npthy = 5mm
+
+set npthx = 15mm
+
+set npthr = 2.4mm
+
+set row1x = 15mm
+
+set row1y = 10mm
+
+set row2y = 12.5mm
+
+set r = 1.3mm
+
+set depth = 16.3mm
+
+set w = 5mil
+
+__0: vec @(0mm, frontedgey)
+__1: vec @(shieldx/2, 0mm)
+__2: vec @(-shieldx/2, 0mm)
+__3: vec __1(shieldr/2, shieldr/2)
+__4: vec __1(-shieldr/2, -shieldr/2)
+hole . __3
+__5: vec __2(shieldr/2, shieldr/2)
+__6: vec __2(-shieldr/2, -shieldr/2)
+hole . __5
+__7: vec __2(-factor*shieldr/2, factor*shieldr/2)
+__8: vec __2(factor*shieldr/2, -factor*shieldr/2)
+rpad "6" __7 . bare
+__9: vec __1(-factor*shieldr/2, factor*shieldr/2)
+__10: vec __1(factor*shieldr/2, -factor*shieldr/2)
+rpad "7" __9 . bare
+__11: vec __0(leftx, 0mm)
+__12: vec __0(-(frontx-leftx), 0mm)
+__13: vec @(0mm, -npthy)
+__14: vec .(-npthx/2, 0mm)
+__15: vec __13(npthx/2, 0mm)
+__16: vec .(npthr/2, npthr/2)
+__17: vec __15(-npthr/2, -npthr/2)
+hole . __16
+__18: vec __14(npthr/2, npthr/2)
+__19: vec __14(-npthr/2, -npthr/2)
+hole . __18
+__20: vec @(0mm, -row1y)
+__21: vec @(0mm, -row2y)
+__22: vec __20(r/2, r/2)
+__23: vec __20(-r/2, -r/2)
+hole . __22
+__24: vec __20(row1x/2, 0mm)
+__25: vec __20(-row1x/2, 0mm)
+__26: vec __21(row1y/2, 0mm)
+__27: vec __21(-row1y/2, 0mm)
+__28: vec __24(r/2, r/2)
+__29: vec __24(-r/2, -r/2)
+hole . __28
+__30: vec __25(r/2, r/2)
+__31: vec __25(-r/2, -r/2)
+hole . __30
+__32: vec __26(r/2, r/2)
+__33: vec __26(-r/2, -r/2)
+hole . __32
+__34: vec __27(-r/2, -r/2)
+__35: vec __27(r/2, r/2)
+hole __34 .
+__36: vec __24(factor*r/2, -factor*r/2)
+__37: vec __26(factor*r/2, -factor*r/2)
+__38: vec __24(-factor*r/2, factor*r/2)
+rpad "3" __36 . bare
+__39: vec __26(-factor*r/2, factor*r/2)
+rpad "5" __37 . bare
+__40: vec __20(factor*r/2, -factor*r/2)
+__41: vec __20(-factor*r/2, factor*r/2)
+rpad "2" __40 . bare
+__42: vec __27(-factor*r/2, factor*r/2)
+__43: vec __27(factor*r/2, -factor*r/2)
+rpad "4" . __42 bare
+__44: vec __25(factor*r/2, -factor*r/2)
+__45: vec __25(-factor*r/2, factor*r/2)
+rpad "1" __44 . bare
+frame outline @
+measy __6 >> __5 shieldr/2
+measy __19 >> __18 npthr/2
+measy __31 >> __30 r/2
+measy __13 >> __1 -(leftx+0.8mm)
+measy __20 >> __1 -(leftx+1.8mm)
+measy __27 >> __1 -(leftx+row2y/2+2mm)
+meas __2 >> __1 -shieldr
+meas __25 >> __24 row1y-npthy+1.5mm
+meas __27 >> __26 factor*r/2
+meas __12 >> __11 1.6mm
+meas __0 >> __11 0.8mm
+measy __1 >> __0 -(leftx-shieldx/2+0.8mm)
+measy outline.__0 >> __11 -frontx-4mm

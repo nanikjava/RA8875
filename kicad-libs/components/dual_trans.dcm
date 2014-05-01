@@ -1,0 +1,27 @@
+EESchema-DOCLIB  Version 2.0  Date: 28/6/2006-10:05:23
+#
+$CMP XP01111
+D Dual PNP transistor with 10k base and 10k EB resistor
+$ENDCMP
+#
+$CMP XP01114
+D Dual PNP transistor with 10k base and 47k EB resistor
+$ENDCMP
+#
+$CMP XP01115
+D Dual PNP transistor with 10k base resistor
+$ENDCMP
+#
+$CMP XP01211
+D Dual NPN transistor with 10k base and 10k EB resistor
+$ENDCMP
+#
+$CMP XP01214
+D Dual NPN transistor with 10k base and 47k EB resistor
+$ENDCMP
+#
+$CMP XP01215
+D Dual NPN transistor with 10k base resistor
+$ENDCMP
+#
+#End Doc Library

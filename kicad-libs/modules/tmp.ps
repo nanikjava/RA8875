@@ -1,0 +1,387 @@
+%!PS-Adobe-3.0
+%%Pages: 1
+%%EndComments
+%%BeginDefaults
+%%PageResources: font Helvetica Helvetica-Bold
+%%EndDefaults
+%%BeginProlog
+/dotpath {
+    gsave flattenpath pathbbox clip newpath
+    1 setlinecap 100 setlinewidth
+    /ury exch def /urx exch def /lly exch def /llx exch def
+    llx 300 urx {
+	lly 300 ury {
+	    1 index exch moveto 0 0 rlineto stroke
+	} for
+    } for
+    grestore newpath } def
+/hatchpath {
+     gsave flattenpath pathbbox clip newpath
+    /ury exch def /urx exch def /lly exch def /llx exch def
+    lly ury sub 1000 urx llx sub {
+	llx add dup lly moveto
+	ury lly sub add ury lineto stroke
+    } for
+    grestore newpath } def
+/backhatchpath {
+     gsave flattenpath pathbbox clip newpath
+    /ury exch def /urx exch def /lly exch def /llx exch def
+    0 1000 ury lly sub urx llx sub add {
+	llx add dup lly moveto
+	ury lly sub sub ury lineto stroke
+    } for
+    grestore newpath } def
+/crosspath {
+    gsave hatchpath grestore backhatchpath } def
+/horpath {
+     gsave flattenpath pathbbox clip newpath
+    /ury exch def /urx exch def /lly exch def /llx exch def
+    lly 800 ury {
+	dup llx exch moveto
+	urx exch lineto stroke
+    } for
+    grestore newpath } def
+/sdiv { dup 0 eq { pop 1 } if div } def
+/maxfont {
+    gsave 0 0 moveto
+    /f exch def /h exch def /w exch def
+    exch f scalefont setfont
+    false charpath flattenpath pathbbox
+    /ury exch def /urx exch def /lly exch def /llx exch def
+    w urx llx sub sdiv h ury lly sub sdiv 2 copy gt { exch } if pop
+    f mul grestore } def
+/getscale { matrix currentmatrix dup 0 get dup mul exch 1 get dup mul
+    add sqrt } def
+/center {
+    currentpoint /y exch def /x exch def
+    gsave dup false charpath flattenpath pathbbox
+    /ury exch def /urx exch def
+    /lly exch def /llx exch def
+    grestore
+    x llx urx add 2 div sub y lly ury add 2 div sub rmoveto } def
+/hcenter {
+    /off exch def
+    gsave matrix setmatrix dup false charpath flattenpath pathbbox
+    /ury exch def /urx exch def /lly exch def /llx exch def
+    grestore
+    llx urx sub 2 div
+    off rmoveto } def
+/showoutlined {
+    gsave 2 mul setlinewidth 1 setgray 1 setlinejoin
+    dup false charpath flattenpath stroke grestore
+    show } def
+/debugbox { gsave dup false charpath flattenpath pathbbox
+    /ury exch def /urx exch def /lly exch def /llx exch def
+    0 setgray 100 setlinewidth
+    llx lly urx llx sub ury lly sub rectstroke grestore } def
+/originalsize 1 0 matrix currentmatrix idtransform pop def
+/realsize {
+    254 div 72 mul 1000 div 0 matrix currentmatrix idtransform
+    dup mul exch dup mul add sqrt
+    originalsize div } def
+/boxfont { 4 copy 1000 maxfont maxfont scalefont setfont } def
+/pdfmark where { pop }
+    { /globaldict where { pop globaldict } { userdict } ifelse    /pdfmark /cleartomark load put } ifelse
+%%EndProlog
+%%Page: 1 1
+%%BeginPageSetup
+currentpagedevice /PageSize get
+    aload pop
+    2 div exch 2 div exch
+    translate
+    72 254 div 1000 div dup scale
+%%EndPageSetup
+gsave
+53773 120000 translate
+gsave 7.169811 dup scale
+1 setlinecap 0.5 setgray 1270 setlinewidth
+  newpath 0 0 110000 90.000000 450.000000 arc stroke
+0 setgray 150 setlinewidth
+  0 2700 moveto
+  0 15700 13000 -90 90 arc
+  0 28700 lineto
+  0 15700 13000 90 270 arc
+  closepath gsave crosspath grestore stroke
+0 setgray 150 setlinewidth
+  -92600 -13000 moveto
+  -92600 0 13000 -90 90 arc
+  -92600 13000 lineto
+  -92600 0 13000 90 270 arc
+  closepath gsave crosspath grestore stroke
+0 setgray 150 setlinewidth
+  0 -105600 moveto
+  0 -92600 13000 -90 90 arc
+  0 -79600 lineto
+  0 -92600 13000 90 270 arc
+  closepath gsave crosspath grestore stroke
+0 setgray 150 setlinewidth
+  92600 -13000 moveto
+  92600 0 13000 -90 90 arc
+  92600 13000 lineto
+  92600 0 13000 90 270 arc
+  closepath gsave crosspath grestore stroke
+1 setgray 200 setlinewidth
+  0 9200 moveto
+  0 15700 6500 -90 90 arc
+  0 22200 lineto
+  0 15700 6500 90 270 arc
+  closepath gsave fill grestore
+  0 setgray stroke
+0 setgray /Helvetica-Bold findfont dup
+   (NO) 13000 13000
+   boxfont
+   0 15700 moveto
+   (NO) center 250 showoutlined newpath
+1 setgray 200 setlinewidth
+  -92600 -6500 moveto
+  -92600 0 6500 -90 90 arc
+  -92600 6500 lineto
+  -92600 0 6500 90 270 arc
+  closepath gsave fill grestore
+  0 setgray stroke
+0 setgray /Helvetica-Bold findfont dup
+   (A) 13000 13000
+   boxfont
+   -92600 0 moveto
+   (A) center 250 showoutlined newpath
+1 setgray 200 setlinewidth
+  0 -99100 moveto
+  0 -92600 6500 -90 90 arc
+  0 -86100 lineto
+  0 -92600 6500 90 270 arc
+  closepath gsave fill grestore
+  0 setgray stroke
+0 setgray /Helvetica-Bold findfont dup
+   (B) 13000 13000
+   boxfont
+   0 -92600 moveto
+   (B) center 250 showoutlined newpath
+1 setgray 200 setlinewidth
+  92600 -6500 moveto
+  92600 0 6500 -90 90 arc
+  92600 6500 lineto
+  92600 0 6500 90 270 arc
+  closepath gsave fill grestore
+  0 setgray stroke
+0 setgray /Helvetica-Bold findfont dup
+   (COM) 13000 13000
+   boxfont
+   92600 0 moveto
+   (COM) center 250 showoutlined newpath
+1 setgray 200 setlinewidth
+  -45000 -8000 moveto
+  -45000 0 8000 -90 90 arc
+  -45000 8000 lineto
+  -45000 0 8000 90 270 arc
+  closepath gsave fill grestore
+  0 setgray stroke
+1 setgray 200 setlinewidth
+  45000 -8000 moveto
+  45000 0 8000 -90 90 arc
+  45000 8000 lineto
+  45000 0 8000 90 270 arc
+  closepath gsave fill grestore
+  0 setgray stroke
+1 setlinecap 0 setgray 1000 realsize setlinewidth
+  -92600 0 moveto
+  -92600 49999 lineto
+  92600 49999 lineto
+  92600 0 lineto
+  stroke
+  91301 50748 moveto
+  92600 49999 lineto
+  91301 49249 moveto
+  92600 49999 lineto
+  stroke
+  -91301 49250 moveto
+  -92600 49999 lineto
+  -91301 50749 moveto
+  -92600 49999 lineto
+  stroke
+gsave 0 49999 moveto
+    /Helvetica-Bold findfont dup
+    (18.52) 182950 30000 realsize
+    boxfont
+    0.000000 rotate
+    (18.52) 5000 realsize hcenter
+    show grestore
+1 setlinecap 0 setgray 1000 realsize setlinewidth
+  -45000 0 moveto
+  -45000 40000 lineto
+  45000 40000 lineto
+  45000 0 lineto
+  stroke
+  43701 40749 moveto
+  45000 40000 lineto
+  43701 39250 moveto
+  45000 40000 lineto
+  stroke
+  -43701 39251 moveto
+  -45000 40000 lineto
+  -43701 40750 moveto
+  -45000 40000 lineto
+  stroke
+gsave 0 40000 moveto
+    /Helvetica-Bold findfont dup
+    (9) 87750 30000 realsize
+    boxfont
+    0.000000 rotate
+    (9) 5000 realsize hcenter
+    show grestore
+1 setlinecap 0 setgray 1000 realsize setlinewidth
+  -53000 -8000 moveto
+  -53000 -18000 lineto
+  -37000 -18000 lineto
+  -37000 8000 lineto
+  stroke
+  -38299 -17251 moveto
+  -37000 -18000 lineto
+  -38299 -18750 moveto
+  -37000 -18000 lineto
+  stroke
+  -51701 -18749 moveto
+  -53000 -18000 lineto
+  -51701 -17250 moveto
+  -53000 -18000 lineto
+  stroke
+gsave -45000 -18000 moveto
+    /Helvetica-Bold findfont dup
+    (1.6) 13750 30000 realsize
+    boxfont
+    0.000000 rotate
+    (1.6) 5000 realsize hcenter
+    show grestore
+1 setlinecap 0 setgray 1000 realsize setlinewidth
+  -99100 -6500 moveto
+  -99100 -21499 lineto
+  -86100 -21499 lineto
+  -86100 6500 lineto
+  stroke
+  -87399 -20750 moveto
+  -86100 -21499 lineto
+  -87399 -22249 moveto
+  -86100 -21499 lineto
+  stroke
+  -97801 -22248 moveto
+  -99100 -21499 lineto
+  -97801 -20749 moveto
+  -99100 -21499 lineto
+  stroke
+gsave -92600 -21499 moveto
+    /Helvetica-Bold findfont dup
+    (1.3) 10750 30000 realsize
+    boxfont
+    0.000000 rotate
+    (1.3) 5000 realsize hcenter
+    show grestore
+1 setlinecap 0 setgray 1000 realsize setlinewidth
+  0 -92600 moveto
+  -140000 -92600 lineto
+  -140000 15700 lineto
+  0 15700 lineto
+  stroke
+  -140749 14401 moveto
+  -140000 15700 lineto
+  -139250 14401 moveto
+  -140000 15700 lineto
+  stroke
+  -139251 -91301 moveto
+  -140000 -92600 lineto
+  -140750 -91301 moveto
+  -140000 -92600 lineto
+  stroke
+gsave -140000 -38450 moveto
+    /Helvetica-Bold findfont dup
+    (10.83) 106050 30000 realsize
+    boxfont
+    90.000000 rotate
+    (10.83) 5000 realsize hcenter
+    show grestore
+1 setlinecap 0 setgray 1000 realsize setlinewidth
+  0 -92600 moveto
+  -130000 -92600 lineto
+  -130000 0 lineto
+  45000 0 lineto
+  stroke
+  -130749 -1299 moveto
+  -130000 0 lineto
+  -129250 -1299 moveto
+  -130000 0 lineto
+  stroke
+  -129251 -91301 moveto
+  -130000 -92600 lineto
+  -130750 -91301 moveto
+  -130000 -92600 lineto
+  stroke
+gsave -130000 -46300 moveto
+    /Helvetica-Bold findfont dup
+    (9.26) 90350 30000 realsize
+    boxfont
+    90.000000 rotate
+    (9.26) 5000 realsize hcenter
+    show grestore
+1 setlinecap 0 setgray 1000 realsize setlinewidth
+  -105600 13000 moveto
+  -105600 -32000 lineto
+  -79600 -32000 lineto
+  -79600 -13000 lineto
+  stroke
+  -80899 -31251 moveto
+  -79600 -32000 lineto
+  -80899 -32750 moveto
+  -79600 -32000 lineto
+  stroke
+  -104301 -32749 moveto
+  -105600 -32000 lineto
+  -104301 -31250 moveto
+  -105600 -32000 lineto
+  stroke
+gsave -92600 -32000 moveto
+    /Helvetica-Bold findfont dup
+    (2.6) 23750 30000 realsize
+    boxfont
+    0.000000 rotate
+    (2.6) 5000 realsize hcenter
+    show grestore
+1 setlinecap 0 setgray 1000 realsize setlinewidth
+  0 -110000 moveto
+  125000 -110000 lineto
+  125000 110000 lineto
+  0 110000 lineto
+  stroke
+  124251 108701 moveto
+  125000 110000 lineto
+  125750 108701 moveto
+  125000 110000 lineto
+  stroke
+  125749 -108701 moveto
+  125000 -110000 lineto
+  124250 -108701 moveto
+  125000 -110000 lineto
+  stroke
+gsave 125000 0 moveto
+    /Helvetica-Bold findfont dup
+    (22) 217750 30000 realsize
+    boxfont
+    90.000000 rotate
+    (22) 5000 realsize hcenter
+    show grestore
+grestore
+grestore
+gsave 0 120000 translate
+gsave 32.000000 32.000000 scale
+0 setgray 150 setlinewidth
+  -27187 -30625 moveto
+  -18312 -30625 lineto
+  -18312 -33125 lineto
+  -27187 -33125 lineto
+  closepath gsave crosspath grestore stroke
+0 setgray /Helvetica-Bold findfont dup
+   (Normal) 4437 1250
+   boxfont
+   -22749 -31875 moveto
+   (Normal) center 250 showoutlined newpath
+grestore
+grestore
+showpage
+%%EOF

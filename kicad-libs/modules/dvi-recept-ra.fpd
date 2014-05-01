@@ -1,0 +1,181 @@
+/* MACHINE-GENERATED ! */
+
+frame Cpins {
+	table
+	    { n, dx, dy }
+	    { 1, -1, 1 }
+	    { 2, 1, 1 }
+	    { 3, -1, -1 }
+	    { 4, 1, -1 }
+	    { 5, 0, 2 }
+	    { 5, 0, -2 }
+
+	__0: vec @(dx*Cpitch/2, dy*Cpitch/2)
+	__1: vec .(Cr/2, Cr/2)
+	__2: vec __0(-Cr/2, -Cr/2)
+	hole . __1
+	__3: vec __0(factor*Cr/2, -factor*Cr/2)
+	__4: vec __0(-factor*Cr/2, factor*Cr/2)
+	rpad "C$n" . __3 bare
+}
+
+frame shield {
+	table
+	    { n, dx }
+	    { 25, -1 }
+	    { 26, 1 }
+
+	__0: vec @(dx*shieldx/2, 0mm)
+	__1: vec .(shr/2, shr/2)
+	__2: vec __0(-shr/2, -shr/2)
+	hole . __1
+	__3: vec __0(factor*shr/2, -factor*shr/2)
+	__4: vec __0(-factor*shr/2, factor*shr/2)
+	rpad "$n" . __3 bare
+}
+
+frame ckt17pins {
+	set n = i+17
+
+	__0: vec @(i*cktpitch, 0mm)
+	__1: vec .(cktr/2, cktr/2)
+	__2: vec __0(-cktr/2, -cktr/2)
+	hole . __1
+	__3: vec __0(-factor*cktr/2, factor*cktr/2)
+	__4: vec __0(factor*cktr/2, -factor*cktr/2)
+	rpad "$n" __3 . bare
+}
+
+frame ckt9pins {
+	set n = i+9
+
+	__0: vec @(i*cktpitch, 0mm)
+	__1: vec .(cktr/2, cktr/2)
+	__2: vec __0(-cktr/2, -cktr/2)
+	hole . __1
+	__3: vec __0(-factor*cktr/2, factor*cktr/2)
+	__4: vec __0(factor*cktr/2, -factor*cktr/2)
+	rpad "$n" __3 . bare
+}
+
+frame ckt1pins {
+	set n = i+1
+
+	__0: vec @(i*cktpitch, 0mm)
+	__1: vec .(cktr/2, cktr/2)
+	__2: vec __0(-cktr/2, -cktr/2)
+	hole . __1
+	__3: vec __0(-factor*cktr/2, factor*cktr/2)
+	__4: vec __0(factor*cktr/2, -factor*cktr/2)
+	rpad "$n" __3 . bare
+}
+
+frame ckt {
+	loop i = 0, 7
+
+	__0: vec @(0mm, -ckt1to17y/2)
+	frame ckt9pins .
+	__1: vec .(0mm, -ckt1to17y/2)
+	frame ckt17pins .
+	__2: vec .(i*cktpitch, 0mm)
+	frame ckt1pins @
+}
+
+frame npth {
+	table
+	    { dx }
+	    { -1 }
+	    { 1 }
+
+	__0: vec @(dx*npthx/2, 0mm)
+	__1: vec .(-npthr/2, npthr/2)
+	__2: vec __0(npthr/2, -npthr/2)
+	hole __1 .
+}
+
+frame outline {
+	__0: vec @(-L/2, -(npth2edgey+frontmetaly))
+	__1: vec .(L, PCBy+frontmetaly)
+	rect __0 . w
+	__2: vec .(0mm, -PCBy)
+	__3: vec __0(0mm, frontmetaly)
+	line . __2 w
+	__4: vec @(0mm, -(npth2edgey+frontmetaly))
+	__5: vec .(0mm, -face2outlety)
+	__6: vec .(-face2outletx/2, 0mm)
+	__7: vec __4(face2outletx/2, 0mm)
+	rect __6 . w
+}
+
+package "DVI-RECEPT-RA"
+unit mm
+
+set npthx = 19.05mm
+
+set npthr = 1.93mm
+
+set npth2edgey = 1.93mm
+
+set shr = 1.93mm
+
+set ckt1to17y = 3.81mm
+
+set ckt17y = 3.3mm
+
+set ckt1toPCBedgey = 9.63mm
+
+set cktpitch = 1.91mm
+
+set cktr = 0.86mm
+
+set face2outlety = 6.5mm
+
+set face2outletx = 24.03mm
+
+set factor = 1.6
+
+set shieldx = 30.73mm
+
+set C4y = 3.94mm
+
+set C5y = 2.67mm
+
+set Cpitch = 2.54mm
+
+set Cr = 0.66mm
+
+set L = 36.83mm
+
+set PCBy = 10.95mm
+
+set frontmetaly = ckt1toPCBedgey-ckt1to17y-ckt17y-npth2edgey
+
+set w = 5mil
+
+__0: vec @(-npthx/2, ckt17y+ckt1to17y)
+frame ckt .
+__1: vec @(0mm, ckt17y)
+frame shield .
+__2: vec @(npthx/2-Cpitch/2, C4y+Cpitch/2)
+frame Cpins .
+frame npth @
+frame outline @
+meas npth.__0 >> npth.__0 -(npthr/2+0.5mm)
+meas __0 >> ckt1pins.__0 factor*cktr/2+0.5mm
+measy shield.__0 << npth.__0 shieldx-factor*shr/2-0.5mm
+measy shield.__0 >> __0 factor*shr+0.7mm
+measx Cpins.__0 -> Cpins.__0 -(Cpitch-Cr/2)
+measx Cpins.__0 >> Cpins.__0 -Cpitch
+meas Cpins.__0 >> Cpins.__0 -Cpitch
+measy Cpins.__0 << npth.__0 -Cpitch/2
+measy Cpins.__0 -> Cpins.__0
+meas ckt.__1 -> ckt.__2 -(factor*cktr/2+0.5mm)
+measx outline.__0 >> outline.__1 PCBy+frontmetaly+1.5mm
+measy outline.__3 >> outline.__1 2.2mm
+meas shield.__0 >> shield.__0 6.5mm
+measy outline.__3 -> npth.__0 0.8mm
+measy outline.__0 >> __0 1.5mm
+measx outline.__6 >> outline.__7 -0.8mm
+measy outline.__6 >> outline.__4 0.8mm
+measy outline.__6 >> outline.__1 (L-face2outletx)/2+3mm
+measy outline.__0 -> npth.__0 -factor*shr

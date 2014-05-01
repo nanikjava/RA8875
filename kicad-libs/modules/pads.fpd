@@ -1,0 +1,104 @@
+/* MACHINE-GENERATED ! */
+
+frame padS_silk {
+	set x1 = x/2+2.5*w
+
+	set y1 = y/2+2.5*w
+
+	set ?nosilk = ""
+
+	__2: vec @(-x1, y1)
+	__3: vec @(x1, -y1)
+	rect __2 . w
+}
+
+frame padS {
+	set ?type = "S"
+
+	__0: vec @(x/2, y/2)
+	__1: vec @(-x/2, -y/2)
+	pad "1" __0 . bare
+	frame padS_silk @
+}
+
+frame padR_silk {
+	set x1 = x/2+2*w
+
+	set y1 = y/2+2*w
+
+	set ?nosilk = ""
+
+	__2: vec @(-x1, y1)
+	__3: vec @(x1, -y1)
+	rect __2 . w
+}
+
+frame padR {
+	set ?type = "R"
+
+	__0: vec @(x/2, y/2)
+	__1: vec @(-x/2, -y/2)
+	rpad "1" . __0 bare
+	frame padR_silk @
+}
+
+frame padC_silk {
+	set x1 = (x+w)/2
+
+	set y1 = (y+w)/2
+
+	set ?nosilk = ""
+
+	__2: vec @(-x1, y1)
+	circ @ . w
+	__3: vec @(x1, -y1)
+}
+
+frame padC {
+	set ?type = "C"
+
+	__0: vec @(x/2, y/2)
+	__1: vec @(-x/2, -y/2)
+	rpad "1" . __0 bare
+	frame padC_silk @
+}
+
+package "PAD_${type}_$size$nosilk"
+unit auto
+
+table
+    { size, type, x, y }
+    { "1mm", "C", 1mm, 1mm }
+    { 1mm, "S", 1mm, 1mm }
+    { "2mm", "R", 2mm, 0.5mm }
+    { "60x60", "C", 60mil, 60mil }
+    { "60x60", "S", 60mil, 60mil }
+    { "80x80", "C", 80mil, 80mil }
+    { "80x80", "S", 80mil, 80mil }
+    { "100x100", "C", 100mil, 100mil }
+    { "100x100", "S", 100mil, 100mil }
+    { "120x60", "R", 120mil, 60mil }
+    { "120x120", "S", 120mil, 120mil }
+    { "150x150", "C", 150mil, 150mil }
+    { "150x150", "S", 150mil, 150mil }
+
+set factor = 0.7
+
+set w = 5mil
+
+table
+    { nosilk }
+    { "" }
+    { "-NOSILK" }
+
+frame padC @
+frame padR @
+frame padS @
+measy padC.__1 >> padC.__0 y/2
+measy padS.__1 >> padS.__0 1mm
+measx padS_silk.__2 >> padS_silk.__3 1mm
+measx padC_silk.__2 >> padC_silk.__3 1mm
+measy padR.__1 >> padR.__0 1mm
+measx padR.__1 >> padR.__0 -1mm
+measx padR_silk.__2 >> padR_silk.__3 1mm
+measy padR_silk.__3 >> padR_silk.__2 -1mm

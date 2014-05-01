@@ -1,0 +1,81 @@
+/* MACHINE-GENERATED ! */
+
+frame contact {
+	set dx = px/2
+
+	set dy = (py+pyo)/2
+
+	__0: vec @(dx, dy)
+	__1: vec @(-dx, -dy)
+	pad "$i" . __0
+}
+
+frame contacts {
+	set x = -(i-n/2-0.5)*e
+
+	loop i = 1, n
+
+	__0: vec @(x, 0mm)
+	frame contact .
+}
+
+frame hole {
+	__0: vec @(hr, 0mm)
+	circ @ . w
+	__1: vec @(-hr, 0mm)
+	line . __0 w
+	__2: vec @(0mm, hr)
+	__3: vec @(0mm, -hr)
+	line __2 . w
+}
+
+frame outline {
+	set y0 = -py/2
+
+	set yn = ny+y0
+
+	__0: vec @(-cx/2, y0)
+	__1: vec .(0mm, cy)
+	line __0 . w
+	__2: vec @(cx/2, y0)
+	__3: vec .(0mm, cy)
+	line __2 . w
+	__4: vec @(-nx/2, yn)
+	line __1 . w
+	__5: vec @(nx/2, yn)
+	line __3 . w
+	__6: vec @(hx/2, hy+y0)
+	frame hole .
+	__7: vec @(-hx/2, hy+y0)
+	frame hole .
+}
+
+package "ER-OLED-FPC30"
+unit mm
+
+table
+    { n, e, px, py, pyo }
+    { 30, 0.7mm, 0.46mm, 2mm, 0.3mm }
+
+table
+    { cx, cy, nx, ny }
+    { 22mm, 4mm, 12mm, 6.887mm }
+
+table
+    { hx, hy, hr }
+    { 16mm, 4.75mm, 0.4mm }
+
+set w = 5mil
+
+frame outline @
+frame contacts @
+measx contacts.__0 -> contacts.__0 -py/2-1mm
+measy contact.__1 -> contact.__0 2mm
+measy outline.__2 >> outline.__3 -1mm
+measy outline.__2 >> outline.__5 -3mm
+measx outline.__0 >> outline.__2 -3mm
+measx contacts.__0 >> contacts.__0 -3mm
+measx outline.__0 -> contacts.__0 -2mm
+measx outline.__7 >> outline.__6
+measy outline.__2 >> outline.__6 -2mm
+measx outline.__4 >> outline.__5

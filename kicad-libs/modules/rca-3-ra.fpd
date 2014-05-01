@@ -1,0 +1,150 @@
+/* MACHINE-GENERATED ! */
+
+frame base {
+	table
+	    { dx }
+	    { -1 }
+	    { 1 }
+
+	__0: vec @(dx*(pitch+pin2base), 0mm)
+	__1: vec .(brx/2, bry/2)
+	__2: vec __0(-brx/2, -bry/2)
+	hole . __1
+}
+
+frame gnds {
+	table
+	    { n, dx }
+	    { 1, -1 }
+	    { 3, 0 }
+	    { 5, 1 }
+
+	__0: vec @(dx*pitch, 0mm)
+	__1: vec .(grx/2, gry/2)
+	__2: vec __0(-grx/2, -gry/2)
+	hole . __1
+	__3: vec __0(factor*grx/2, -factor*gry/2)
+	__4: vec __0(-factor*grx/2, factor*gry/2)
+	rpad "$n" . __3 bare
+}
+
+frame pins {
+	table
+	    { n, dx }
+	    { 2, -1 }
+	    { 4, 0 }
+	    { 6, 1 }
+
+	__0: vec @(dx*pitch, 0mm)
+	__1: vec .(prx/2, pry/2)
+	__2: vec __0(-prx/2, -pry/2)
+	hole . __1
+	__3: vec __0(factor*prx/2, -factor*pry/2)
+	__4: vec __0(-factor*prx/2, factor*pry/2)
+	rpad "$n" . __3 bare
+}
+
+frame outline {
+	loop i = -1, 1
+
+	__0: vec @(-L/2, -(W-pin2front))
+	__1: vec @(L/2, pin2front)
+	rect __0 . w
+	__2: vec @(0mm, pin2front)
+	__3: vec .(0mm, ringgapy)
+	__4: vec __2(-pitch, 0mm)
+	__5: vec __2(pitch, 0mm)
+	__6: vec __3(pitch, 0mm)
+	__7: vec __3(-pitch, 0mm)
+	__8: vec __5(ringgapx/2, 0mm)
+	__9: vec __6(ringgapx/2, 0mm)
+	line . __8 w
+	__10: vec __6(-ringgapx/2, 0mm)
+	line __9 . w
+	__11: vec __5(-ringgapx/2, 0mm)
+	line __10 . w
+	__12: vec __2(ringgapx/2, 0mm)
+	__13: vec __3(ringgapx/2, 0mm)
+	line . __12 w
+	__14: vec __3(-ringgapx/2, 0mm)
+	line __13 . w
+	__15: vec __2(-ringgapx/2, 0mm)
+	line __14 . w
+	__16: vec __4(-ringgapx/2, 0mm)
+	__17: vec __7(-ringgapx/2, 0mm)
+	line . __16 w
+	__18: vec __7(ringgapx/2, 0mm)
+	line . __17 w
+	__19: vec __4(ringgapx/2, 0mm)
+	line __18 . w
+	__20: vec __7(outletx/2, outlety)
+	__21: vec __3(outletx/2, outlety)
+	__22: vec __6(outletx/2, outlety)
+	__23: vec __3(-outletx/2, 0mm)
+	rect . __21 w
+	__24: vec __7(-outletx/2, 0mm)
+	rect . __20 w
+	__25: vec __6(-outletx/2, 0mm)
+	rect . __22 w
+}
+
+package "RCA-3-RA"
+unit mm
+
+set gap = 4.5mm
+
+set pin2front = 5.2mm
+
+set pitch = 15mm
+
+set pin2base = 6.5mm
+
+set factor = 1.6
+
+set grx = 2.5mm
+
+set gry = 1.2mm
+
+set prx = 1mm
+
+set pry = 2.5mm
+
+set brx = 2mm
+
+set bry = 3.7mm
+
+set w = 5mil
+
+set L = 45mm
+
+set W = gap+pin2front+factor*pry/2+w
+
+set ringgapy = 1.3mm
+
+set ringgapx = 11.6mm
+
+set outlety = 7mm
+
+set outletx = 8.3mm
+
+__0: vec @(0mm, gap)
+frame gnds .
+frame base .
+frame outline .
+frame pins @
+measy pins.__2 -> pins.__1 factor*prx/2+0.5mm
+measx pins.__2 -> pins.__1 -factor*pry/2
+measy gnds.__2 -> gnds.__1 factor*grx/2+0.5mm
+measx gnds.__2 -> gnds.__1 -factor*gry/2
+measy base.__2 -> base.__1 brx/2
+measx base.__2 -> base.__1 -bry/2
+measy __0 << pins.__0 -(pin2base+brx/2+0.5mm)
+meas gnds.__0 >> __0 3.5mm
+meas __0 >> gnds.__0 3.5mm
+measx base.__0 -> gnds.__0 3.5mm
+measx outline.__0 >> outline.__1 -1.5mm
+measy outline.__0 >> outline.__1 2mm
+meas outline.__16 >> outline.__17 3.7mm
+measx outline.__24 >> outline.__20 outlety+1mm
+meas outline.__17 >> outline.__18 outlety+2mm
+measy outline.__9 >> outline.__22 -1mm

@@ -1,0 +1,80 @@
+/* MACHINE-GENERATED ! */
+
+frame pin {
+	__0: vec @(padw/2, C/2)
+	__1: vec @(-padw/2, -C/2)
+	pad "$n" . __0
+}
+
+frame pins_bottom {
+	set n = i+1
+
+	__0: vec @(x, 0mm)
+	frame pin .
+}
+
+frame pins_top {
+	set n = N-i
+
+	__0: vec @(x, 0mm)
+	frame pin .
+}
+
+frame pins {
+	set y = W/2
+
+	set x = (i-(N/2-1)/2)*e
+
+	loop i = 0, N/2-1
+
+	__0: vec @(0mm, y)
+	frame pins_top .
+	__1: vec @(0mm, -y)
+	frame pins_bottom .
+}
+
+frame marker {
+	set r = 0.7mm
+
+	__0: vec @(-(E/2+0.6mm), -W/2)
+	__1: vec .(-r/3, 0mm)
+	circ __0 . w
+}
+
+frame outline {
+	set w = 5mil
+
+	set x = E
+
+	set y = D1
+
+	__0: vec @(x/2, y/2-C/4)
+	__1: vec @(-x/2, -(y/2-C/4))
+	rect . __0 w
+	__2: vec @(-x/2, D1/2)
+	__3: vec @(-x/2, -D1/2)
+	frame marker @
+}
+
+package "$name-$N"
+unit mm
+
+table
+    { name, N, B, C, D, D1, E, e, padw, W, Z }
+    { "TSOP", 28, 11.25mm, 1.4mm, 13.425mm, 11.8mm, 8mm, 0.55mm, 0.2mm, 12.65mm, 0.425mm }
+    { "TSOP", 32, 18.1mm, 1.39mm, 20mm, 18.4mm, 8mm, 0.5mm, 0.27mm, 19.49mm, 0.25mm }
+    { "TSOP", 56, 18.1mm, 1.39mm, 20mm, 18.4mm, 14mm, 0.5mm, 0.27mm, 19.49mm, 0.25mm }
+    { "TSOP", 66, 9.85mm, 1.25mm, 11.76mm, 10.16mm, 22.22mm, 0.65mm, 0.45mm, 11.1mm, 0.71mm }
+
+frame outline @
+frame pins @
+measy pin.__1 -> pin.__0 1mm
+measy pin.__1 >> pin.__0 -E-3mm
+measy pin.__0 >> pin.__1 -E-0.2mm
+measx pin.__1 -> pin.__0 -e
+measx pins_top.__0 -> pins_top.__0 -2mm
+measy pins.__0 << pins_bottom.__0 -C-1.2mm
+measy outline.__0 >> outline.__1 -E-C
+measx outline.__1 >> outline.__0 B+C+1mm
+measy outline.__2 >> outline.__3 -C-0.5mm
+measx outline.__2 -> pins_top.__0 -1mm

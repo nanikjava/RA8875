@@ -1,0 +1,105 @@
+/* MACHINE-GENERATED ! */
+
+frame pad {
+	set x = dx*e
+
+	set y = dy*cy/2
+
+	__2: vec @(x, y)
+	__0: vec .(px/2, py/2)
+	__1: vec __2(-px/2, -py/2)
+	pad "$n" . __0
+}
+
+frame marker {
+	set x = D/2+r+w+clear
+
+	set r = (px-w)/2
+
+	set clear = 0.15mm
+
+	set y = cy/2
+
+	__0: vec @(-x, -y)
+	__1: vec .(r, 0mm)
+	circ __0 . w
+}
+
+frame outline {
+	__0: vec @(D/2, E/2)
+	__1: vec @(D/2, -E/2)
+	line __0 . w
+	__2: vec @(-D/2, E/2)
+	__3: vec @(-D/2, -E/2)
+	line . __2 w
+}
+
+frame pads6 {
+	table
+	    { n, dx, dy }
+	    { 1, -1, -1 }
+	    { 2, 0, -1 }
+	    { 3, 1, -1 }
+	    { 4, 1, 1 }
+	    { 5, 0, 1 }
+	    { 6, -1, 1 }
+
+	loop if = sqrt((N-6)*(N-6)), 0
+
+	frame marker @
+	frame outline @
+	frame pad @
+}
+
+frame pads3 {
+	table
+	    { n, dx, dy }
+	    { 1, -1, -1 }
+	    { 2, 1, -1 }
+	    { 3, 0, 1 }
+
+	loop if = sqrt((N-3)*(N-3)), 0
+
+	frame outline @
+	frame pad @
+}
+
+frame pads5 {
+	table
+	    { n, dx, dy }
+	    { 1, -1, -1 }
+	    { 2, 0, -1 }
+	    { 3, 1, -1 }
+	    { 4, 1, 1 }
+	    { 5, -1, 1 }
+
+	loop if = sqrt((N-5)*(N-5)), 0
+
+	frame marker @
+	frame outline @
+	frame pad @
+}
+
+package "SOT-$Name"
+unit mm
+
+table
+    { Name, N, D, E, e, cy, px, py }
+    { "235", 5, 3.05mm, 1.65mm, 0.95mm, 2.7mm, 0.6mm, 1.05mm }
+    { "236", 6, 3.05mm, 1.65mm, 0.95mm, 2.7mm, 0.6mm, 1.05mm }
+    { "323", 3, 2mm, 1.25mm, 0.65mm, 1.9mm, 0.7mm, 0.9mm }
+    { "363", 6, 2mm, 1.25mm, 0.65mm, 1.9mm, 0.4mm, 0.5mm }
+    { "523", 3, 1.6mm, 0.8mm, 0.5mm, 1.3mm, 0.4mm, 0.51mm }
+    { "563", 6, 1.6mm, 1.2mm, 0.5mm, 1.35mm, 0.3mm, 0.45mm }
+
+set w = 5mil
+
+frame pads6 @
+frame pads3 @
+frame pads5 @
+measx outline.__2 >> outline.__0 (cy-E+py)/2+0.5mm
+measy outline.__3 >> outline.__2 0.5mm
+measx pad.__1 -> pad.__0 -0.5mm
+measy pad.__1 -> pad.__0 0.2mm
+measx pad.__2 -> pad.__2 0.5mm
+measy pad.__2 >> pad.__2 -D

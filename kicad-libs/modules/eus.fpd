@@ -1,0 +1,75 @@
+/* MACHINE-GENERATED ! */
+
+frame pin {
+	__0: vec @(Hole/2, Hole/2)
+	__1: vec @(-Hole/2, -Hole/2)
+	hole . __0
+	__2: vec @(ratio*Hole/2, -ratio*Hole/2)
+	__3: vec @(-ratio*Hole/2, ratio*Hole/2)
+	rpad "$n" . __2 bare
+}
+
+frame pins {
+	table
+	    { n, top, ix }
+	    { 1, 0, 0 }
+	    { 2, 0, 1 }
+	    { 3, 0, 2 }
+	    { 4, 0, 3 }
+	    { 5, 1, 3 }
+	    { 6, 1, 0 }
+
+	set x = (ix-N/4+0.5)*Pitch
+
+	set y = h*(top-0.5)
+
+	__0: vec @(x, y)
+	frame pin .
+}
+
+frame marker {
+	set r = ((N/2-1)*Pitch-x)/3
+
+	__0: vec @(-x/2-Hole+w, -(H-Hole)/2)
+	__1: vec .(-r/3, 0mm)
+	circ __0 . w
+}
+
+frame outline {
+	set w = 5mil
+
+	set x = W
+
+	set y = H
+
+	__0: vec @(x/2, y/2)
+	__1: vec @(-x/2, -y/2)
+	rect . __0 w
+	frame marker @
+}
+
+package "EUS"
+unit auto
+
+set Pitch = 3.18mm
+
+set Hole = 1.4mm
+
+set ratio = 1.8
+
+table
+    { name, N, B, H, h, W }
+    { "EUS", 8, 2.8mm, 19.94mm, 15.88mm, 13.59mm }
+
+frame outline @
+frame pins @
+measy outline.__0 >> outline.__1 -18mm
+measx outline.__1 >> outline.__0 -3mm
+measx outline.__0 << pins.__0 3mm
+measy outline.__0 << pins.__0 -4mm
+measx pins.__0 >> pins.__0 h+3mm
+measx outline.__1 -> pins.__0 5mm
+measx pins.__0 -> pins.__0 3mm
+measx pin.__1 -> pin.__0 -2.5mm
+measy pin.__2 -> pin.__3 6mm
+measx pin.__3 -> pin.__2 -6mm

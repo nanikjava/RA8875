@@ -1,0 +1,98 @@
+/* MACHINE-GENERATED ! */
+
+frame outline {
+	__0: vec @(-rightx, -(reary-edgey))
+	__1: vec @(leftx, edgey)
+	rect __0 . w
+	__2: vec @(panelcutoutx/2, edgey+fronty)
+	__4: vec .(0mm, -fronty)
+	line __2 . w
+	__3: vec @(-panelcutoutx/2, edgey+fronty)
+	line __2 . w
+	__5: vec .(0mm, -fronty)
+	line __3 . w
+	__6: vec @(screwx/2, edgey)
+	__7: vec @(-screwx/2, edgey)
+}
+
+package "XLR-PANEL-HORIZ/PCB-SOCKET"
+unit mm
+
+set x2 = 3.81mm
+
+set x1 = 3.81mm
+
+set y2 = 0.635mm
+
+set y3 = 4.45mm
+
+set edgey = 12.7mm
+
+set r1 = 1.6mm
+
+set r3 = 1.2mm
+
+set factor = 1.6
+
+set fronty = 2.7mm
+
+set reary = 19.5mm
+
+set leftx = 12.8mm
+
+set rightx = 12.5mm
+
+set w = 5mil
+
+set panelcutoutx = 22mm
+
+set screwx = 19.8mm
+
+__0: vec @(x2, -y2)
+__1: vec @(0mm, -y3)
+__2: vec @(-x1, 0mm)
+__3: vec @(0mm, edgey)
+__4: vec .(-x1, -x1)
+__5: vec __3(x2, -8.89mm)
+__6: vec __1(r3/2, r3/2)
+__7: vec __1(-r3/2, -r3/2)
+hole . __6
+__8: vec __0(r1/2, r1/2)
+__9: vec __0(-r1/2, -r1/2)
+hole . __8
+__10: vec __2(r1/2, r1/2)
+__11: vec __2(-r1/2, -r1/2)
+hole . __10
+__14: vec __4(r1/2, r1/2)
+__15: vec __4(-r1/2, -r1/2)
+hole . __14
+__12: vec __5(r1/2, r1/2)
+__13: vec __5(-r1/2, -r1/2)
+hole . __12
+__16: vec __0(factor*r1/2, -factor*r1/2)
+__17: vec __0(-factor*r1/2, factor*r1/2)
+rpad "2" . __16 bare
+__18: vec __2(factor*r1/2, -factor*r1/2)
+__19: vec __2(-factor*r1/2, factor*r1/2)
+rpad "1" . __18 bare
+__20: vec __1(factor*r3/2, -factor*r3/2)
+__21: vec __1(-factor*r3/2, factor*r3/2)
+rpad "3" . __20 bare
+__22: vec __3(0mm, fronty)
+frame outline @
+measy __9 >> __8 -(factor+2)*r1/2
+measy __7 >> __6 -(factor+2.5)*r3/2
+measy __0 >> __2 2*x1+(factor+1)*r1/2
+measy __1 >> __2 x1+(factor+2)*r1/2
+measy __2 >> __3 (factor+2)*r1/2
+measy __4 >> __3
+measx __4 >> __3 x1+0.5mm
+measx __3 >> __5 0.5mm
+measy __5 >> __3 -r1
+meas __3 >> __22 (factor+2)*r1/2+x1
+measy outline.__0 >> __3 0.8mm
+measx outline.__0 >> __22 reary/2
+meas outline.__3 >> outline.__2 0.8mm
+meas __3 >> outline.__1 -reary/2
+meas outline.__7 >> outline.__6 fronty/2
+measx outline.__0 >> outline.__1 0.6mm

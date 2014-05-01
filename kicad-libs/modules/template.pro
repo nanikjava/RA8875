@@ -1,0 +1,22 @@
+update=Thu Dec 20 21:59:41 2012
+last_client=pcbnew
+[pcbnew]
+version=1
+LastNetListRead=
+PadDrlX=320
+PadDimH=600
+PadDimV=600
+BoardThickness=630
+TxtPcbV=800
+TxtPcbH=600
+TxtModV=600
+TxtModH=600
+TxtModW=120
+VEgarde=100
+DrawLar=150
+EdgeLar=150
+TxtLar=120
+MSegLar=150
+[pcbnew/libraries]
+LibDir=
+LibName1=qfn

@@ -1,0 +1,95 @@
+/* MACHINE-GENERATED ! */
+
+frame piny {
+	set name = i*f+a
+
+	__0: vec @(dx*(py/2+pe), px/2)
+	__1: vec @(-dx*py/2, -px/2)
+	pad "$name" . __0
+}
+
+frame pinsy {
+	set y = e*(i-(ny-1)/2)
+
+	set x = sx/2-py/2-b
+
+	table
+	    { dx, f, a }
+	    { -1, -1, ny }
+	    { 1, 1, pins-ny-nx+1 }
+
+	loop i = 0, ny-1
+
+	__0: vec @(x*dx, y)
+	frame piny .
+}
+
+frame pinx {
+	set name = i*f+a
+
+	__0: vec @(px/2, -dy*py/2)
+	__1: vec @(-px/2, dy*py/2)
+	__2: vec .(0mm, dy*pe)
+	pad "$name" . __0
+}
+
+frame outline {
+	set corner = gap*2-(w+0.2mm)/sqrt(2)
+
+	__0: vec @(sx/2, sy/2)
+	__1: vec __0(gap, gap)
+	__2: vec @(-sx/2, -sy/2)
+	__3: vec __2(-gap, -gap)
+	rect . __1 w
+	__4: vec @(-sx/2, sy/2)
+	__5: vec .(-gap, gap)
+	__6: vec .(corner, 0mm)
+	__7: vec __5(0mm, -corner)
+	line . __6 w
+}
+
+frame pinsx {
+	set x = e*(i-(nx-1)/2)
+
+	set y = sy/2-py/2-b
+
+	table
+	    { dy, f, a }
+	    { -1, 1, ny+1 }
+	    { 1, -1, pins }
+
+	loop i = 0, nx-1
+
+	__0: vec @(x, y*dy)
+	frame pinx .
+}
+
+package "LGA-$pins-${sizex}x${sizey}"
+unit mm
+
+table
+    { nx, ny, sx, sy, e, b, px, py, pe }
+    { 3, 5, 3mm, 3mm, 0.5mm, 0.1mm, 0.25mm, 0.35mm, 0.2mm }
+
+set pins = 2*(nx+ny)
+
+set sizex = sx/1mm
+
+set sizey = sy/1mm
+
+set w = 5mil
+
+set gap = 0.2mm+w/2+0.1mm
+
+frame pinsx @
+frame pinsy @
+frame outline @
+measx outline.__2 >> outline.__0 -1.5mm
+measy outline.__2 >> outline.__0 1.5mm
+measx pinsx.__0 -> pinsx.__0 -1.5mm
+measx pinx.__2 -> pinx.__0 py+0.5mm
+measy pinx.__1 -> pinx.__0 0.2mm
+measy pinx.__2 -> pinx.__1 0.2mm
+measy outline.__3 >> outline.__5 1.5mm
+measx outline.__3 >> outline.__1 -1.5mm
+measy pinx.__1 >> outline.__2 -0.5mm

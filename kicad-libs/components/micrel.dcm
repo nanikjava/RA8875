@@ -1,0 +1,21 @@
+EESchema-DOCLIB  Version 2.0  Date: Fri 06 Apr 2012 14:21:45 CST
+#
+$CMP KSZ8001L
+D KSZ8001L, TRANSCEIVER ETHERNET, 8001, LQFP-48
+K TRANSCEIVER
+F http://www.micrel.com/_PDF/Ethernet/datasheets/KS8001-ds.pdf
+$ENDCMP
+#
+$CMP MIC2090-1YM5
+D MIC2090-1YM5 TR, PMIC - Power Distribution Switches High Side Switch 50MA Rds (On)=1.2 Ohm Current Limit=75mA, SOT-23-5
+K PMIC 
+F http://www.micrel.com/_PDF/mic2090_1.pdf
+$ENDCMP
+#
+$CMP MIC2550AYTS
+D MIC2550AYTS, Universal Serial Bus Transceiver, 14-TSSOP
+K USB TRANSCEIVER
+F http://www.micrel.com/_PDF/mic2550a.pdf
+$ENDCMP
+#
+#End Doc Library

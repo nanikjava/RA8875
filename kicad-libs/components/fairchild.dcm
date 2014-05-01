@@ -1,0 +1,15 @@
+EESchema-DOCLIB  Version 2.0  Date: Wed 04 Apr 2012 11:11:04 CST
+#
+$CMP 2N7002MTF
+D 2N7002MTF, N-Channel Small Signal MOSFET RDS(on) = 5.0 Ω BVDSS = 60 V ID = 200mA, SOT-23
+K N MOSFET
+F http://www.fairchildsemi.com/ds/2N%2F2N7002MTF.pdf
+$ENDCMP
+#
+$CMP 6N138
+D 6N138S, 8-Pin SMD Single-Channel Low Input Current High Gain Split Darlington Output Optocoupler
+K Darlington
+F http://www.fairchildsemi.com/ds/6N/6N138.pdf
+$ENDCMP
+#
+#End Doc Library

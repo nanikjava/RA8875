@@ -1,0 +1,21 @@
+EESchema-DOCLIB  Version 2.0  Date: Thu 05 Apr 2012 21:38:13 CST
+#
+$CMP 48025-0002
+D 48025-0002, Telecom & Ethernet Connectors RA MOD JACK 8/8 W/ LEDS
+K ETHERNET CON
+F http://www.molex.com/pdm_docs/sd/480250002_sd.pdf
+$ENDCMP
+#
+$CMP 67298-4090
+D 67298-4090, CONN RECEPT USB STACKED R/A WHT HORIZONTAL THROUGH HOLE
+K USB CONN
+F http://www.molex.com/pdm_docs/sd/672984090_sd.pdf
+$ENDCMP
+#
+$CMP 74320-1004
+D 74320-1004, CONN RECEPT ANALOG DIGITAL DVI
+K DVI CON
+F http://www.molex.com/pdm_docs/sd/743201004_sd.pdf
+$ENDCMP
+#
+#End Doc Library

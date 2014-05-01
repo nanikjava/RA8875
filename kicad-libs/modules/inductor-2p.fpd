@@ -1,0 +1,47 @@
+/* MACHINE-GENERATED ! */
+
+frame pads {
+	set y = (2*i-1)*(py+gap)/2
+
+	set name = i+1
+
+	loop i = 0, 1
+
+	__0: vec @(0mm, y)
+	__1: vec .(px/2, py/2)
+	__2: vec __0(-px/2, -py/2)
+	pad "$name" . __1
+}
+
+frame outline {
+	__0: vec @(sizex/2, sizey/2)
+	__1: vec .(clear, clear)
+	__2: vec @(sizex/2, -sizey/2)
+	__3: vec .(clear, -clear)
+	line . __1 w
+	__4: vec @(-sizex/2, sizey/2)
+	__5: vec .(-clear, clear)
+	__6: vec @(-sizex/2, -sizey/2)
+	__7: vec .(-clear, -clear)
+	line . __5 w
+}
+
+package "INDUCTOR-2P-${sizex}x${sizey}"
+unit mm
+
+table
+    { sizex, sizey, px, py, gap }
+    { 3mm, 3mm, 2.7mm, 1mm, 1.2mm }
+
+set clear = 0.1mm+w/2
+
+set w = 5mil
+
+frame pads @
+frame outline @
+measy pads.__2 >> pads.__1 1.5mm
+measx pads.__2 -> pads.__1 -1mm
+measy pads.__2 -> pads.__1 1mm
+measy pads.__1 >> pads.__2 px+1mm
+measx outline.__6 >> outline.__2 -1.5mm
+measy outline.__2 >> outline.__0 -1mm

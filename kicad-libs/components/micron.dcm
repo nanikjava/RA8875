@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0  Date: Thu 05 Apr 2012 21:50:00 CST
+#
+$CMP MT46V32M16P
+D MT46V32M16P, 8 Meg x 16 x 4 banks, VDD = +2.6V ±0.1V, VDDQ = +2.6V ±0.1V (DDR400), 5ns, DDR400B
+K DDRAM
+F http://download.micron.com/pdf/datasheets/dram/ddr/512MBDDRx4x8x16.pdf
+$ENDCMP
+#
+#End Doc Library

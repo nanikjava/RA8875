@@ -1,0 +1,79 @@
+/* MACHINE-GENERATED ! */
+
+frame pin {
+	__0: vec @(hole/2, hole/2)
+	__1: vec @(-hole/2, -hole/2)
+	hole . __0
+	__2: vec @(-ratio*hole/2, ratio*hole/2)
+	__3: vec @(ratio*hole/2, -ratio*hole/2)
+	rpad "$n" __2 . bare
+}
+
+frame pin_hole {
+	set n = i+1
+
+	frame pin @
+}
+
+frame pins {
+	loop i = 0, N-1
+
+	__0: vec @(pitch*(i-(N-1)/2), 0mm)
+	__2: vec .(0mm, -(rear+thick/2))
+	frame pin_hole .
+}
+
+frame outline {
+	set w = 5mil
+
+	__0: vec @(L/2-pin_width/2, 0mm)
+	line @ . w
+	__2: vec .(0.35mm, 0mm)
+	__1: vec @(-(L/2-pin_width/2), 0mm)
+	line @ . w
+	__3: vec .(-0.35mm, 0mm)
+	__4: vec @(-L/2, -(rear+thick))
+	__5: vec @(L/2, -(rear+thick))
+	__6: vec @(L/2-pin_width/2, -front)
+	__10: vec .(0.3mm, 1.5mm)
+	line . __6 w
+	__7: vec @(-(L/2-pin_width/2), -front)
+	__11: vec .(-0.3mm, 1.5mm)
+	line . __7 w
+	__8: vec @(0mm, -surface)
+	__9: vec @(0mm, -3mm)
+	__12: vec __0(0.2mm, -0.5mm)
+	line . __0 w
+	__13: vec __1(-0.2mm, -0.5mm)
+	line . __1 w
+	__14: vec __6(-0.29mm, 0mm)
+	line __6 . w
+	__15: vec __7(0.29mm, 0mm)
+	arc __9 . __14 w
+	line __7 . w
+	line __14 . w
+}
+
+package "TSOP348"
+unit auto
+
+table
+    { N, L, front, rear, surface, thick, pin_width }
+    { 3, 6mm, 4.1mm, 1.3mm, 5.6mm, 0.5mm, 0.7mm }
+
+set hole = 0.8mm
+
+set pitch = 100mil
+
+set ratio = 2
+
+frame outline @
+frame pins @
+meas outline.__3 >> outline.__2 1mm
+meas pins.__2 -> pins.__2 2mm
+measy outline.__0 << pins.__2 -1mm
+measy outline.__0 >> outline.__6 1.5mm
+measy outline.__0 >> outline.__8 2mm
+measy pin.__1 -> pin.__0 1mm
+measy pin.__3 -> pin.__2 3mm
+measx outline.__9 >> pins.__2 -0.5mm

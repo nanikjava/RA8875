@@ -1,0 +1,64 @@
+/* MACHINE-GENERATED ! */
+
+frame minus {
+	__0: vec @(Rx, PNy/2)
+	__1: vec .(-PNx, -PNy)
+	pad "1" . __0
+	__2: vec __0(-PNx/2, -PNy/2)
+}
+
+frame plus {
+	__0: vec @(Rx-PNx/2-Cx, 0mm)
+	__1: vec .(PPx/2, PPy/2)
+	__2: vec __0(-PPx/2, -PPy/2)
+	pad "2" . __1
+}
+
+frame base {
+	set bx = sqrt(Br*Br-By*By/4)
+
+	set bxi = sqrt(Br*Br-Ny*Ny/4)
+
+	__0: vec @(bx, By/2)
+	__1: vec @(bx, -By/2)
+	arc @ . __0 w
+	__2: vec @(-bx, By/2)
+	line . __0 w
+	__3: vec @(-bx, -By/2)
+	line . __1 w
+	__4: vec @(-bxi, Ny/2)
+	arc @ __2 . w
+	__5: vec @(-bxi, -Ny/2)
+	arc @ . __3 w
+	__6: vec @(-Nx, Ny/2)
+	line . __4 w
+	__7: vec @(-Nx, -Ny/2)
+	line . __5 w
+	__8: vec @(Br, 0mm)
+	__9: vec @(0mm, 9mm)
+}
+
+package "BAT-$name"
+unit mm
+
+table
+    { name, Br, By, Nx, Ny, PPx, PPy, PNx, PNy, Rx, Cx }
+    { "BLP2032SM", 11mm, 15.1mm, 12.2mm, 9.94mm, 3.2mm, 2.75mm, 3.2mm, 3.75mm, 10.87mm, 21.26mm }
+    { "LP2032SM", 11mm, 15mm, 12.2mm, 7.53mm, 3mm, 3.45mm, 3mm, 2.8mm, 10.5mm, 20.5mm+3mm }
+
+set w = 5mil
+
+frame base @
+frame plus @
+frame minus @
+measx plus.__0 >> minus.__2 3.5mm
+measx plus.__1 >> minus.__1 1mm
+measx plus.__2 >> plus.__1 -1mm
+measx minus.__1 >> minus.__0 -1mm
+measy plus.__2 >> plus.__1 1mm
+measy minus.__1 >> minus.__0 -PNx-1mm
+measy base.__1 >> base.__0 -5mm
+measx base.__6 >> base.__8 10mm-Ny/2
+measy base.__7 >> base.__6 3mm
+measx base.__9 >> minus.__0
+measx base.__6 >> base.__9 9mm-Ny/2

@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0  Date: Wed 04 Apr 2012 08:41:14 CST
+#
+$CMP XC6SLX45-2FGG484C
+D XC6SLX45-2FGG484C, SPARTAN-6
+K SPARTAN-6
+F http://www.xilinx.com/support/documentation/data_sheets/ds160.pdf
+$ENDCMP
+#
+#End Doc Library
