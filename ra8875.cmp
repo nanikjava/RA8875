@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-11-29 BZR 4512)-product date = Fri 02 May 2014 08:50:27 EST
+Cmp-Mod V01 Created by CvPcb (2013-11-29 BZR 4512)-product date = Fri 02 May 2014 13:48:18 EST
 
 BeginCmp
 TimeStamp = /535A8F0C;
@@ -60,7 +60,7 @@ BeginCmp
 TimeStamp = /535A8FC9;
 Reference = L1;
 ValeurCmp = 6.8uH;
-IdModule  = c-smd-6.3mmx8mm;
+IdModule  = INDUCTOR-2P-3mmx3mm;
 EndCmp
 
 BeginCmp
