@@ -1,6 +1,6 @@
-update=Sat 26 Apr 2014 02:42:18 EST
+update=Sat 03 May 2014 15:23:54 EST
 version=1
-last_client=cvpcb
+last_client=eeschema
 [pcbnew]
 version=1
 LastNetListRead=
@@ -102,6 +102,11 @@ LibName78=kicad-libs/modules/zx62m-b-5p
 LibDir=
 [general]
 version=1
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
 [eeschema]
 version=1
 PageLayoutDescrFile=
@@ -236,8 +241,3 @@ LibName119=kicad-libs/components/xc6slx45-2fgg484c
 LibName120=kicad-libs/components/xlr-3
 LibName121=kicad-libs/components/xtal-4
 LibName122=kicad-libs/components/zener
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
