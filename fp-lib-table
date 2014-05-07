@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name qi)(type Legacy)(uri /home/nanik/kicaddesign/mod_conn_misc/w_conn_misc.mod)(options "")(descr ""))
+)
