@@ -1,0 +1,1 @@
+This project is an open source project to build TFT board using RA8875 IC from RAiO (http://www.raio.com.tw/index.htm). The goal of this board initially is for 5inch screen but for next versions will support all the way to 7inch.
