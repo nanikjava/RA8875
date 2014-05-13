@@ -1,38 +1,38 @@
-Cmp-Mod V01 Created by CvPcb (2013-11-29 BZR 4512)-product date = Fri 02 May 2014 13:48:18 EST
+Cmp-Mod V01 Created by CvPcb (2014-05-02 BZR 4840)-stable date = Tue 13 May 2014 09:56:42 EST
 
 BeginCmp
 TimeStamp = /535A8F0C;
 Reference = C1;
 ValeurCmp = 4.7uF;
-IdModule  = 0805;
+IdModule  = 0805SMDLED_BIGGER;
 EndCmp
 
 BeginCmp
 TimeStamp = /535A9108;
 Reference = C2;
 ValeurCmp = 22pF;
-IdModule  = 0805;
+IdModule  = 0805SMDLED_BIGGER;
 EndCmp
 
 BeginCmp
 TimeStamp = /535A9A1A;
 Reference = C3;
 ValeurCmp = 1uF;
-IdModule  = 0805;
+IdModule  = 0805SMDLED_BIGGER;
 EndCmp
 
 BeginCmp
 TimeStamp = /535A9E05;
 Reference = C4;
 ValeurCmp = 1uF;
-IdModule  = 0805;
+IdModule  = 0805SMDLED_BIGGER;
 EndCmp
 
 BeginCmp
 TimeStamp = /535AA30D;
 Reference = C5;
 ValeurCmp = 4.7uF;
-IdModule  = 0805;
+IdModule  = 0805SMDLED_BIGGER;
 EndCmp
 
 BeginCmp
@@ -60,7 +60,7 @@ BeginCmp
 TimeStamp = /535A8FC9;
 Reference = L1;
 ValeurCmp = 6.8uH;
-IdModule  = INDUCTOR-2P-3mmx3mm;
+IdModule  = 1812;
 EndCmp
 
 BeginCmp
