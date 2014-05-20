@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2014-05-02 BZR 4840)-stable date = Tue 13 May 2014 09:56:42 EST
+Cmp-Mod V01 Created by CvPcb (2014-05-02 BZR 4840)-stable date = Tue 20 May 2014 23:41:16 EST
 
 BeginCmp
 TimeStamp = /535A8F0C;
@@ -36,6 +36,13 @@ IdModule  = 0805SMDLED_BIGGER;
 EndCmp
 
 BeginCmp
+TimeStamp = /537B6930;
+Reference = C6;
+ValeurCmp = C;
+IdModule  = 0805SMDLED_BIGGER;
+EndCmp
+
+BeginCmp
 TimeStamp = /535A90B5;
 Reference = D1;
 ValeurCmp = DIODE;
@@ -66,14 +73,28 @@ EndCmp
 BeginCmp
 TimeStamp = /535A911C;
 Reference = R1;
-ValeurCmp = 1.5M;
+ValeurCmp = 150K;
 IdModule  = 0603;
 EndCmp
 
 BeginCmp
 TimeStamp = /535A94FF;
 Reference = R2;
-ValeurCmp = 210K;
+ValeurCmp = 10K;
+IdModule  = 0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /537B66B9;
+Reference = R3;
+ValeurCmp = R;
+IdModule  = 0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /537B66D0;
+Reference = R4;
+ValeurCmp = R;
 IdModule  = 0603;
 EndCmp
 
@@ -81,6 +102,13 @@ BeginCmp
 TimeStamp = /535A8C7B;
 Reference = TPS1;
 ValeurCmp = TPS61040;
+IdModule  = SOT-235;
+EndCmp
+
+BeginCmp
+TimeStamp = /537B56B1;
+Reference = U1;
+ValeurCmp = MIC5225;
 IdModule  = SOT-235;
 EndCmp
 
